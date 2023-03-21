@@ -32,8 +32,10 @@ a {
 }
 
 .header {
-  background: url("../assets/images/noise_transparent@2x.png"), linear-gradient(to right, $color-bg-start-screen1, $color-bg-start-screen2);
-  padding-top: 30px;
+  background:
+    url("../assets/images/noise_transparent@2x.png"),
+    linear-gradient(to right, $color-bg-start-screen1, $color-bg-start-screen2);
+  padding: 30px 0;
 
   &__inner {
     display: flex;
@@ -85,5 +87,62 @@ a {
     &__link:hover {
       color: $color-light-s;
     }
+  }
+}
+
+.start-screen {
+  background:
+    url("../assets/images/noise_transparent@2x.png"),
+    linear-gradient(to right, $color-bg-start-screen1, $color-bg-start-screen2);
+  padding-top: 60px;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 728px;
+    gap: 42px;
+  }
+
+  &__content {
+    max-width: 460px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 42px;
+    padding-top: 163px;
+  }
+
+  &__title {
+    font: $font-h2;
+    color: $color-light-xl;
+  }
+
+  &__text {
+    font: $font-paragraph-l;
+    color: $color-dark-s;
+  }
+
+  &__button {
+    width: 207px;
+    height: 52px;
+    border: 0;
+    border-radius: 100px;
+    background: $color-primary;
+    font: $font-button;
+    color: $color-dark-3xl;
+    cursor: pointer;
+    letter-spacing: 1px;
+  }
+
+  &__button:hover {
+    background: $color-primary-light;
+  }
+
+  &__img {
+    width: 698px;
+    height: 728px;
+    background: url("../assets/images/start-screen-puppy.png");
   }
 }

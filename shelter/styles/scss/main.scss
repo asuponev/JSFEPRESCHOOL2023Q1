@@ -37,6 +37,12 @@ a {
     color: $color-dark-l;
     letter-spacing: 1.2px;
   }
+
+  &-h5 {
+    font: $font-h5;
+    color: $color-dark-l;
+    letter-spacing: 0.9px;
+  }
 }
 
 .container {
@@ -340,5 +346,57 @@ a {
     align-items: center;
     justify-content: center;
     gap: 30px;
+  }
+}
+
+.donation {
+  background: $color-light-l;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+
+  &__img {
+    width: 505px;
+    height: 261px;
+    background: url("../assets/images/donation-dog.png");
+  }
+
+  &__content {
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  &__card-number {
+    max-width: 349px;
+    height: 43px;
+    background: $color-primary;
+    font: $font-h4;
+    color: $color-dark-l;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 10px 15px;
+    border-radius: 9px;
+    text-align: center;
+    letter-spacing: 1.1px;
+  }
+
+  &__card-number:hover {
+    background: $color-primary-light;
+  }
+
+  &__text {
+    font: $font-donation;
+    color: $color-dark-m;
   }
 }

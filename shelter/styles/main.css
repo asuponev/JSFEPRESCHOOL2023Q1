@@ -31,6 +31,11 @@ a {
   color: #545454;
   letter-spacing: 1.2px;
 }
+.title-h5 {
+  font: 400 15px/1.1 "Georgia";
+  color: #545454;
+  letter-spacing: 0.9px;
+}
 
 .container {
   max-width: 1280px;
@@ -292,6 +297,52 @@ a {
   align-items: center;
   justify-content: center;
   gap: 30px;
+}
+
+.donation {
+  background: #F6F6F6;
+}
+.donation__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+.donation__img {
+  width: 505px;
+  height: 261px;
+  background: url("../assets/images/donation-dog.png");
+}
+.donation__content {
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.donation__card-number {
+  max-width: 349px;
+  height: 43px;
+  background: #F1CDB3;
+  font: 400 20px/1.15 "Georgia";
+  color: #545454;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 10px 15px;
+  border-radius: 9px;
+  text-align: center;
+  letter-spacing: 1.1px;
+}
+.donation__card-number:hover {
+  background: #FDDCC4;
+}
+.donation__text {
+  font: 400 italic 12px/1.5 "Arial";
+  color: #B2B2B2;
 }
 
 /*# sourceMappingURL=main.css.map */

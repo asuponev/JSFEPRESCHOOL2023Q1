@@ -1,3 +1,49 @@
+.footer {
+  background: url("../assets/images/noise_transparent@2x.png"), linear-gradient(to right, #513D2F, #1A1A1C);
+  padding-top: 40px;
+}
+.footer__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 310px;
+  gap: 160px;
+}
+.footer__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 302px;
+  gap: 34px;
+  padding-top: 16px;
+}
+.footer__item__title {
+  font: 400 35px/1.3 "Georgia";
+  color: #FFFFFF;
+  letter-spacing: 2.1px;
+}
+.footer__item__link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.footer__item__link span {
+  font: 400 20px/1.15 "Georgia";
+  color: #F1CDB3;
+  letter-spacing: 1.2px;
+}
+.footer__item:first-child {
+  width: 280px;
+  gap: 40px;
+}
+.footer__img {
+  width: 300px;
+  height: 100%;
+  background: url("../assets/images/footer-puppy.png");
+}
+
 @font-face {
   font-family: "Arial", sans-serif;
   src: url("../assets/fonts/arial-regular.ttf");

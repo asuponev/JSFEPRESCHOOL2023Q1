@@ -146,3 +146,42 @@ a {
     background: url("../assets/images/start-screen-puppy.png");
   }
 }
+
+.about {
+  background: $color-light-xl;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+    height: 588px;
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+
+  &__img {
+    width: 300px;
+    height: 408px;
+    background: url("../assets/images/about-pets.png");
+  }
+
+  &__content {
+    max-width: 430px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  &__title {
+    font: $font-h3;
+    color: $color-dark-l;
+    letter-spacing: 2.1px;
+  }
+
+  &__text {
+    font: $font-paragraph-l;
+    color: $color-dark-xl;
+  }
+}

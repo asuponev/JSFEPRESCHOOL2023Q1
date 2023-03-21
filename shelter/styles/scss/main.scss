@@ -147,6 +147,12 @@ a {
   }
 }
 
+.section__title {
+  font: $font-h3;
+  color: $color-dark-l;
+  letter-spacing: 2.1px;
+}
+
 .about {
   background: $color-light-xl;
 
@@ -174,14 +180,130 @@ a {
     gap: 25px;
   }
 
-  &__title {
-    font: $font-h3;
-    color: $color-dark-l;
-    letter-spacing: 2.1px;
-  }
-
   &__text {
     font: $font-paragraph-l;
     color: $color-dark-xl;
+  }
+}
+
+.friends {
+  background: $color-light-l;
+
+  &__inner {
+    height: 877px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding-top: 80px;
+    padding-bottom: 100px;
+    text-align: center;
+  }
+
+  &__button {
+    width: 261px;
+    height: 52px;
+    border: 0;
+    border-radius: 100px;
+    background: $color-primary;
+    font: $font-button;
+    color: $color-dark-3xl;
+    cursor: pointer;
+    letter-spacing: 1px;
+  }
+
+  &__button:hover {
+    background: $color-primary-light;
+  }
+
+  .slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 53px;
+
+    &__arrow {
+      width: 52px;
+      height: 52px;
+      border: 2px solid $color-primary;
+      border-radius: 100px;
+      background: $color-light-l;
+      background: url("../assets/icons/arrow.svg") center no-repeat;
+      cursor: pointer;
+
+      &_next {
+        transform: rotate(-180deg);
+      }
+    }
+
+    &__arrow:hover {
+      border: 0;
+      background: $color-primary-light;
+      background-image: url("../assets/icons/arrow.svg");
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    &__wrapper {
+      width: 990px;
+      height: 435px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    &__items {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 90px;
+    }
+
+    &__item {
+      width: 270px;
+      height: 435px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding-bottom: 30px;
+      background: $color-light-s;
+      border-radius: 9px;
+      transition: 0.5s;
+
+      img {
+        width: 270px;
+        height: 270px;
+      }
+
+      &-title {
+        font: $font-h4;
+        color: $color-dark-l;
+        letter-spacing: 1.2px;
+      }
+
+      &-button {
+        width: 187px;
+        height: 52px;
+        border: 2px solid $color-primary;
+        border-radius: 100px;
+        background: $color-light-s;
+        font: $font-button;
+        color: $color-dark-3xl;
+        cursor: pointer;
+        letter-spacing: 1px;
+      }
+    }
+
+    &__item:hover {
+      cursor: pointer;
+      background: $color-light-xl;
+    }
+
+    &__item:hover .slider__item-button {
+      border: 0;
+      background: $color-primary-light;
+    }
   }
 }

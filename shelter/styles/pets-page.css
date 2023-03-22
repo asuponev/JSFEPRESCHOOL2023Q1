@@ -157,11 +157,6 @@ a {
   display: flex;
   gap: 20px;
 }
-.friends .slider__arrow:hover {
-  border: 2px solid #FDDCC4;
-  background: #FDDCC4;
-  transition: all 0.5s;
-}
 .friends .slider__arrow {
   width: 52px;
   height: 52px;
@@ -176,11 +171,20 @@ a {
   border: 2px solid #F1CDB3;
   background: #F1CDB3;
 }
-.friends .slider__arrow_inactive, .friends .slider__arrow_inactive:hover {
+.friends .slider__arrow:hover {
+  border: 2px solid #FDDCC4;
+  background: #FDDCC4;
+  transition: all 0.5s;
+}
+.friends .slider__arrow_inactive {
   border: 2px solid #CDCDCD;
   color: #CDCDCD;
   background: #F6F6F6;
   cursor: not-allowed;
+}
+.friends .slider__arrow_inactive:hover {
+  border: 2px solid #CDCDCD;
+  background: #F6F6F6;
 }
 
 .footer {

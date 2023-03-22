@@ -1,0 +1,56 @@
+.header {
+  background: $color-light-xl;
+  padding: 30px 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  &__logo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__title {
+    font: $font-logo_title;
+    color: $color-dark-l;
+    letter-spacing: 1.92px;
+  }
+
+  &__subtitle {
+    font: $font-logo_subtitle;
+    color: $color-dark-3xl;
+    letter-spacing: 1.3px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__link {
+      font: $font-paragraph-l;
+      color: $color-dark-l;
+    }
+
+    &__link_active {
+      color: $color-dark-3xl;
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &__link:hover {
+      color: $color-dark-3xl;
+    }
+  }
+}

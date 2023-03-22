@@ -42,16 +42,16 @@
     &__link {
       font: $font-paragraph-l;
       color: $color-dark-l;
-    }
 
-    &__link_active {
-      color: $color-dark-3xl;
-      border-bottom: 3px solid $color-primary;
-    }
+      &_active {
+        color: $color-dark-3xl;
+        border-bottom: 3px solid $color-primary;
+      }
 
-    &__link:hover {
-      color: $color-dark-3xl;
-      transition: all 0.5s;
+      &:hover {
+        color: $color-dark-3xl;
+        transition: all 0.5s;
+      }
     }
   }
 }
@@ -68,12 +68,6 @@
     padding-top: 80px;
     padding-bottom: 100px;
     text-align: center;
-  }
-
-  &__title {
-    font: $font-h3;
-    color: $color-dark-l;
-    letter-spacing: 2.1px;
   }
 
   .slider {
@@ -109,12 +103,6 @@
         height: 270px;
       }
 
-      &-title {
-        font: $font-h4;
-        color: $color-dark-l;
-        letter-spacing: 1.2px;
-      }
-
       &-button {
         width: 187px;
         height: 52px;
@@ -126,29 +114,23 @@
         cursor: pointer;
         letter-spacing: 1px;
       }
-    }
 
-    &__item:hover {
-      cursor: pointer;
-      background: $color-light-xl;
-      transition: all 0.5s;
-
-      .slider__item-button {
-        border: 2px solid $color-primary-light;
-        background: $color-primary-light;
+      &:hover {
+        cursor: pointer;
+        background: $color-light-xl;
         transition: all 0.5s;
+
+        .slider__item-button {
+          border: 2px solid $color-primary-light;
+          background: $color-primary-light;
+          transition: all 0.5s;
+        }
       }
     }
 
     &__buttons {
       display: flex;
       gap: 20px;
-    }
-
-    &__arrow:hover {
-      border: 2px solid $color-primary-light;
-      background: $color-primary-light;
-      transition: all 0.5s;
     }
 
     &__arrow {
@@ -166,12 +148,22 @@
         background: $color-primary;
       }
 
-      &_inactive,
-      &_inactive:hover {
+      &:hover {
+        border: 2px solid $color-primary-light;
+        background: $color-primary-light;
+        transition: all 0.5s;
+      }
+
+      &_inactive {
         border: 2px solid $color-dark-s;
         color: $color-dark-s;
         background: $color-light-l;
         cursor: not-allowed;
+
+        &:hover {
+          border: 2px solid $color-dark-s;
+          background: $color-light-l;
+        }
       }
     }
   }

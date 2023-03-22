@@ -18,6 +18,12 @@
     gap: 10px;
   }
 
+  &__title {
+    font: $font-logo_title;
+    color: $color-primary;
+    letter-spacing: 1.92px;
+  }
+
   &__subtitle {
     font: $font-logo_subtitle;
     color: $color-light-xl;
@@ -38,16 +44,16 @@
     &__link {
       font: $font-paragraph-l;
       color: $color-dark-s;
-    }
 
-    &__link_active {
-      color: $color-light-s;
-      border-bottom: 3px solid $color-primary;
-    }
+      &_active {
+        color: $color-light-s;
+        border-bottom: 3px solid $color-primary;
+      }
 
-    &__link:hover {
-      color: $color-light-s;
-      transition: all 0.5s;
+      &:hover {
+        color: $color-light-s;
+        transition: all 0.5s;
+      }
     }
   }
 }
@@ -74,6 +80,11 @@
     align-items: flex-start;
     gap: 42px;
     padding-top: 163px;
+  }
+
+  &__title {
+    font: $font-h2;
+    color: $color-light-xl;
   }
 
   &__text {
@@ -163,11 +174,11 @@
     color: $color-dark-3xl;
     cursor: pointer;
     letter-spacing: 1px;
-  }
 
-  &__button:hover {
-    background: $color-primary-light;
-    transition: all 0.5s;
+    &:hover {
+      background: $color-primary-light;
+      transition: all 0.5s;
+    }
   }
 
   .slider {
@@ -188,15 +199,15 @@
       &_next {
         transform: rotate(-180deg);
       }
-    }
 
-    &__arrow:hover {
-      border: 2px solid $color-primary-light;
-      background: $color-primary-light;
-      background-image: url("../assets/icons/arrow.svg");
-      background-position: center center;
-      background-repeat: no-repeat;
-      transition: all 0.5s;
+      &:hover {
+        border: 2px solid $color-primary-light;
+        background: $color-primary-light;
+        background-image: url("../assets/icons/arrow.svg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        transition: all 0.5s;
+      }
     }
 
     &__wrapper {
@@ -241,17 +252,17 @@
         cursor: pointer;
         letter-spacing: 1px;
       }
-    }
 
-    &__item:hover {
-      cursor: pointer;
-      background: $color-light-xl;
-      transition: all 0.5s;
-
-      .slider__item-button {
-        border: 2px solid $color-primary-light;
-        background: $color-primary-light;
+      &:hover {
+        cursor: pointer;
+        background: $color-light-xl;
         transition: all 0.5s;
+
+        .slider__item-button {
+          border: 2px solid $color-primary-light;
+          background: $color-primary-light;
+          transition: all 0.5s;
+        }
       }
     }
   }
@@ -316,6 +327,12 @@
     gap: 20px;
   }
 
+  &__subtitle {
+    font: $font-h5;
+    color: $color-dark-l;
+    letter-spacing: 0.9px;
+  }
+
   &__card-number {
     max-width: 349px;
     height: 43px;
@@ -330,11 +347,11 @@
     border-radius: 9px;
     text-align: center;
     letter-spacing: 1.1px;
-  }
 
-  &__card-number:hover {
-    background: $color-primary-light;
-    transition: all 0.5s;
+    &:hover {
+      background: $color-primary-light;
+      transition: all 0.5s;
+    }
   }
 
   &__text {

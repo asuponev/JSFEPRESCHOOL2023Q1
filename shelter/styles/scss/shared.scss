@@ -28,3 +28,15 @@ a {
   margin: 0 auto;
   padding: 0 40px;
 }
+
+.section__title {
+  font: $font-h3;
+  color: $color-dark-l;
+  letter-spacing: 2.1px;
+}
+
+.item__title {
+  font: $font-h4;
+  color: $color-dark-l;
+  letter-spacing: 1.2px;
+}

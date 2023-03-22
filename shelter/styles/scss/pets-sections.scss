@@ -70,12 +70,6 @@
     text-align: center;
   }
 
-  &__title {
-    font: $font-h3;
-    color: $color-dark-l;
-    letter-spacing: 2.1px;
-  }
-
   .slider {
     display: flex;
     flex-direction: column;
@@ -107,12 +101,6 @@
       img {
         width: 270px;
         height: 270px;
-      }
-
-      &-title {
-        font: $font-h4;
-        color: $color-dark-l;
-        letter-spacing: 1.2px;
       }
 
       &-button {

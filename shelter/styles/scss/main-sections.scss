@@ -18,6 +18,12 @@
     gap: 10px;
   }
 
+  &__title {
+    font: $font-logo_title;
+    color: $color-primary;
+    letter-spacing: 1.92px;
+  }
+
   &__subtitle {
     font: $font-logo_subtitle;
     color: $color-light-xl;
@@ -74,6 +80,11 @@
     align-items: flex-start;
     gap: 42px;
     padding-top: 163px;
+  }
+
+  &__title {
+    font: $font-h2;
+    color: $color-light-xl;
   }
 
   &__text {
@@ -314,6 +325,12 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
+  }
+
+  &__subtitle {
+    font: $font-h5;
+    color: $color-dark-l;
+    letter-spacing: 0.9px;
   }
 
   &__card-number {

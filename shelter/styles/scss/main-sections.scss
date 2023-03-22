@@ -243,11 +243,11 @@
     &__item:hover {
       cursor: pointer;
       background: $color-light-xl;
-    }
 
-    &__item:hover .slider__item-button {
-      border: 0;
-      background: $color-primary-light;
+      .slider__item-button {
+        border: 0;
+        background: $color-primary-light;
+      }
     }
   }
 }

@@ -47,6 +47,7 @@
 
     &__link:hover {
       color: $color-light-s;
+      transition: all 0.5s;
     }
   }
 }
@@ -94,6 +95,7 @@
 
   &__button:hover {
     background: $color-primary-light;
+    transition: all 0.5s;
   }
 
   &__img {
@@ -165,6 +167,7 @@
 
   &__button:hover {
     background: $color-primary-light;
+    transition: all 0.5s;
   }
 
   .slider {
@@ -188,11 +191,12 @@
     }
 
     &__arrow:hover {
-      border: 0;
+      border: 2px solid $color-primary-light;
       background: $color-primary-light;
       background-image: url("../assets/icons/arrow.svg");
       background-position: center center;
       background-repeat: no-repeat;
+      transition: all 0.5s;
     }
 
     &__wrapper {
@@ -220,7 +224,6 @@
       padding-bottom: 30px;
       background: $color-light-s;
       border-radius: 9px;
-      transition: 0.5s;
 
       img {
         width: 270px;
@@ -243,10 +246,12 @@
     &__item:hover {
       cursor: pointer;
       background: $color-light-xl;
+      transition: all 0.5s;
 
       .slider__item-button {
-        border: 0;
+        border: 2px solid $color-primary-light;
         background: $color-primary-light;
+        transition: all 0.5s;
       }
     }
   }
@@ -329,6 +334,7 @@
 
   &__card-number:hover {
     background: $color-primary-light;
+    transition: all 0.5s;
   }
 
   &__text {

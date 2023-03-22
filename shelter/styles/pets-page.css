@@ -73,6 +73,7 @@ a {
 }
 .header .nav__link:hover {
   color: #292929;
+  transition: all 0.5s;
 }
 
 .friends {
@@ -143,18 +144,21 @@ a {
 .friends .slider__item:hover {
   cursor: pointer;
   background: #FFFFFF;
+  transition: all 0.5s;
 }
 .friends .slider__item:hover .slider__item-button {
-  border: 0;
+  border: 2px solid #FDDCC4;
   background: #FDDCC4;
+  transition: all 0.5s;
 }
 .friends .slider__buttons {
   display: flex;
   gap: 20px;
 }
 .friends .slider__arrow:hover {
-  border: 0;
+  border: 2px solid #FDDCC4;
   background: #FDDCC4;
+  transition: all 0.5s;
 }
 .friends .slider__arrow {
   width: 52px;
@@ -167,7 +171,7 @@ a {
   cursor: pointer;
 }
 .friends .slider__arrow_active {
-  border: 0;
+  border: 2px solid #F1CDB3;
   background: #F1CDB3;
 }
 .friends .slider__arrow_inactive, .friends .slider__arrow_inactive:hover {

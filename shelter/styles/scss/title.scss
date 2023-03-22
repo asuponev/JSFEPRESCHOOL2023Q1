@@ -1,0 +1,30 @@
+.title {
+  &-h1 {
+    font: $font-logo_title;
+    color: $color-primary;
+    letter-spacing: 1.92px;
+  }
+
+  &-h2 {
+    font: $font-h2;
+    color: $color-light-xl;
+  }
+
+  &-h3 {
+    font: $font-h3;
+    color: $color-dark-l;
+    letter-spacing: 2.1px;
+  }
+
+  &-h4 {
+    font: $font-h4;
+    color: $color-dark-l;
+    letter-spacing: 1.2px;
+  }
+
+  &-h5 {
+    font: $font-h5;
+    color: $color-dark-l;
+    letter-spacing: 0.9px;
+  }
+}

@@ -21,13 +21,13 @@
     gap: 34px;
     padding-top: 16px;
 
-    &__title {
+    &-title {
       font: $font-h3;
       color: $color-light-xl;
       letter-spacing: 2.1px;
     }
 
-    &__link {
+    &-link {
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -37,6 +37,11 @@
         font: $font-h4;
         color: $color-primary;
         letter-spacing: 1.2px;
+        transition-duration: 0.5s;
+
+        &:hover {
+          color: $color-light-xl;
+        }
       }
     }
   }

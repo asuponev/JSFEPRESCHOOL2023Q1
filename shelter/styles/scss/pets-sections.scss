@@ -14,18 +14,28 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
 
-  &__title {
-    font: $font-logo_title;
-    color: $color-dark-l;
-    letter-spacing: 1.92px;
-  }
 
-  &__subtitle {
-    font: $font-logo_subtitle;
-    color: $color-dark-3xl;
-    letter-spacing: 1.3px;
+    &-title {
+      font: $font-logo_title;
+      color: $color-dark-l;
+      letter-spacing: 1.92px;
+      transition-duration: 0.5s;
+    }
+
+    &-subtitle {
+      font: $font-logo_subtitle;
+      color: $color-dark-3xl;
+      letter-spacing: 1.3px;
+      transition-duration: 0.5s;
+    }
+
+    &:hover {
+
+      p {
+        color: black;
+      }
+    }
   }
 
   .nav {
@@ -97,6 +107,7 @@
       padding-bottom: 30px;
       background: $color-light-s;
       border-radius: 9px;
+      transition-duration: 0.5s;
 
       img {
         width: 270px;
@@ -113,17 +124,16 @@
         color: $color-dark-3xl;
         cursor: pointer;
         letter-spacing: 1px;
+        transition-duration: 0.5s;
       }
 
       &:hover {
         cursor: pointer;
         background: $color-light-xl;
-        transition: all 0.5s;
 
         .slider__item-button {
           border: 2px solid $color-primary-light;
           background: $color-primary-light;
-          transition: all 0.5s;
         }
       }
     }
@@ -142,6 +152,7 @@
       font: $font-h4;
       color: $color-dark-3xl;
       cursor: pointer;
+      transition-duration: 0.5s;
 
       &_active {
         border: 2px solid $color-primary;
@@ -151,7 +162,6 @@
       &:hover {
         border: 2px solid $color-primary-light;
         background: $color-primary-light;
-        transition: all 0.5s;
       }
 
       &_inactive {

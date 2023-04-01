@@ -26,6 +26,11 @@ a {
   margin: 0 auto;
   padding: 0 40px;
 }
+@media (max-width: 1279px) {
+  .container {
+    padding: 0 30px;
+  }
+}
 
 .section__title {
   font: 400 35px/1.3 "Georgia";
@@ -151,8 +156,7 @@ a {
   justify-content: center;
   gap: 120px;
   height: 588px;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 80px 0 100px;
 }
 .about__img {
   width: 300px;
@@ -181,8 +185,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 60px;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 80px 0 100px;
   text-align: center;
 }
 .friends__button {
@@ -281,8 +284,7 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 60px;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 80px 0 100px;
   max-height: 611px;
   text-align: center;
 }
@@ -313,8 +315,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 30px;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 80px 0 100px;
 }
 .donation__img {
   width: 505px;
@@ -357,6 +358,72 @@ a {
   color: #B2B2B2;
 }
 
+@media (max-width: 1279px) {
+  .start-screen {
+    padding-top: 30px;
+  }
+  .start-screen__inner {
+    flex-direction: column;
+    height: 1015px;
+  }
+  .start-screen__content {
+    height: 322px;
+    padding-top: 0;
+  }
+  .start-screen form {
+    align-self: center;
+  }
+  .start-screen__img {
+    max-width: 569px;
+    max-height: 593px;
+    margin-left: calc(50% - 284.5px + 70px);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .about__inner {
+    flex-direction: column;
+    gap: 80px;
+    height: 1048px;
+    padding: 80px 0 100px;
+  }
+  .about__img {
+    order: 2;
+  }
+  .friends__inner {
+    padding: 80px 0 100px;
+  }
+  .friends .slider {
+    justify-content: space-around;
+    gap: 12px;
+  }
+  .friends .slider__wrapper {
+    width: 580px;
+  }
+  .friends .slider__items {
+    max-width: 580px;
+    overflow: hidden;
+    gap: 40px;
+  }
+  .help__inner {
+    padding: 80px 0 100px;
+    max-height: 779px;
+  }
+  .help__items {
+    column-gap: 60px;
+    max-width: 630px;
+  }
+  .help__item {
+    width: 170px;
+  }
+  .donation__inner {
+    flex-direction: column;
+    gap: 60px;
+    padding: 80px 0 100px;
+  }
+  .donation__img {
+    order: 2;
+  }
+}
 .footer {
   background: url("../assets/images/noise_transparent@2x.png"), linear-gradient(to right, #513D2F, #1A1A1C);
   padding-top: 40px;
@@ -367,6 +434,17 @@ a {
   justify-content: space-between;
   height: 310px;
   gap: 160px;
+}
+@media (max-width: 1279px) {
+  .footer__inner {
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 609px;
+    width: 768px;
+    column-gap: 60px;
+    row-gap: 63px;
+    padding: 0 63px;
+  }
 }
 .footer__item {
   display: flex;
@@ -397,6 +475,12 @@ a {
 .footer__item-link span:hover {
   color: #FFFFFF;
 }
+@media (max-width: 1279px) {
+  .footer__item {
+    padding-top: 0;
+    gap: 33px;
+  }
+}
 .footer__item:first-child {
   width: 280px;
   gap: 40px;
@@ -405,6 +489,20 @@ a {
   width: 300px;
   height: 100%;
   background: url("../assets/images/footer-puppy.png");
+}
+@media (max-width: 1279px) {
+  .footer__img {
+    max-width: 300px;
+    max-height: 310px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+@media (max-width: 1279px) {
+  .footer {
+    padding-top: 30px;
+  }
 }
 
 /*# sourceMappingURL=main-page.css.map */

@@ -27,6 +27,10 @@ a {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 40px;
+
+  @media (max-width: 1279px) {
+    padding: 0 30px;
+  }
 }
 
 .section__title {

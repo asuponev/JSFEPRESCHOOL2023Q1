@@ -9,20 +9,26 @@
   <link rel="icon" href="./assets/icons/favicon/favicon.ico">
 </head>
 <body>
+  <div class="shadow shadow_burger"></div>
   <header class="header">
     <div class="container header__inner">
       <a href="#" class="header__logo">
         <p class="header__logo-title">Cozy House</p>
         <p class="header__logo-subtitle">Shelter for pets in Boston</p>
       </a>
-      <nav>
-        <ul class="nav">
+      <nav class="nav">
+        <ul class="nav__list">
           <li class="nav__item"><a href="#" class="nav__link nav__link_active">About the shelter</a></li>
           <li class="nav__item"><a href="./pets.html" class="nav__link">Our pets</a></li>
           <li class="nav__item"><a href="#help" class="nav__link">Help the shelter</a></li>
           <li class="nav__item"><a href="#contacts" class="nav__link">Contacts</a></li>
         </ul>
       </nav>
+      <div class="burger">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </div>
     </div>
   </header>
   <main>
@@ -72,17 +78,17 @@
             <div class="slider__items">
               <div class="slider__item">
                 <img src="./assets/images/pets-katrine.png" alt="cat-katrine">
-                <p class="item__title">Katrine</p>
+                <p class="slider__item-title">Katrine</p>
                 <button class="slider__item-button">Learn more</button>
               </div>
               <div class="slider__item">
                 <img src="./assets/images/pets-jennifer.png" alt="dog-jennifer">
-                <p class="item__title">Jennifer</p>
+                <p class="slider__item-title">Jennifer</p>
                 <button class="slider__item-button">Learn more</button>
               </div>
               <div class="slider__item">
                 <img src="./assets/images/pets-woody.png" alt="dog-woody">
-                <p class="item__title">Woody</p>
+                <p class="slider__item-title">Woody</p>
                 <button class="slider__item-button">Learn more</button>
               </div>
             </div>
@@ -103,39 +109,39 @@
         <div class="help__items">
           <div class="help__item">
             <img src="./assets/icons/help/pet-food.svg" alt="food">
-            <p class="item__title">Pet food</p>
+            <p class="help__item-title">Pet food</p>
           </div>
           <div class="help__item">
             <img src="./assets/icons/help/transportation.svg" alt="transportation">
-            <p class="item__title">Transportation</p>
+            <p class="help__item-title">Transportation</p>
           </div>
           <div class="help__item">
             <img src="./assets/icons/help/toys.svg" alt="toys">
-            <p class="item__title">Toys</p>
+            <p class="help__item-title">Toys</p>
           </div>
           <div class="help__item">
             <img src="./assets/icons/help/bowls-and-cups.svg" alt="bowels">
-            <p class="item__title">Bowls and cups</p>
+            <p class="help__item-title">Bowls and cups</p>
           </div>
           <div class="help__item">
             <img src="./assets/icons/help/shampoos.svg" alt="shampoos">
-            <p class="item__title">Shampoos</p>
+            <p class="help__item-title">Shampoos</p>
           </div>
           <div class="help__item">
             <img src="./assets/icons/help/vitamins.svg" alt="vitamins">
-            <p class="item__title">Vitamins</p>
+            <p class="help__item-title">Vitamins</p>
           </div>
           <div class="help__item">
             <img src="./assets/icons/help/medicines.svg" alt="medicines">
-            <p class="item__title">Medicines</p>
+            <p class="help__item-title">Medicines</p>
           </div>
           <div class="help__item">
             <img src="./assets/icons/help/collars-leashes.svg" alt="collars">
-            <p class="item__title">Collars / leashes</p>
+            <p class="help__item-title">Collars / leashes</p>
           </div>
           <div class="help__item">
             <img src="./assets/icons/help/sleeping-area.svg" alt="sleeping-area">
-            <p class="item__title">Sleeping areas</p>
+            <p class="help__item-title">Sleeping areas</p>
           </div>
         </div>
       </div>
@@ -165,6 +171,7 @@
           <span>For questions</span><br>
           <span>and suggestions</span>
         </h3>
+        <h3 class="footer__item-title-mobile">For questions and suggestions</h3>
         <a href="mailto:email@shelter.com" class="footer__item-link">
           <img src="./assets/icons/contacts/email.svg" alt="email-icon">
           <span>email@shelter.com</span>
@@ -179,6 +186,7 @@
           <span>We are waiting</span><br>
           <span>for your visit</span>
         </h3>
+        <h3 class="footer__item-title-mobile">We are waiting for your visit</h3>
         <a href="https://goo.gl/maps/M5tFyGT8uc55L5HcA" target="_blank" class="footer__item-link">
           <img src="./assets/icons/contacts/marker.svg" alt="marker-icon">
           <span>

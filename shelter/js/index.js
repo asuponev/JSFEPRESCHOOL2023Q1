@@ -1,4 +1,9 @@
+import burger from './modules/burger.js';
+
 window.addEventListener('DOMContentLoaded', () => {
+
+  burger();
+
   console.log(
     'Оценка: 100\n\n',
     'Страница Main (60)\n',

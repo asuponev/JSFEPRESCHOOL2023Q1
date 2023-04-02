@@ -87,3 +87,210 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .header {
+    &__logo {
+      padding-left: 10px;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 320px;
+      height: 100vh;
+      background-color: $color-dark-3xl;
+      z-index: 2;
+      right: -320px;
+      transition: 0.5s;
+      overflow-y: scroll;
+
+      &.open {
+        right: 0;
+        position: absolute;
+      }
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        margin-top: 248px;
+      }
+
+      &__link {
+        font: $font-burger;
+      }
+    }
+  }
+
+  .start-screen {
+    &__inner {
+      height: 673px;
+      gap: 105px;
+    }
+
+    &__content {
+      height: 296px;
+      align-items: center;
+      text-align: center;
+    }
+
+    &__title {
+      font: $font-h3-mobile;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+
+    &__img {
+      margin-left: 0;
+      margin-left: calc(50% - 260px/2 + 40px);
+      width: 260px;
+      height: 272px;
+    }
+  }
+
+  .about {
+    &__inner {
+      gap: 42px;
+      height: 974px;
+      padding: 42px 25px;
+    }
+
+    &__img {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      margin-left: 0;
+    }
+
+    &__content {
+      align-items: center;
+      gap: 22px;
+      text-align: justify;
+    }
+  }
+
+  .friends {
+    &__inner {
+      height: 791px;
+      padding: 42px 0;
+      ;
+      gap: 42px;
+    }
+
+    .slider {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 300px;
+
+      &__wrapper {
+        width: 270px;
+        border-radius: 9px;
+      }
+
+      &__arrow {
+        order: 2;
+
+        &_prev {
+          margin-right: 60px;
+        }
+      }
+
+      &__items {
+        order: 1;
+        gap: 0;
+      }
+
+      &__item {
+        height: 435px;
+      }
+    }
+  }
+
+  .help {
+    &__inner {
+      padding: 42px 10px;
+      gap: 42px;
+    }
+
+    &__items {
+      max-height: 555px;
+      gap: 30px;
+      padding: 0 5px;
+    }
+
+    &__item {
+      width: 130px;
+      height: 87px;
+      gap: 20px;
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+
+      &-title {
+        font: $font-h5;
+        letter-spacing: 0.06em;
+      }
+    }
+  }
+
+  .donation {
+    &__inner {
+      padding: 42px 10px;
+      gap: 42px;
+    }
+
+    &__img {
+      width: 260px;
+      height: 135.2px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    &__content {
+      align-items: center;
+      gap: 22px;
+    }
+
+    &__subtitle {
+      letter-spacing: 0;
+    }
+
+    &__card-number {
+      font: $font-h5;
+      width: 281px;
+      border-radius: 9px;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+
+    &__text {
+      padding: 0 10px;
+      text-align: justify;
+    }
+  }
+}
+
+// @media (max-width: 515px) {
+//   .header__inner.burger-active-logo-move {
+//     justify-content: flex-end;
+//     gap: 41px;
+//   }
+// }
+
+@media (max-width: 320px) {
+  .start-screen__img {
+    width: 260px;
+    height: 272px;
+    margin-left: 40px;
+  }
+
+  .help__items {
+    justify-content: flex-start;
+  }
+}

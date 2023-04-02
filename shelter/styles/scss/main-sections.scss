@@ -39,9 +39,11 @@
   }
 
   .nav {
-    display: flex;
-    align-items: center;
-    gap: 35px;
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+    }
 
     &__item {
       display: flex;
@@ -248,6 +250,12 @@
         height: 270px;
       }
 
+      &-title {
+        font: $font-h4;
+        color: $color-dark-l;
+        letter-spacing: 1.2px;
+      }
+
       &-button {
         width: 187px;
         height: 52px;
@@ -303,6 +311,12 @@
     align-items: center;
     justify-content: center;
     gap: 30px;
+
+    &-title {
+      font: $font-h4;
+      color: $color-dark-l;
+      letter-spacing: 1.2px;
+    }
   }
 }
 

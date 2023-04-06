@@ -132,13 +132,13 @@ body.hidden {
   font: 400 32px/1.1 "Georgia";
   color: #545454;
   letter-spacing: 1.92px;
-  transition-duration: 0.5s;
+  transition: color 0.5s ease-in-out;
 }
 .header__logo-subtitle {
   font: 400 13px/1.15 "Arial";
   color: #292929;
   letter-spacing: 1.3px;
-  transition-duration: 0.5s;
+  transition: color 0.5s ease-in-out;
 }
 .header__logo:hover p {
   color: black;
@@ -204,7 +204,7 @@ body.hidden {
   padding-bottom: 30px;
   background: #FAFAFA;
   border-radius: 9px;
-  transition-duration: 0.5s;
+  transition: background, transform 0.5s ease-in-out;
 }
 .friends .slider__item img {
   width: 270px;
@@ -225,11 +225,12 @@ body.hidden {
   color: #292929;
   cursor: pointer;
   letter-spacing: 1px;
-  transition-duration: 0.5s;
+  transition: background 0.5s ease-in-out;
 }
 .friends .slider__item:hover {
   cursor: pointer;
   background: #FFFFFF;
+  transform: scale(1.05);
 }
 .friends .slider__item:hover .slider__item-button {
   border: 2px solid #FDDCC4;
@@ -248,7 +249,7 @@ body.hidden {
   font: 400 20px/1.15 "Georgia";
   color: #292929;
   cursor: pointer;
-  transition-duration: 0.5s;
+  transition: background 0.5s ease-in-out;
 }
 .friends .slider__arrow_active {
   border: 2px solid #F1CDB3;
@@ -374,7 +375,7 @@ body.hidden {
   font: 400 20px/1.15 "Georgia";
   color: #F1CDB3;
   letter-spacing: 1.2px;
-  transition-duration: 0.5s;
+  transition: color 0.5s ease-in-out;
 }
 .footer__item-link span:hover {
   color: #FFFFFF;

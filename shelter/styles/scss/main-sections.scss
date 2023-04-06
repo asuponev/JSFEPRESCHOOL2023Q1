@@ -21,14 +21,14 @@
       font: $font-logo_title;
       color: $color-primary;
       letter-spacing: 1.92px;
-      transition-duration: 0.5s;
+      transition: color 0.5s ease-in-out;
     }
 
     &-subtitle {
       font: $font-logo_subtitle;
       color: $color-light-xl;
       letter-spacing: 1.3px;
-      transition-duration: 0.5s;
+      transition: color 0.5s ease-in-out;
     }
 
     &:hover {
@@ -55,6 +55,7 @@
       font: $font-paragraph-l;
       color: $color-dark-s;
       transition-duration: 0.5s;
+      transition: color 0.5s ease-in-out;
 
       &_active {
         color: $color-light-s;
@@ -112,7 +113,7 @@
     color: $color-dark-3xl;
     cursor: pointer;
     letter-spacing: 1px;
-    transition-duration: 0.5s;
+    transition: background 0.5s ease-in-out;
   }
 
   &__button:hover {
@@ -182,7 +183,7 @@
     color: $color-dark-3xl;
     cursor: pointer;
     letter-spacing: 1px;
-    transition-duration: 0.5s;
+    transition: background 0.5s ease-in-out;
 
     &:hover {
       background: $color-primary-light;
@@ -203,7 +204,7 @@
       background: $color-light-l;
       background: url("../assets/icons/arrow.svg") center no-repeat;
       cursor: pointer;
-      transition-duration: 0.5s;
+      transition: background 0.5s ease-in-out;
 
       &_next {
         transform: rotate(-180deg);
@@ -243,7 +244,7 @@
       padding-bottom: 30px;
       background: $color-light-s;
       border-radius: 9px;
-      transition-duration: 0.5s;
+      transition: background, transform 0.5s ease-in-out;
 
       img {
         width: 270px;
@@ -266,12 +267,13 @@
         color: $color-dark-3xl;
         cursor: pointer;
         letter-spacing: 1px;
-        transition-duration: 0.5s;
+        transition: background 0.5s ease-in-out;
       }
 
       &:hover {
         cursor: pointer;
         background: $color-light-xl;
+        transform: scale(1.05);
 
         .slider__item-button {
           border: 2px solid $color-primary-light;
@@ -365,7 +367,7 @@
     border-radius: 9px;
     text-align: center;
     letter-spacing: 1.1px;
-    transition-duration: 0.5s;
+    transition: background 0.5s ease-in-out;
 
     &:hover {
       background: $color-primary-light;

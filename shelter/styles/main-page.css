@@ -132,13 +132,13 @@ body.hidden {
   font: 400 32px/1.1 "Georgia";
   color: #F1CDB3;
   letter-spacing: 1.92px;
-  transition-duration: 0.5s;
+  transition: color 0.5s ease-in-out;
 }
 .header__logo-subtitle {
   font: 400 13px/1.15 "Arial";
   color: #FFFFFF;
   letter-spacing: 1.3px;
-  transition-duration: 0.5s;
+  transition: color 0.5s ease-in-out;
 }
 .header__logo:hover p {
   color: #F6F6F6;
@@ -157,6 +157,7 @@ body.hidden {
   font: 400 15px/1.6 "Arial";
   color: #CDCDCD;
   transition-duration: 0.5s;
+  transition: color 0.5s ease-in-out;
 }
 .header .nav__link_active {
   color: #FAFAFA;
@@ -204,7 +205,7 @@ body.hidden {
   color: #292929;
   cursor: pointer;
   letter-spacing: 1px;
-  transition-duration: 0.5s;
+  transition: background 0.5s ease-in-out;
 }
 .start-screen__button:hover {
   background: #FDDCC4;
@@ -266,7 +267,7 @@ body.hidden {
   color: #292929;
   cursor: pointer;
   letter-spacing: 1px;
-  transition-duration: 0.5s;
+  transition: background 0.5s ease-in-out;
 }
 .friends__button:hover {
   background: #FDDCC4;
@@ -285,7 +286,7 @@ body.hidden {
   background: #F6F6F6;
   background: url("../assets/icons/arrow.svg") center no-repeat;
   cursor: pointer;
-  transition-duration: 0.5s;
+  transition: background 0.5s ease-in-out;
 }
 .friends .slider__arrow_next {
   transform: rotate(-180deg);
@@ -320,7 +321,7 @@ body.hidden {
   padding-bottom: 30px;
   background: #FAFAFA;
   border-radius: 9px;
-  transition-duration: 0.5s;
+  transition: background, transform 0.5s ease-in-out;
 }
 .friends .slider__item img {
   width: 270px;
@@ -341,11 +342,12 @@ body.hidden {
   color: #292929;
   cursor: pointer;
   letter-spacing: 1px;
-  transition-duration: 0.5s;
+  transition: background 0.5s ease-in-out;
 }
 .friends .slider__item:hover {
   cursor: pointer;
   background: #FFFFFF;
+  transform: scale(1.05);
 }
 .friends .slider__item:hover .slider__item-button {
   border: 2px solid #FDDCC4;
@@ -426,7 +428,7 @@ body.hidden {
   border-radius: 9px;
   text-align: center;
   letter-spacing: 1.1px;
-  transition-duration: 0.5s;
+  transition: background 0.5s ease-in-out;
 }
 .donation__card-number:hover {
   background: #FDDCC4;
@@ -695,7 +697,7 @@ body.hidden {
   font: 400 20px/1.15 "Georgia";
   color: #F1CDB3;
   letter-spacing: 1.2px;
-  transition-duration: 0.5s;
+  transition: color 0.5s ease-in-out;
 }
 .footer__item-link span:hover {
   color: #FFFFFF;

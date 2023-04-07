@@ -3,7 +3,7 @@ const burger = () => {
   const nav = document.querySelector('nav');
   const navItems = document.querySelectorAll('.nav__item');
   const body = document.querySelector('body');
-  const shadow = document.querySelector('.shadow');
+  const shadow = document.querySelector('.shadow.for-burger');
   
   function onClickBurger() {
     nav.classList.toggle('open');

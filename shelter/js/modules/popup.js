@@ -4,7 +4,7 @@ const popup = async () => {
   const pets = await getData();
 
   const popup = document.querySelector('.popup'),
-    shadow = document.querySelector('.shadow'),
+    shadow = document.querySelector('.shadow.for-popup'),
     popupWindow = document.querySelector('.popup__window'),
     closeBtn = document.querySelector('.popup__close_btn'),
     sliderField = document.querySelector('.slider__items'),
@@ -44,7 +44,7 @@ const popup = async () => {
   const closePopup = () => {
     popup.classList.remove('open');
     shadow.classList.remove('enabled');
-    body.classList.remove('body');
+    body.classList.remove('hidden');
   };
 
   sliderField.addEventListener('click', openPopup);

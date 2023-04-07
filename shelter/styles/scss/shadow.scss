@@ -1,0 +1,25 @@
+.shadow {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(41, 41, 41, 0.6);
+  z-index: 1;
+  cursor: pointer;
+
+  &.enabled {
+    display: block;
+  }
+
+  &:hover {
+    ~main .popup__close_btn {
+      border: 0;
+      background: $color-primary-light;
+      background-image: url("../assets/icons/close.svg");
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
+}

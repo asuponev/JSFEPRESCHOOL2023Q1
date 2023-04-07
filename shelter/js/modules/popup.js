@@ -44,7 +44,7 @@ const popup = async () => {
   const closePopup = () => {
     popup.classList.remove('open');
     shadow.classList.remove('enabled');
-    body.classList.remove('hidden');
+    body.removeAttribute('class');
   };
 
   sliderField.addEventListener('click', openPopup);

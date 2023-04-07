@@ -8,7 +8,7 @@ const burger = () => {
   function onClickBurger() {
     nav.classList.toggle('open');
     burger.classList.toggle('active');
-    body.classList.toggle('hidden');
+    body.classList.contains('hidden') ? body.removeAttribute('class') : body.classList.add('hidden');
     shadow.classList.toggle('enabled');
   }
   
@@ -20,7 +20,7 @@ const burger = () => {
       nav.classList.remove('open');
       burger.classList.remove('active');
       shadow.classList.remove('enabled');
-      body.classList.remove('hidden');
+      body.removeAttribute('class');
     });
   }
 };

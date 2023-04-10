@@ -47,19 +47,3 @@
     transform: translateX(-11px) translateY(-11px) rotate(90deg);
   }
 }
-
-.shadow_burger {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(41, 41, 41, 0.6);
-  z-index: 1;
-  cursor: pointer;
-
-  &.enabled {
-    display: block;
-  }
-}

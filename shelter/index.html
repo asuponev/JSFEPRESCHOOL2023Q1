@@ -9,7 +9,8 @@
   <link rel="icon" href="./assets/icons/favicon/favicon.ico">
 </head>
 <body>
-  <div class="shadow shadow_burger"></div>
+  <div class="shadow for-burger"></div>
+  <div class="shadow for-popup"></div>
   <header class="header">
     <div class="container header__inner">
       <a href="#" class="header__logo">
@@ -41,9 +42,7 @@
           </h1>
           <p class="start-screen__text">We offer to give a chance to a little and nice puppy with an extremely wide and
             open heart. He or she will love you more than anybody else in the world, you will see!</p>
-          <form action="#friends">
-            <button class="start-screen__button">Make a friend</button>
-          </form>
+          <a href="#friends" class="start-screen__button">Make a friend</a>
         </div>
         <div class="start-screen__img"></div>
       </div>
@@ -68,31 +67,17 @@
     </section>
     <section class="friends" id="friends">
       <div class="container friends__inner">
+        <div class="popup">
+          <button class="popup__close_btn"></button>
+          <div class="popup__window"></div>
+        </div>
         <h3 class="section__title">
           <span>Our friends who</span><br>
           <span>are looking for a house</span>
         </h3>
         <div class="slider">
           <button class="slider__arrow slider__arrow_prev"></button>
-          <div class="slider__wrapper">
-            <div class="slider__items">
-              <div class="slider__item">
-                <img src="./assets/images/pets-katrine.png" alt="cat-katrine">
-                <p class="slider__item-title">Katrine</p>
-                <button class="slider__item-button">Learn more</button>
-              </div>
-              <div class="slider__item">
-                <img src="./assets/images/pets-jennifer.png" alt="dog-jennifer">
-                <p class="slider__item-title">Jennifer</p>
-                <button class="slider__item-button">Learn more</button>
-              </div>
-              <div class="slider__item">
-                <img src="./assets/images/pets-woody.png" alt="dog-woody">
-                <p class="slider__item-title">Woody</p>
-                <button class="slider__item-button">Learn more</button>
-              </div>
-            </div>
-          </div>
+          <div class="slider__wrapper"></div>
           <button class="slider__arrow slider__arrow_next"></button>
         </div>
         <form action="./pets.html">

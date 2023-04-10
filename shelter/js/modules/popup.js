@@ -7,7 +7,7 @@ const popup = async () => {
     shadow = document.querySelector('.shadow.for-popup'),
     popupWindow = document.querySelector('.popup__window'),
     closeBtn = document.querySelector('.popup__close_btn'),
-    sliderField = document.querySelector('.slider__items'),
+    sliderField = document.querySelector('.slider__wrapper') || document.querySelector('.slider__items'),
     body = document.querySelector('body');
 
   const createPopup = (pet) => {

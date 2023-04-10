@@ -40,23 +40,13 @@ const slider = async () => {
   };
 
   function getAmountOfCards(width) {
-    let amount = 3;
     if (width >= 768 && width < 1280) {
-      amount = 2
+      return 2
     } else if (width >= 320 && width < 768) {
-      amount = 1
+      return 1
+    } else {
+      return 3;
     }
-    return amount;
-  };
-
-  function createPetCard(pet) {
-    return `
-      <div class="slider__item" data-id=${pet.id}>
-        <img src=${pet.img} alt=${pet.type}-${pet.name}>
-        <p class="slider__item-title">${pet.name}</p>
-        <button class="slider__item-button">Learn more</button>
-      </div>
-    `
   };
 
   function createPetCardSet(pets, direction) {
@@ -85,6 +75,16 @@ const slider = async () => {
 
     return sliderItems;
   };
+};
+
+export function createPetCard(pet) {
+  return `
+    <div class="slider__item" data-id=${pet.id}>
+      <img src=${pet.img} alt=${pet.type}-${pet.name}>
+      <p class="slider__item-title">${pet.name}</p>
+      <button class="slider__item-button">Learn more</button>
+    </div>
+  `
 };
 
 export default slider;

@@ -33,7 +33,7 @@ const popup = async () => {
     if (event.target.closest('.slider__item')) {
       shadow.style.top = window.pageYOffset + 'px';
       const petID = event.target.closest('.slider__item').dataset.id;
-      const pet = pets[petID - 1];
+      const pet = pets[petID];
       popupWindow.innerHTML = createPopup(pet);
       popup.classList.add('open');
       shadow.classList.add('enabled');

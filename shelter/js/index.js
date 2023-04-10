@@ -5,7 +5,7 @@ import pagination from './modules/pagination.js';
 
 window.addEventListener('DOMContentLoaded', () => {
 
-  const currentUrl = window.location.pathname.slice(9);
+  const currentUrl = window.location.pathname.split('/').slice(-1)[0];
 
   burger();
   popup();

@@ -6,7 +6,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   burger();
   popup();
-  slider();
+  if (window.location.pathname.slice(9) === 'index.html') {
+    slider();
+  };
 
   console.log(
     'Оценка: 72 / 110 \n\n',

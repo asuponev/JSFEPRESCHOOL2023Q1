@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -33,6 +34,7 @@ const baseConfig = {
     }),
     new CleanWebpackPlugin(),
     new EslingPlugin({ extensions: 'ts' }),
+    new Dotenv(),
   ],
 };
 

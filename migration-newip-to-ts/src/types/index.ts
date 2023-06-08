@@ -21,3 +21,14 @@ export interface Source {
   language: string;
   country: string;
 }
+
+export interface IArticles {
+  status: string;
+  totalResults: number;
+  articles: Article[];
+}
+
+export interface ISources {
+  status: string;
+  sources: Source[];
+}

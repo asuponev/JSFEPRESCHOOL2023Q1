@@ -3,9 +3,9 @@ import { RequestOptions, IResp } from '../../types/index';
 class Loader {
   constructor(private baseLink: string, private options: RequestOptions) {}
 
-  protected getResp(
+  protected getResp<T>(
     { endpoint, options = {} }: IResp,
-    callback = () => {
+    callback: (data: T) => void = () => {
       console.error('No callback for GET response');
     }
   ) {

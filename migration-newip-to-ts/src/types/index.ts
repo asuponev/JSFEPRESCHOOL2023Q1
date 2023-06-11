@@ -32,3 +32,10 @@ export interface ISources {
   status: string;
   sources: ISource[];
 }
+
+export type RequestOptions = Record<string, string>;
+
+export interface IResp {
+  endpoint: string;
+  options?: RequestOptions;
+}

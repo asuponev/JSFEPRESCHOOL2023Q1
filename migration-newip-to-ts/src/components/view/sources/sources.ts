@@ -22,8 +22,10 @@ class Sources {
     });
 
     const sourcesBlock: HTMLElement | null = document.querySelector('.sources');
-    if (sourcesBlock) {
-      fragment ? (sourcesBlock.textContent = '') : 'Sources not loaded';
+    const newsBlock: HTMLElement | null = document.querySelector('.news');
+    if (sourcesBlock && newsBlock) {
+      sourcesBlock.textContent = fragment ? '' : 'Sources not loaded';
+      newsBlock.textContent = fragment ? 'Click on any source to display news' : 'News not loaded';
       sourcesBlock.append(fragment);
     }
   }

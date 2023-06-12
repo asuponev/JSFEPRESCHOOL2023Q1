@@ -39,9 +39,9 @@ class News {
       fragment.append(newsClone);
     });
 
-    const newsBlock: HTMLDivElement | null = document.querySelector('.news');
+    const newsBlock: HTMLElement | null = document.querySelector('.news');
     if (newsBlock) {
-      newsBlock.innerHTML = '';
+      newsBlock.textContent = fragment.children.length ? '' : 'No news from this source';
       newsBlock.appendChild(fragment);
     }
   }

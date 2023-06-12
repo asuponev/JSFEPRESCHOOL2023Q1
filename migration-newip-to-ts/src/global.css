@@ -55,7 +55,7 @@ main {
 
 .footer__course {
   width: 100px;
-  height: 100px;
+  height: 40px;
   display: grid;
   place-items: center;
 }
@@ -85,4 +85,43 @@ main {
 
 .footer__copyright:before {
   content: '©';
+}
+
+@media (max-width: 512px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .footer__content {
+    min-height: 100px;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    grid-template-areas:
+      'copyright course'
+      'copyright author';
+    column-gap: 1em;
+    font-size: 14px;
+    color: #bfbfbf;
+  }
+
+  .footer__copyright {
+    grid-area: copyright;
+    text-align: left;
+  }
+
+  .footer__course {
+    grid-area: course;
+  }
+
+  .footer__course img {
+    filter: invert(0%);
+  }
+
+  .footer__author {
+    grid-area: author;
+  }
+
+  .footer__link {
+    color: #ffffff;
+  }
 }

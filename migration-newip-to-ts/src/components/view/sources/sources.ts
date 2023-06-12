@@ -21,8 +21,11 @@ class Sources {
       fragment.append(sourceClone);
     });
 
-    const sourcesBlock: HTMLDivElement | null = document.querySelector('.sources');
-    if (sourcesBlock) sourcesBlock.append(fragment);
+    const sourcesBlock: HTMLElement | null = document.querySelector('.sources');
+    if (sourcesBlock) {
+      fragment ? (sourcesBlock.textContent = '') : 'Sources not loaded';
+      sourcesBlock.append(fragment);
+    }
   }
 }
 

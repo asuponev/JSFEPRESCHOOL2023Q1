@@ -2,61 +2,52 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <meta
-      http-equiv="X-UA-Compatible"
-      content="ie=edge"
-    />
-    <link
-      rel="icon"
-      href="favicon.ico"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="favicon.ico" />
     <title>NewsPortal</title>
   </head>
   <body>
     <header class="header">
       <div class="container">
-        <h1 class="header__title">News Portal</h1>
+        <div class="header__inner">
+          <h1 class="header__title">News Portal</h1>
+          <div class="header__buttons">
+            <button id="menuBtn" class="header__button">OPEN SOURCES</button>
+          </div>
+        </div>
       </div>
     </header>
     <main>
       <div class="container">
-        <section class="sources">Sources not loaded</section>
-        <section class="news">News not loaded</section>
+        <div class="main__content">
+          <section class="news">News not loaded</section>
+          <section class="sources">
+            <div class="filters">
+              <select name="" id="selectCategory" class="filters__select">
+                <option value="" selected disabled hidden>Choose category</option>
+              </select>
+              <button id="resetBtn" class="filters__button">Reset</button>
+            </div>
+            <div class="sources__info">Sources not loaded</div>
+            <div class="sources__content"></div>
+          </section>
+        </div>
       </div>
     </main>
     <footer class="footer">
       <div class="container">
         <div class="footer__content">
-          <a
-            href="https://rs.school/js/"
-            class="footer__course"
-          >
-            <img
-              src="./img/rs_school_js.svg"
-              alt="course-logo"
-            />
+          <a href="https://rs.school/js/" class="footer__course">
+            <img src="./img/rs_school_js.svg" alt="course-logo" />
           </a>
           <p class="footer__copyright">
             Copyright
-            <a
-              href="https://newsapi.org"
-              target="_blank"
-              class="footer__link"
-              >NewsAPI</a
-            >
+            <a href="https://newsapi.org" target="_blank" class="footer__link">NewsAPI</a>
           </p>
           <p class="footer__author">
             Developer
-            <a
-              href="https://github.com/elsuppo"
-              target="_blank"
-              class="footer__link"
-              >Andrew Suponev</a
-            >
+            <a href="https://github.com/elsuppo" target="_blank" class="footer__link">Andrew Suponev</a>
           </p>
         </div>
       </div>

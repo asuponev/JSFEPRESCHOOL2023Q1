@@ -1,0 +1,32 @@
+.filters {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filters__select {
+  font: 400 14px 'Fira Sans', sans-serif;
+  padding: 0.4em;
+  border: none;
+  outline: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  background: #bfbfbf;
+  transition: background 0.3s ease-in-out;
+}
+
+.filters__button {
+  margin-left: 10px;
+  width: 50px;
+  padding: 0.4em;
+  border-radius: 0.5em;
+  border: none;
+  cursor: pointer;
+  background: #bfbfbf;
+  font: 400 14px 'Fira Sans', sans-serif;
+  transition: background 0.3s ease-in-out;
+}
+
+.filters__select:hover,
+.filters__button:hover {
+  background: #ffffff;
+}

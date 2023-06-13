@@ -21,13 +21,19 @@ class Sources {
       fragment.append(sourceClone);
     });
 
-    const sourcesBlock: HTMLElement | null = document.querySelector('.sources');
+    const sourcesContent: HTMLElement | null = document.querySelector('.sources__content');
+    const sourcesInfo: HTMLElement | null = document.querySelector('.sources__info');
     const newsBlock: HTMLElement | null = document.querySelector('.news');
-    if (sourcesBlock && newsBlock) {
-      sourcesBlock.textContent = fragment ? '' : 'Sources not loaded';
+    if (sourcesInfo && newsBlock) {
+      sourcesInfo.textContent = fragment ? `Total sources ${data.length}` : 'Sources not loaded';
       newsBlock.textContent = fragment ? 'Click on any source to display news' : 'News not loaded';
-      sourcesBlock.append(fragment);
+      sourcesContent?.append(fragment);
     }
+  }
+
+  clear() {
+    const sourcesContent: HTMLDivElement | null = document.querySelector('.sources__content');
+    if (sourcesContent) sourcesContent.innerHTML = '';
   }
 }
 

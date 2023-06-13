@@ -1,4 +1,4 @@
-import { RequestOptions, IResp } from '../../types/index';
+import { RequestOptions, IResp, Endpoint, Method } from '../../types/index';
 
 class Loader {
   constructor(private baseLink: string, private options: RequestOptions) {}
@@ -9,7 +9,7 @@ class Loader {
       console.error('No callback for GET response');
     }
   ) {
-    this.load('GET', endpoint, callback, options);
+    this.load(Method.GET, endpoint, callback, options);
   }
 
   private errorHandler(res: Response): Response {
@@ -33,7 +33,7 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  private load<T>(method: string, endpoint: string, callback: (data: T) => void, options: RequestOptions = {}): void {
+  private load<T>(method: Method, endpoint: Endpoint, callback: (data: T) => void, options: RequestOptions = {}): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())

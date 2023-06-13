@@ -33,9 +33,19 @@ export interface ISources {
   sources: ISource[];
 }
 
+export enum Method {
+  GET = 'GET',
+  POST = 'POST',
+}
+
+export enum Endpoint {
+  sources = 'sources',
+  everything = 'everything',
+}
+
 export type RequestOptions = Record<string, string>;
 
 export interface IResp {
-  endpoint: string;
+  endpoint: Endpoint;
   options?: RequestOptions;
 }

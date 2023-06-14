@@ -10,7 +10,7 @@ class App {
     this.view = new AppView();
   }
 
-  start() {
+  start(): void {
     const sourcesBlock: HTMLDivElement | null = document.querySelector('.sources');
     const sourcesContent: HTMLDivElement | null = document.querySelector('.sources__content');
     const selectCategory: HTMLElement | null = document.querySelector('#selectCategory');

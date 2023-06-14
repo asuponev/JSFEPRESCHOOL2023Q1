@@ -2,7 +2,7 @@ import { ISource } from '../../../types/index';
 import './sources.css';
 
 class Sources {
-  draw(data: ISource[]) {
+  draw(data: ISource[]): void {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
 
@@ -31,7 +31,7 @@ class Sources {
     }
   }
 
-  clear() {
+  clear(): void {
     const sourcesContent: HTMLDivElement | null = document.querySelector('.sources__content');
     if (sourcesContent) sourcesContent.innerHTML = '';
   }

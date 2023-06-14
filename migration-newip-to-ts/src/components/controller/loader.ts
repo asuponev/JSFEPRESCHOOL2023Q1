@@ -5,10 +5,10 @@ class Loader {
 
   protected getResp<T>(
     { endpoint, options = {} }: IResp,
-    callback: (data: T) => void = () => {
+    callback: (data: T) => void = (): void => {
       console.error('No callback for GET response');
     }
-  ) {
+  ): void {
     this.load(Method.GET, endpoint, callback, options);
   }
 

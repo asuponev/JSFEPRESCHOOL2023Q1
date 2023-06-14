@@ -2,7 +2,7 @@ import { ISource } from '../../../types/index';
 import './filters.css';
 
 class Filters {
-  draw(data: ISource[]) {
+  draw(data: ISource[]): void {
     const selectCategory: HTMLSelectElement | null = document.querySelector('#selectCategory');
 
     const countries: string[] = [];

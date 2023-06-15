@@ -51,13 +51,11 @@ main {
 
 .header__button {
   display: none;
-  border-radius: 0.5em;
   border: none;
   cursor: pointer;
   background: none;
   color: #ffffff;
   font: 600 14px 'Fira Sans', sans-serif;
-  transition: background 0.3s ease-in-out;
 }
 
 .header__title {
@@ -122,6 +120,10 @@ main {
 
   .main__content {
     grid-template-columns: 100%;
+  }
+
+  .header__button.hidden {
+    display: none;
   }
 }
 

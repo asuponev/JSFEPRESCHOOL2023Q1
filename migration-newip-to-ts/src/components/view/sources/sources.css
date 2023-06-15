@@ -10,6 +10,14 @@
   font: 300 1em 'Fira Sans', sans-serif;
 }
 
+.sources__close {
+  display: none;
+}
+
+.sources__close-btn {
+  display: none;
+}
+
 .sources__info {
   margin: 1em 0;
 }
@@ -79,7 +87,27 @@
     border-bottom-left-radius: 1em;
   }
 
+  .sources__close {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .sources__close-btn {
+    display: block;
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: #ffffff;
+    font: 600 16px 'Fira Sans', sans-serif;
+    padding: 0.5em;
+    margin-bottom: 1em;
+  }
+
   .sources__content::-webkit-scrollbar {
     display: none;
+  }
+
+  .sources.open {
+    right: 0;
   }
 }

@@ -2,7 +2,7 @@ import { ISources, IArticles, Endpoint } from '../../types/index';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-  getSources(callback: (data: ISources) => void): void {
+  getSources(callback: (data: Readonly<ISources>) => void): void {
     super.getResp(
       {
         endpoint: Endpoint.sources,
@@ -11,11 +11,16 @@ class AppController extends AppLoader {
     );
   }
 
-  getNews(e: Event, callback: (data: IArticles) => void): void {
+  getNews(e: MouseEvent, callback: (data: Readonly<IArticles>) => void): void {
     let target = e.target;
-    const newsContainer = e.currentTarget as HTMLElement;
+    const newsContainer = e.currentTarget;
 
-    while (newsContainer && target && target instanceof HTMLElement && target !== newsContainer) {
+    while (
+      target &&
+      target instanceof HTMLElement &&
+      newsContainer instanceof HTMLElement &&
+      target !== newsContainer
+    ) {
       if (target.classList.contains('source__item')) {
         const sourceId = target.getAttribute('data-source-id');
         if (sourceId && newsContainer.getAttribute('data-source') !== sourceId) {

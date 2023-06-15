@@ -2,7 +2,7 @@ import { ISource } from '../../../types/index';
 import './filters.css';
 
 class Filters {
-  draw(data: ISource[]): void {
+  draw(data: Readonly<ISource[]>): void {
     const selectCategory: HTMLSelectElement | null = document.querySelector('#selectCategory');
 
     const countries: string[] = [];
@@ -18,9 +18,7 @@ class Filters {
     });
 
     const filtersCategories = categories.map((category) => {
-      return `
-          <option value=${category}>${category}</option>
-          `;
+      return `<option value=${category}>${category}</option>`;
     });
     if (selectCategory) selectCategory.innerHTML += filtersCategories.join('');
   }

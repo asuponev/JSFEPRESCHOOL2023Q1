@@ -347,6 +347,8 @@ body {
     flex-grow: 1;
     background: $bg-color-secondary;
     padding: 0.5em;
+    display: flex;
+    flex-direction: column;
   }
 }
 

@@ -143,6 +143,7 @@ body {
   padding: 2em;
   display: flex;
   flex-direction: column;
+  z-index: 10px;
 
   &.open {
     right: 0;

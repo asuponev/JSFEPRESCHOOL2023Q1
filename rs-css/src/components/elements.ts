@@ -4,6 +4,7 @@ export const LEVELS_LIST: HTMLElement | null = getElement('#levels-list');
 export const HTML_VIEWER: HTMLElement | null = getElement('#html-viewer');
 export const GAME_TABLE: HTMLElement | null = getElement('#game-table');
 export const GAME_TITLE: HTMLElement | null = getElement('#game-title');
+export const SIDEBAR: HTMLElement | null = getElement('.sidebar');
 
 export const CSS_INPUT: HTMLElement | null = getElement('#css-input');
 export const BTN_ENTER: HTMLElement | null = getElement('#btn-enter');

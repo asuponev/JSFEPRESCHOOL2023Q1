@@ -1,4 +1,5 @@
 import {
+  BTN_RESET,
   GAME_TABLE,
   GAME_TITLE,
   HTML_VIEWER,
@@ -7,6 +8,7 @@ import {
 import levels from '../data/index';
 import getCurrentLevel from '../services/getCurrentLevel';
 import getCurrentProgress from '../services/getCurrentProgress';
+import resetProgress from '../services/resetProgress';
 import { ILevel } from '../types/index';
 
 export default class LevelsControls {
@@ -14,19 +16,19 @@ export default class LevelsControls {
   private elementGameTitle: HTMLHeadingElement | null;
   private elementGameTable: HTMLDivElement | null;
   private elementHTMLViewer: HTMLDivElement | null;
-  private currentLevelId: number;
-  private currentProgress: number[];
+  private btnReset: HTMLButtonElement | null;
 
   constructor() {
     this.elementList = LEVELS_LIST;
     this.elementGameTitle = GAME_TITLE;
     this.elementGameTable = GAME_TABLE;
     this.elementHTMLViewer = HTML_VIEWER;
-    this.currentLevelId = getCurrentLevel();
-    this.currentProgress = getCurrentProgress();
+    this.btnReset = BTN_RESET;
+
+    this.btnReset?.addEventListener('click', () => this.resetProgress());
   }
 
-  public init() {
+  public init(): void {
     const fragment = document.createDocumentFragment();
     levels.forEach((level: ILevel) => {
       const levelItem = document.createElement('li');
@@ -45,7 +47,9 @@ export default class LevelsControls {
 
     this.elementList?.append(fragment);
     this.setProgress();
-    this.setLevel(this.currentLevelId);
+
+    const currentLevelId: number = getCurrentLevel();
+    this.setLevel(currentLevelId);
   }
 
   public setLevel(levelId: number): void {
@@ -64,23 +68,23 @@ export default class LevelsControls {
     }
   }
 
-  private saveCurrentLevel(levelId: number) {
+  private saveCurrentLevel(levelId: number): void {
     localStorage.setItem('cur_lvl_rs_css', `${levelId}`);
   }
 
-  private setGameTitle(levelId: number) {
+  private setGameTitle(levelId: number): void {
     if (this.elementGameTitle) {
       this.elementGameTitle.textContent = levels[levelId - 1].title;
     }
   }
 
-  private setGameTable(levelId: number) {
+  private setGameTable(levelId: number): void {
     if (this.elementGameTable) {
       this.elementGameTable.innerHTML = levels[levelId - 1].markup;
     }
   }
 
-  private setHtmlViewer(levelId: number) {
+  private setHtmlViewer(levelId: number): void {
     const fragment = document.createDocumentFragment();
     const strings = levels[levelId - 1].markup.trim().split('\n');
     strings.forEach((string) => {
@@ -92,13 +96,24 @@ export default class LevelsControls {
     this.elementHTMLViewer?.append(fragment);
   }
 
-  private setProgress() {
-    this.currentProgress.forEach((levelId) => {
+  private setProgress(): void {
+    const progress = getCurrentProgress();
+    progress.forEach((levelId) => {
       const levelElement = this.elementList?.querySelector(
         `[data-level-id='${levelId}']`
       );
       levelElement?.classList.add('level--done');
     });
+  }
+
+  private resetProgress(): void {
+    resetProgress();
+    const doneLevels = this.elementList?.querySelectorAll('.level--done');
+    doneLevels?.forEach((item) => {
+      item.classList.remove('level--done');
+      console.log(item);
+    });
+    this.setLevel(1);
   }
 
   private clearPrevLevel(): void {

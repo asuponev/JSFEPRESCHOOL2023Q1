@@ -216,15 +216,6 @@ body {
     margin-right: 1em;
   }
 
-  &--done {
-    color: #22c55e;
-
-    .level__icon {
-      filter: invert(72%) sepia(52%) saturate(5370%) hue-rotate(98deg)
-        brightness(104%) contrast(73%);
-    }
-  }
-
   &--current,
   &:hover {
     color: #f59e0b;
@@ -232,6 +223,24 @@ body {
     .level__icon {
       filter: invert(59%) sepia(99%) saturate(1413%) hue-rotate(360deg)
         brightness(103%) contrast(92%);
+    }
+  }
+
+  &--done {
+    color: #22c55e;
+
+    .level__icon {
+      filter: invert(72%) sepia(52%) saturate(5370%) hue-rotate(98deg)
+        brightness(104%) contrast(73%);
+    }
+
+    &:hover {
+      color: #86efac;
+
+      .level__icon {
+        filter: invert(87%) sepia(12%) saturate(1257%) hue-rotate(82deg)
+          brightness(99%) contrast(91%);
+      }
     }
   }
 

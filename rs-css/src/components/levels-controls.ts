@@ -1,25 +1,37 @@
+import {
+  GAME_TABLE,
+  GAME_TITLE,
+  HTML_VIEWER,
+  LEVELS_LIST,
+} from '../constants/elements';
 import levels from '../data/index';
+import getCurrentLevel from '../services/getCurrentLevel';
+import getCurrentProgress from '../services/getCurrentProgress';
 import { ILevel } from '../types/index';
 
 export default class LevelsControls {
-  constructor(
-    private currentLevel: string,
-    private elementList: HTMLElement,
-    private elementGameTitle: HTMLElement,
-    private elementGameTable: HTMLElement,
-    private elementHTMLViewer: HTMLElement
-  ) {
-    this.createLevelsList();
-    this.setLevel(currentLevel);
+  private elementList: HTMLUListElement | null;
+  private elementGameTitle: HTMLHeadingElement | null;
+  private elementGameTable: HTMLDivElement | null;
+  private elementHTMLViewer: HTMLDivElement | null;
+  private currentLevelId: number;
+  private currentProgress: number[];
+
+  constructor() {
+    this.elementList = LEVELS_LIST;
+    this.elementGameTitle = GAME_TITLE;
+    this.elementGameTable = GAME_TABLE;
+    this.elementHTMLViewer = HTML_VIEWER;
+    this.currentLevelId = getCurrentLevel();
+    this.currentProgress = getCurrentProgress();
   }
 
-  private createLevelsList() {
+  public init() {
     const fragment = document.createDocumentFragment();
-
     levels.forEach((level: ILevel) => {
       const levelItem = document.createElement('li');
       levelItem.classList.add('level');
-      levelItem.dataset.levelId = level.id;
+      levelItem.dataset.levelId = `${level.id}`;
 
       levelItem.innerHTML = `
         <img src="./svg/check.svg" alt="icon" class="level__icon" />
@@ -28,54 +40,73 @@ export default class LevelsControls {
       `;
 
       levelItem.addEventListener('click', () => this.setLevel(level.id));
-
       fragment.append(levelItem);
     });
 
-    this.elementList.append(fragment);
+    this.elementList?.append(fragment);
+    this.setProgress();
+    this.setLevel(this.currentLevelId);
   }
 
-  private setLevel(levelId: string): void {
-    this.clearPrevLevel();
-    const currentLevelElement = this.elementList.querySelector(
-      `[data-level-id='${levelId}']`
-    );
-    currentLevelElement?.classList.add('level--current');
+  public setLevel(levelId: number): void {
+    if (levelId <= levels.length) {
+      this.clearPrevLevel();
+      const currentLevelElement = this.elementList?.querySelector(
+        `[data-level-id='${levelId}']`
+      );
+      currentLevelElement?.classList.add('level--current');
 
-    this.saveCurrentLevel(levelId);
-    this.setGameTitle(Number(levelId));
-    this.setGameTable(Number(levelId));
-    this.setHtmlViewer(Number(levelId));
+      this.saveCurrentLevel(levelId);
+      this.setGameTitle(levelId);
+      this.setGameTable(levelId);
+      this.setHtmlViewer(levelId);
+      this.setProgress();
+    }
   }
 
-  private saveCurrentLevel(levelId: string) {
-    localStorage.setItem('cur_lvl_supo', levelId);
+  private saveCurrentLevel(levelId: number) {
+    localStorage.setItem('cur_lvl_rs_css', `${levelId}`);
   }
 
   private setGameTitle(levelId: number) {
-    this.elementGameTitle.textContent = levels[levelId - 1].title;
+    if (this.elementGameTitle) {
+      this.elementGameTitle.textContent = levels[levelId - 1].title;
+    }
   }
 
   private setGameTable(levelId: number) {
-    this.elementGameTable.innerHTML = levels[levelId - 1].markup;
+    if (this.elementGameTable) {
+      this.elementGameTable.innerHTML = levels[levelId - 1].markup;
+    }
   }
 
   private setHtmlViewer(levelId: number) {
+    const fragment = document.createDocumentFragment();
     const strings = levels[levelId - 1].markup.trim().split('\n');
     strings.forEach((string) => {
       const span = document.createElement('span');
       span.textContent = string;
 
-      this.elementHTMLViewer.append(span);
+      fragment.append(span);
+    });
+    this.elementHTMLViewer?.append(fragment);
+  }
+
+  private setProgress() {
+    this.currentProgress.forEach((levelId) => {
+      const levelElement = this.elementList?.querySelector(
+        `[data-level-id='${levelId}']`
+      );
+      levelElement?.classList.add('level--done');
     });
   }
 
   private clearPrevLevel(): void {
-    const levels = this.elementList.querySelectorAll('[data-level-id]');
+    const levels = this.elementList?.querySelectorAll('[data-level-id]');
     levels?.forEach((item) => {
       item.classList.remove('level--current');
     });
 
-    this.elementHTMLViewer.innerHTML = '';
+    if (this.elementHTMLViewer) this.elementHTMLViewer.innerHTML = '';
   }
 }

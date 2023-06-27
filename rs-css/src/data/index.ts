@@ -2,7 +2,7 @@ import { ILevel } from '../types/index';
 
 const levels: ILevel[] = [
   {
-    id: '1',
+    id: 1,
     title: 'Select by tag',
     markup: `
       <circle></circle>
@@ -12,7 +12,7 @@ const levels: ILevel[] = [
     answer: 'circle',
   },
   {
-    id: '2',
+    id: 2,
     title: 'Select by class',
     markup: `
       <circle class="red"></circle>
@@ -22,7 +22,7 @@ const levels: ILevel[] = [
     answer: '.red',
   },
   {
-    id: '3',
+    id: 3,
     title: 'Select by ID',
     markup: `
       <circle id="red"></circle>

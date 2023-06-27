@@ -1,5 +1,5 @@
 export interface ILevel {
-  id: string;
+  id: number;
   title: string;
   answer: string;
   markup: string;

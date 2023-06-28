@@ -65,6 +65,12 @@ export default class LevelsControls {
       this.setGameTable(levelId);
       this.setHtmlViewer(levelId);
       this.setProgress();
+    } else {
+      const currentLevelEl = this.elementList?.querySelector('.level--current');
+      currentLevelEl?.classList.remove('.level--current');
+      this.clearPrevLevel();
+      this.setWinState();
+      this.setProgress();
     }
   }
 
@@ -80,6 +86,7 @@ export default class LevelsControls {
 
   private setGameTable(levelId: number): void {
     if (this.elementGameTable) {
+      this.elementGameTable.classList.remove('hidden');
       this.elementGameTable.innerHTML = levels[levelId - 1].html;
     }
   }
@@ -94,6 +101,11 @@ export default class LevelsControls {
       fragment.append(pre);
     });
     this.elementHTMLViewer?.append(fragment);
+  }
+
+  private setWinState(): void {
+    if (this.elementGameTitle) this.elementGameTitle.textContent = 'You win!';
+    this.elementGameTable?.classList.add('hidden');
   }
 
   private setProgress(): void {

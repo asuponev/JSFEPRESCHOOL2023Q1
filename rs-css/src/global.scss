@@ -367,6 +367,19 @@ body {
 
     pre {
       font-size: 16px;
+      color: $text-color-secondary;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: $text-color-primary;
+      }
+
+      &:last-child:hover,
+      &:first-child:hover {
+        color: $text-color-secondary;
+        cursor: default;
+      }
 
       @include mobile {
         font-size: 14px;

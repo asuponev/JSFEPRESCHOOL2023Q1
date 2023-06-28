@@ -1,7 +1,7 @@
 export interface ILevel {
   id: number;
   title: string;
-  answer: string;
+  answers: string[];
   html: string;
   markup: string[];
 }

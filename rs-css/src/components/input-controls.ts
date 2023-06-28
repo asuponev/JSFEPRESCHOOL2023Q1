@@ -23,8 +23,9 @@ export default class InputControls {
     event.preventDefault();
     const currentLevel = getCurrentLevel();
     const animateElements = document.querySelectorAll('.animate');
+    const answers = levels[currentLevel - 1].answers;
 
-    if (this.inputElement?.value === levels[currentLevel - 1].answer) {
+    if (this.inputElement?.value && answers.includes(this.inputElement.value)) {
       this.inputElement.value = '';
       saveProgress(currentLevel);
       animateElements?.forEach((el) => el.classList.add('done'));
@@ -41,10 +42,10 @@ export default class InputControls {
 
   private printAnswer() {
     const currentLevel = getCurrentLevel();
-    const answer = levels[currentLevel - 1].answer;
+    const answers = levels[currentLevel - 1].answers;
 
     if (this.inputElement) this.inputElement.value = '';
-    answer.split('').forEach((letter, i) => {
+    answers[0].split('').forEach((letter, i) => {
       setTimeout(() => {
         if (this.inputElement) this.inputElement.value += letter;
       }, i * 200);

@@ -1,5 +1,7 @@
 import {
+  BTN_HELP,
   BTN_RESET,
+  CSS_INPUT,
   GAME_TABLE,
   GAME_TITLE,
   HTML_VIEWER,
@@ -60,6 +62,11 @@ export default class LevelsControls {
       );
       currentLevelElement?.classList.add('level--current');
 
+      if (CSS_INPUT) {
+        CSS_INPUT.disabled = false;
+        CSS_INPUT.value = '';
+      }
+      if (BTN_HELP) BTN_HELP.disabled = false;
       this.saveCurrentLevel(levelId);
       this.setGameTitle(levelId);
       this.setGameTable(levelId);
@@ -106,6 +113,8 @@ export default class LevelsControls {
   private setWinState(): void {
     if (this.elementGameTitle) this.elementGameTitle.textContent = 'You win!';
     this.elementGameTable?.classList.add('hidden');
+    if (CSS_INPUT) CSS_INPUT.disabled = true;
+    if (BTN_HELP) BTN_HELP.disabled = true;
   }
 
   private setProgress(): void {

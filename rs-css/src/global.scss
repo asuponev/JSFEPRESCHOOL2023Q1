@@ -402,6 +402,10 @@ body {
 
     .animate {
       animation: move 1s linear infinite;
+
+      &.done {
+        animation: done 0.5s linear;
+      }
     }
 
     @keyframes move {
@@ -413,6 +417,15 @@ body {
       }
       0% {
         transform: translateY(-4px);
+      }
+    }
+
+    @keyframes done {
+      100% {
+        transform: translateY(-100vh);
+      }
+      0% {
+        transform: translateY(0);
       }
     }
   }

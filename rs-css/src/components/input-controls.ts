@@ -23,7 +23,11 @@ export default class InputControls {
     if (this.inputElement?.value === levels[currentLevel - 1].answer) {
       this.inputElement.value = '';
       saveProgress(currentLevel);
-      new LevelsControls().setLevel(currentLevel + 1);
+      const animateElements = document.querySelectorAll('.animate');
+      animateElements?.forEach((element) => element.classList.add('done'));
+      setTimeout(() => {
+        new LevelsControls().setLevel(currentLevel + 1);
+      }, 500);
     } else {
       // animation error
     }

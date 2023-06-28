@@ -406,6 +406,10 @@ body {
       &.done {
         animation: done 0.5s linear;
       }
+
+      &.error {
+        animation: error 0.1s linear infinite;
+      }
     }
 
     @keyframes move {
@@ -426,6 +430,18 @@ body {
       }
       0% {
         transform: translateY(0);
+      }
+    }
+
+    @keyframes error {
+      100% {
+        transform: translateX(-4px);
+      }
+      50% {
+        transform: translateX(4px);
+      }
+      0% {
+        transform: translateX(-4px);
       }
     }
   }

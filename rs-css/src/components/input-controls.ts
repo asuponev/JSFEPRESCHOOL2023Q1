@@ -19,17 +19,20 @@ export default class InputControls {
   private checkAnswer(event: Event) {
     event.preventDefault();
     const currentLevel = getCurrentLevel();
+    const animateElements = document.querySelectorAll('.animate');
 
     if (this.inputElement?.value === levels[currentLevel - 1].answer) {
       this.inputElement.value = '';
       saveProgress(currentLevel);
-      const animateElements = document.querySelectorAll('.animate');
-      animateElements?.forEach((element) => element.classList.add('done'));
+      animateElements?.forEach((el) => el.classList.add('done'));
       setTimeout(() => {
         new LevelsControls().setLevel(currentLevel + 1);
       }, 500);
     } else {
-      // animation error
+      animateElements?.forEach((el) => el.classList.add('error'));
+      setTimeout(() => {
+        animateElements?.forEach((el) => el.classList.remove('error'));
+      }, 500);
     }
   }
 }

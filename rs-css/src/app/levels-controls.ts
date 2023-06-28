@@ -12,6 +12,7 @@ import getCurrentLevel from '../services/getCurrentLevel';
 import getCurrentProgress from '../services/getCurrentProgress';
 import resetProgress from '../services/resetProgress';
 import { ILevel } from '../types/index';
+import HoverControls from './hover-controls';
 
 export default class LevelsControls {
   private elementList: HTMLUListElement | null;
@@ -72,6 +73,7 @@ export default class LevelsControls {
       this.setGameTable(levelId);
       this.setHtmlViewer(levelId);
       this.setProgress();
+      new HoverControls();
     } else {
       const currentLevelEl = this.elementList?.querySelector('.level--current');
       currentLevelEl?.classList.remove('.level--current');
@@ -100,10 +102,11 @@ export default class LevelsControls {
 
   private setHtmlViewer(levelId: number): void {
     const fragment = document.createDocumentFragment();
-    const strings = levels[levelId - 1].markup;
-    strings.forEach((string) => {
+    const markup = levels[levelId - 1].markup;
+    markup.forEach((item) => {
       const pre = document.createElement('pre');
-      pre.textContent = string;
+      if (item.dataAttr) pre.dataset.htmlLine = item.dataAttr;
+      pre.textContent = item.line;
 
       fragment.append(pre);
     });

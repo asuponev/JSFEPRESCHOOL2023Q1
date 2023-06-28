@@ -371,8 +371,9 @@ body {
       cursor: pointer;
       transition: color 0.3s ease-in-out;
 
+      &.highlighted,
       &:hover {
-        color: $text-color-primary;
+        color: #f59e0b;
       }
 
       &:last-child:hover,
@@ -467,6 +468,13 @@ circle {
   width: 50px;
   border-radius: 50%;
   background: $color-circle;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+
+  &.hovered,
+  &:hover {
+    box-shadow: #fca5a5 0px 1px 4px, #fca5a5 0px 0px 0px 3px;
+  }
 }
 
 square {
@@ -474,4 +482,11 @@ square {
   height: 50px;
   width: 50px;
   background: $color-square;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+
+  &.hovered,
+  &:hover {
+    box-shadow: #7dd3fc 0px 1px 4px, #7dd3fc 0px 0px 0px 3px;
+  }
 }

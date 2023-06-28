@@ -279,12 +279,17 @@ body {
     background: $bg-color-secondary;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: right;
+    align-items: flex-end;
+    font-family: monospace;
+    font-size: 16px;
     padding: 0.5em;
     flex-grow: 0;
     flex-shrink: 0;
     border-right: 1px solid $bg-color-primary;
+
+    @include mobile {
+      font-size: 14px;
+    }
   }
 
   &__css {
@@ -359,6 +364,14 @@ body {
     padding: 0.5em;
     display: flex;
     flex-direction: column;
+
+    pre {
+      font-size: 16px;
+
+      @include mobile {
+        font-size: 14px;
+      }
+    }
   }
 }
 
@@ -382,6 +395,22 @@ body {
     background: $color-table;
     transform: perspective(100px) rotateX(10deg);
     box-shadow: 0 8px 8px $text-color-secondary;
+
+    .animate {
+      animation: move 1s linear infinite;
+    }
+
+    @keyframes move {
+      100% {
+        transform: translateY(-4px);
+      }
+      50% {
+        transform: translateY(4px);
+      }
+      0% {
+        transform: translateY(-4px);
+      }
+    }
   }
 }
 

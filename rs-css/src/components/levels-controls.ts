@@ -80,18 +80,18 @@ export default class LevelsControls {
 
   private setGameTable(levelId: number): void {
     if (this.elementGameTable) {
-      this.elementGameTable.innerHTML = levels[levelId - 1].markup;
+      this.elementGameTable.innerHTML = levels[levelId - 1].html;
     }
   }
 
   private setHtmlViewer(levelId: number): void {
     const fragment = document.createDocumentFragment();
-    const strings = levels[levelId - 1].markup.trim().split('\n');
+    const strings = levels[levelId - 1].markup;
     strings.forEach((string) => {
-      const span = document.createElement('span');
-      span.textContent = string;
+      const pre = document.createElement('pre');
+      pre.textContent = string;
 
-      fragment.append(span);
+      fragment.append(pre);
     });
     this.elementHTMLViewer?.append(fragment);
   }

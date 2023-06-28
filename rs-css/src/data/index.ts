@@ -4,33 +4,56 @@ const levels: ILevel[] = [
   {
     id: 1,
     title: 'Select by tag',
-    markup: `
-      <circle></circle>
+    html: `
+      <circle class="animate"></circle>
       <square></square>
       <circle></circle>
     `,
+    markup: [
+      '<div class="table">',
+      '  <circle />',
+      '  <square />',
+      '  <circle />',
+      '</div>',
+    ],
     answer: 'circle',
   },
   {
     id: 2,
     title: 'Select by class',
-    markup: `
-      <circle class="red"></circle>
-      <square class="red"></square>
+    html: `
+      <circle class="animate"></circle>
+      <square class="animate"></square>
       <circle></circle>
     `,
+    markup: [
+      '<div class="table">',
+      '  <circle class="red" />',
+      '  <square class="red" />',
+      '  <circle />',
+      '</div>',
+    ],
     answer: '.red',
   },
   {
     id: 3,
     title: 'Select by ID',
-    markup: `
-      <circle id="red"></circle>
-      <square class="red">
-        <circle class="green"></circle>
+    html: `
+      <circle></circle>
+      <square>
+        <circle></circle>
       </square>
-      <circle id="green"></circle>
+      <circle class="animate"></circle>
     `,
+    markup: [
+      '<div class="table">',
+      '  <circle id="red" />',
+      '  <square  class="red">',
+      '    <circle class="green" />',
+      '  </square>',
+      '  <circle id="green" />',
+      '</div>',
+    ],
     answer: '#green',
   },
 ];

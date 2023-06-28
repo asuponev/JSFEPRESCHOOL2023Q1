@@ -1,4 +1,4 @@
-import { startApp } from './components/app';
+import { startApp } from './app/app';
 import './global.scss';
 
 window.addEventListener('DOMContentLoaded', () => {

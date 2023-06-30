@@ -1,4 +1,4 @@
-interface IMarkup {
+export interface IMarkup {
   line: string;
   dataAttr?: string;
 }

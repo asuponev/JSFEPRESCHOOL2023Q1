@@ -10,15 +10,15 @@ export default class MobileButtonControls {
     this.btnOpenLevels = BTN_OPEN;
     this.btnCloseLevels = BTN_CLOSE;
 
-    this.btnOpenLevels?.addEventListener('click', () => this.onOpen());
-    this.btnCloseLevels?.addEventListener('click', () => this.onClose());
+    this.btnOpenLevels?.addEventListener('click', (): void => this.onOpen());
+    this.btnCloseLevels?.addEventListener('click', (): void => this.onClose());
   }
 
-  private onOpen() {
+  private onOpen(): void {
     this.sidebar?.classList.add('open');
   }
 
-  private onClose() {
+  private onClose(): void {
     this.sidebar?.classList.remove('open');
   }
 }

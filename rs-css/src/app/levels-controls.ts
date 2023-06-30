@@ -11,7 +11,7 @@ import levels from '../data/index';
 import getCurrentLevel from '../services/getCurrentLevel';
 import getCurrentProgress from '../services/getCurrentProgress';
 import resetProgress from '../services/resetProgress';
-import { ILevel } from '../types/index';
+import { ILevel, IMarkup } from '../types/index';
 import HoverControls from './hover-controls';
 
 export default class LevelsControls {
@@ -33,7 +33,7 @@ export default class LevelsControls {
 
   public init(): void {
     const fragment = document.createDocumentFragment();
-    levels.forEach((level: ILevel) => {
+    levels.forEach((level: ILevel): void => {
       const levelItem = document.createElement('li');
       levelItem.classList.add('level');
       levelItem.dataset.levelId = `${level.id}`;
@@ -44,7 +44,7 @@ export default class LevelsControls {
         <span class="level__title">${level.title}</span>
       `;
 
-      levelItem.addEventListener('click', () => this.setLevel(level.id));
+      levelItem.addEventListener('click', (): void => this.setLevel(level.id));
       fragment.append(levelItem);
     });
 
@@ -103,7 +103,7 @@ export default class LevelsControls {
   private setHtmlViewer(levelId: number): void {
     const fragment = document.createDocumentFragment();
     const markup = levels[levelId - 1].markup;
-    markup.forEach((item) => {
+    markup.forEach((item: IMarkup): void => {
       const pre = document.createElement('pre');
       if (item.dataAttr) pre.dataset.htmlLine = item.dataAttr;
       pre.textContent = item.line;
@@ -121,8 +121,8 @@ export default class LevelsControls {
   }
 
   private setProgress(): void {
-    const progress = getCurrentProgress();
-    progress.forEach((levelId) => {
+    const progress: number[] = getCurrentProgress();
+    progress.forEach((levelId: number): void => {
       const levelElement = this.elementList?.querySelector(
         `[data-level-id='${levelId}']`
       );
@@ -133,16 +133,15 @@ export default class LevelsControls {
   private resetProgress(): void {
     resetProgress();
     const doneLevels = this.elementList?.querySelectorAll('.level--done');
-    doneLevels?.forEach((item) => {
+    doneLevels?.forEach((item: Element): void => {
       item.classList.remove('level--done');
-      console.log(item);
     });
     this.setLevel(1);
   }
 
   private clearPrevLevel(): void {
     const levels = this.elementList?.querySelectorAll('[data-level-id]');
-    levels?.forEach((item) => {
+    levels?.forEach((item: Element): void => {
       item.classList.remove('level--current');
     });
 

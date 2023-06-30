@@ -1,6 +1,6 @@
 import getCurrentProgress from './getCurrentProgress';
 
-export default function saveProgress(newLevel: number) {
+export default function saveProgress(newLevel: number): void {
   const progress: number[] = getCurrentProgress();
 
   progress?.push(newLevel);

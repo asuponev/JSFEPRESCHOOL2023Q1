@@ -1,19 +1,34 @@
 export default class HoverControls {
   constructor() {
+    this.addTooltip();
     this.hoverElement();
     this.hoverLine();
+  }
+
+  private addTooltip() {
+    const elements: NodeListOf<HTMLElement> =
+      document.querySelectorAll('circle, square');
+
+    elements.forEach((element) => {
+      const tooltip = document.createElement('span');
+      tooltip.classList.add('tooltip');
+      const idx = element.getAttribute('data-html-element');
+      const markup = document.querySelectorAll(`[data-html-line='${idx}']`);
+      let text = '';
+      markup.forEach((item) => {
+        text += item.textContent;
+      });
+      tooltip.textContent = text;
+      element.append(tooltip);
+    });
   }
 
   private hoverElement() {
     const elements: NodeListOf<HTMLElement> =
       document.querySelectorAll('[data-html-element');
-    elements.forEach((element) => {
-      element.addEventListener('mouseover', () =>
-        this.mouseOverElement(element)
-      );
-      element.addEventListener('mouseleave', () => {
-        this.mouseLeaveElement(element);
-      });
+    elements.forEach((el) => {
+      el.addEventListener('mouseover', () => this.mouseOverElement(el));
+      el.addEventListener('mouseleave', () => this.mouseLeaveElement(el));
     });
   }
 
@@ -22,13 +37,9 @@ export default class HoverControls {
       document.querySelectorAll('[data-html-line');
 
     lines.forEach((line) => {
-      line.addEventListener('mouseover', () => {
-        this.mouseOverLine(line);
-      });
+      line.addEventListener('mouseover', () => this.mouseOverLine(line));
 
-      line.addEventListener('mouseleave', () => {
-        this.mouseLeaveLine(line);
-      });
+      line.addEventListener('mouseleave', () => this.mouseLeaveLine(line));
     });
   }
 

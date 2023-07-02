@@ -6,8 +6,9 @@ export default class HoverControls {
   }
 
   private addTooltip(): void {
-    const elements: NodeListOf<HTMLElement> =
-      document.querySelectorAll('circle, square');
+    const elements: NodeListOf<HTMLElement> = document.querySelectorAll(
+      'circle, square, field, ball'
+    );
 
     elements.forEach((element: HTMLElement): void => {
       const tooltip = document.createElement('span');

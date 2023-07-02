@@ -229,7 +229,7 @@ body {
   &--current::after {
     content: '<';
     margin-left: auto;
-    color: #f59e0b;
+    color: #ffffff;
   }
 
   &--done {
@@ -496,8 +496,9 @@ square {
   transition: box-shadow 0.3s ease-in-out;
   cursor: pointer;
   position: relative;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &.hovered,
   &:hover {
@@ -505,8 +506,45 @@ square {
   }
 }
 
+ball {
+  display: block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: url('./assets/svg/ball.svg');
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+
+  &.hovered,
+  &:hover {
+    box-shadow: #57534e 0px 1px 4px, #57534e 0px 0px 0px 3px;
+  }
+}
+
+field {
+  display: block;
+  height: 75px;
+  width: max-content;
+  background: center/cover url('./assets/svg/field.svg') no-repeat;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+
+  &.hovered,
+  &:hover {
+    box-shadow: #57534e 0px 1px 4px, #57534e 0px 0px 0px 3px;
+  }
+}
+
 circle > .tooltip,
-square > .tooltip {
+square > .tooltip,
+ball > .tooltip,
+field > .tooltip {
   display: none;
   position: absolute;
   top: -3em;
@@ -518,7 +556,11 @@ square > .tooltip {
 circle:hover,
 circle.hovered,
 square:hover,
-square.hovered {
+square.hovered,
+ball:hover,
+ball.hovered,
+field:hover,
+field.hovered {
   > .tooltip {
     display: block;
   }

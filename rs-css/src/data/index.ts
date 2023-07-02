@@ -122,15 +122,15 @@ const levels: ILevel[] = [
     id: 6,
     title: 'Select neighbors',
     html: `
-    <circle data-html-element="1"></circle>
-    <square data-html-element="2">
-      <circle data-html-element="3"></circle>
-    </square>
-    <circle data-html-element="4"></circle>
-    <square class="animate" data-html-element="5"></square>
-    <square class="animate" data-html-element="6">
-      <circle data-html-element="7"></circle>
-    </square>
+      <circle data-html-element="1"></circle>
+      <square data-html-element="2">
+        <circle data-html-element="3"></circle>
+      </square>
+      <circle data-html-element="4"></circle>
+      <square class="animate" data-html-element="5"></square>
+      <square class="animate" data-html-element="6">
+        <circle data-html-element="7"></circle>
+      </square>
     `,
     markup: [
       { line: '<div class="table">' },
@@ -151,17 +151,17 @@ const levels: ILevel[] = [
     id: 7,
     title: 'Select with NOT',
     html: `
-    <circle class="animate" data-html-element="1"></circle>
-    <square data-html-element="2">
-      <circle class="animate" data-html-element="3"></circle>
-    </square>
-    <circle data-html-element="4"></circle>
-    <square data-html-element="5">
-      <circle class="animate" data-html-element="6"></circle>
-    </square>
-    <square data-html-element="7">
-      <circle class="animate" data-html-element="8"></circle>
-    </square>
+      <circle class="animate" data-html-element="1"></circle>
+      <square data-html-element="2">
+        <circle class="animate" data-html-element="3"></circle>
+      </square>
+      <circle data-html-element="4"></circle>
+      <square data-html-element="5">
+        <circle class="animate" data-html-element="6"></circle>
+      </square>
+      <square data-html-element="7">
+        <circle class="animate" data-html-element="8"></circle>
+      </square>
     `,
     markup: [
       { line: '<div class="table">' },
@@ -184,17 +184,17 @@ const levels: ILevel[] = [
     id: 8,
     title: 'Select by attribute',
     html: `
-    <circle data-html-element="1"></circle>
-    <square data-html-element="2">
-      <circle class="animate" data-html-element="3"></circle>
-    </square>
-    <circle class="animate" data-html-element="4"></circle>
-    <square data-html-element="5">
-      <circle data-html-element="6"></circle>
-    </square>
-    <square data-html-element="7">
-      <circle class="animate" data-html-element="8"></circle>
-    </square>
+      <circle data-html-element="1"></circle>
+      <square data-html-element="2">
+        <circle class="animate" data-html-element="3"></circle>
+      </square>
+      <circle class="animate" data-html-element="4"></circle>
+      <square data-html-element="5">
+        <circle data-html-element="6"></circle>
+      </square>
+      <square data-html-element="7">
+        <circle class="animate" data-html-element="8"></circle>
+      </square>
     `,
     markup: [
       { line: '<div class="table">' },
@@ -217,17 +217,17 @@ const levels: ILevel[] = [
     id: 9,
     title: 'Select all colored selectors',
     html: `
-    <circle class="animate" data-html-element="1"></circle>
-    <square class="animate" data-html-element="2">
-      <circle class="animate" data-html-element="3"></circle>
-    </square>
-    <circle data-html-element="4"></circle>
-    <square data-html-element="5">
-      <circle class="animate" data-html-element="6"></circle>
-    </square>
-    <square class="animate" data-html-element="7">
-      <circle class="animate" data-html-element="8"></circle>
-    </square>
+      <circle class="animate" data-html-element="1"></circle>
+      <square class="animate" data-html-element="2">
+        <circle class="animate" data-html-element="3"></circle>
+      </square>
+      <circle data-html-element="4"></circle>
+      <square data-html-element="5">
+        <circle class="animate" data-html-element="6"></circle>
+      </square>
+      <square class="animate" data-html-element="7">
+        <circle class="animate" data-html-element="8"></circle>
+      </square>
     `,
     markup: [
       { line: '<div class="table">' },
@@ -259,19 +259,61 @@ const levels: ILevel[] = [
   },
   {
     id: 10,
+    title: 'Select all the odd balls on the field',
+    html: `
+      <field data-html-element="1">
+        <ball class="animate" data-html-element="2"></ball>
+        <ball data-html-element="3"></ball>
+        <ball class="animate" data-html-element="5"></ball>
+      </field>
+      <ball data-html-element="5"></ball>
+      <field data-html-element="6">
+        <ball class="animate" data-html-element="7"></ball>
+        <ball data-html-element="8"></ball>
+        <ball class="animate" data-html-element="9"></ball>
+      </field>
+      <square data-html-element="10">
+        <ball data-html-element="11"></circle>
+      </square>
+    `,
+    markup: [
+      { line: '<div class="table">' },
+      { line: '  <field class="field">', dataAttr: '1' },
+      { line: '    <ball />', dataAttr: '2' },
+      { line: '    <ball class="ball" />', dataAttr: '3' },
+      { line: '    <ball />', dataAttr: '4' },
+      { line: '  </field>', dataAttr: '1' },
+      { line: '  <ball id="ball" />', dataAttr: '5' },
+      { line: '  <field>', dataAttr: '6' },
+      { line: '    <ball />', dataAttr: '7' },
+      { line: '    <ball />', dataAttr: '8' },
+      { line: '    <ball class="ball" />', dataAttr: '9' },
+      { line: '  </field>', dataAttr: '6' },
+      { line: '  <square>', dataAttr: '10' },
+      { line: '    <ball class="ball" />', dataAttr: '11' },
+      { line: '  </square>', dataAttr: '10' },
+      { line: '</div>' },
+    ],
+    answers: [
+      'field ball:nth-child(2n+1)',
+      'field ball:nth-child(2n+1), .field ball:nth-child(2n+1)',
+    ],
+  },
+  {
+    id: 11,
     title: 'Select all',
     html: `
-    <circle class="animate" data-html-element="1"></circle>
-    <square class="animate" data-html-element="2">
-      <circle class="animate" data-html-element="3"></circle>
-    </square>
-    <circle class="animate" data-html-element="4"></circle>
-    <square class="animate" data-html-element="5">
-      <circle class="animate" data-html-element="6"></circle>
-    </square>
-    <square class="animate" data-html-element="7">
-      <circle class="animate" data-html-element="8"></circle>
-    </square>
+      <circle class="animate" data-html-element="1"></circle>
+      <square class="animate" data-html-element="2">
+        <circle class="animate" data-html-element="3"></circle>
+      </square>
+      <circle class="animate" data-html-element="4"></circle>
+      <square class="animate" data-html-element="5">
+        <circle class="animate" data-html-element="6"></circle>
+      </square>
+      <square class="animate" data-html-element="7">
+        <circle class="animate" data-html-element="8"></circle>
+      </square>
     `,
     markup: [
       { line: '<div class="table">' },

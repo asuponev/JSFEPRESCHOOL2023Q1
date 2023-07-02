@@ -6,15 +6,15 @@ import LevelsControls from './levels-controls';
 
 export default class InputControls {
   private form: HTMLFormElement | null;
-  private inputElement: HTMLInputElement | null;
+  private input: HTMLInputElement | null;
   private btnHelp: HTMLButtonElement | null;
 
   constructor() {
     this.form = ANSWER_FORM;
-    this.inputElement = CSS_INPUT;
+    this.input = CSS_INPUT;
     this.btnHelp = BTN_HELP;
 
-    this.inputElement?.focus();
+    this.input?.focus();
     this.form?.addEventListener('submit', (e: Event) => this.checkAnswer(e));
     this.btnHelp?.addEventListener('click', () => this.printAnswer());
   }
@@ -25,8 +25,8 @@ export default class InputControls {
     const animateElements = document.querySelectorAll('.animate');
     const answers = levels[currentLevel - 1].answers;
 
-    if (this.inputElement?.value && answers.includes(this.inputElement.value)) {
-      this.inputElement.value = '';
+    if (this.input?.value && answers.includes(this.input.value.trim())) {
+      this.input.value = '';
       saveProgress(currentLevel);
       animateElements?.forEach((el): void => el.classList.add('done'));
       setTimeout((): void => {
@@ -44,10 +44,10 @@ export default class InputControls {
     const currentLevel = getCurrentLevel();
     const answers = levels[currentLevel - 1].answers;
 
-    if (this.inputElement) this.inputElement.value = '';
+    if (this.input) this.input.value = '';
     answers[0].split('').forEach((letter, i): void => {
       setTimeout((): void => {
-        if (this.inputElement) this.inputElement.value += letter;
+        if (this.input) this.input.value += letter;
       }, i * 200);
     });
   }

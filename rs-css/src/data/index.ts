@@ -7,7 +7,7 @@ const levels: ILevel[] = [
     html: `
       <circle class="animate" data-html-element="1"></circle>
       <square data-html-element="2"></square>
-      <circle data-html-element="3"></circle>
+      <circle class="animate" data-html-element="3"></circle>
     `,
     markup: [
       { line: '<div class="table">' },

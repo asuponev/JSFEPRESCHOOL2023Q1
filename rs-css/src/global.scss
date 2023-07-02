@@ -226,6 +226,12 @@ body {
     }
   }
 
+  &--current::after {
+    content: '<';
+    margin-left: auto;
+    color: #f59e0b;
+  }
+
   &--done {
     color: #22c55e;
 

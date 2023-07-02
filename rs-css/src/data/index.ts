@@ -139,7 +139,7 @@ const levels: ILevel[] = [
       { line: '    <circle class="red" />', dataAttr: '3' },
       { line: '  </square>', dataAttr: '2' },
       { line: '  <circle id="red" />', dataAttr: '4' },
-      { line: '  <square class="blue" />', dataAttr: '5' },
+      { line: '  <square />', dataAttr: '5' },
       { line: '  <square class="blue">', dataAttr: '6' },
       { line: '    <circle class="red" />', dataAttr: '7' },
       { line: '  </square>', dataAttr: '6' },

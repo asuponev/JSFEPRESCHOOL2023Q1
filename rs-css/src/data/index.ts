@@ -28,12 +28,12 @@ const levels: ILevel[] = [
     `,
     markup: [
       { line: '<div class="table">' },
-      { line: '  <circle class="red" />', dataAttr: '1' },
-      { line: '  <square class="red" />', dataAttr: '2' },
+      { line: '  <circle class="figure" />', dataAttr: '1' },
+      { line: '  <square class="figure" />', dataAttr: '2' },
       { line: '  <circle />', dataAttr: '3' },
       { line: '</div>' },
     ],
-    answers: ['.red'],
+    answers: ['.figure'],
   },
   {
     id: 3,
@@ -48,13 +48,13 @@ const levels: ILevel[] = [
     markup: [
       { line: '<div class="table">' },
       { line: '  <circle id="red" />', dataAttr: '1' },
-      { line: '  <square  class="red">', dataAttr: '2' },
-      { line: '    <circle class="green" />', dataAttr: '3' },
+      { line: '  <square  class="blue">', dataAttr: '2' },
+      { line: '    <circle class="red" />', dataAttr: '3' },
       { line: '  </square>', dataAttr: '2' },
-      { line: '  <circle id="green" />', dataAttr: '4' },
+      { line: '  <circle id="figure" />', dataAttr: '4' },
       { line: '</div>' },
     ],
-    answers: ['#green', 'circle#green'],
+    answers: ['#figure', 'circle#figure'],
   },
   {
     id: 4,
@@ -215,7 +215,7 @@ const levels: ILevel[] = [
   },
   {
     id: 9,
-    title: 'Select all colored',
+    title: 'Select all colored selectors',
     html: `
     <circle class="animate" data-html-element="1"></circle>
     <square class="animate" data-html-element="2">

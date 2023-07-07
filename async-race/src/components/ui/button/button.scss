@@ -1,0 +1,82 @@
+@import '../../../assets/variables';
+
+.button {
+  font: 500 12px/1.5 'DM Sans', sans-serif;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: $bg-button-main;
+  color: $text-button-main;
+  transition: background .2s ease-in-out, color .2s ease-in-out;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &--main {
+    background: $bg-button-main;
+    color: $text-button-main;
+
+    &:hover {
+      background: $bg-button-main-hover;
+    }
+
+    &:disabled {
+      background: $bg-button-main;
+    }
+  }
+
+  &--minor {
+    background: $bg-button-minor;
+    color: $text-button-minor;
+
+    &:hover {
+      background: $bg-button-minor-hover;
+    }
+
+    &:disabled {
+      background: $bg-button-minor;
+    }
+  }
+
+  &--drive {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    background: $bg-button-drive;
+    color: $text-button-drive;
+    border: 1px solid $text-button-drive;
+
+    &:hover {
+      background: $bg-button-drive-hover;
+      color: $text-main;
+    }
+
+    &:disabled {
+      background: $bg-button-drive;
+      color: $text-button-drive;
+    }
+  }
+
+  &--stop {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    background: $bg-button-stop;
+    color: $text-button-stop;
+    border: 1px solid $text-button-stop;
+
+    &:hover {
+      background: $bg-button-stop-hover;
+      color: $text-main;
+    }
+
+    &:disabled {
+      background: $bg-button-stop;
+      color: $text-button-stop;
+    }
+  }
+}

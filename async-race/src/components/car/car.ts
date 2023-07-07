@@ -1,6 +1,6 @@
 import './car.scss';
 import { ICar } from '../../types/types';
-import uiButton from '../ui/button/button';
+import baseButton from '../base/button/button';
 import carIconView from './car-icon/car-icon';
 
 const carView = (props: ICar) => {
@@ -9,8 +9,14 @@ const carView = (props: ICar) => {
   // create buttons for edit and delete car
   const carButtons = document.createElement('div');
   carButtons.classList.add('car__buttons');
-  const btnSelect = uiButton({ text: 'select', customClass: 'button--minor' });
-  const btnDelete = uiButton({ text: 'delete', customClass: 'button--minor' });
+  const btnSelect = baseButton({
+    text: 'select',
+    customClass: 'button--minor',
+  });
+  const btnDelete = baseButton({
+    text: 'delete',
+    customClass: 'button--minor',
+  });
   // create title car element
   const carTitle = document.createElement('p');
   carTitle.textContent = props.name;
@@ -21,12 +27,12 @@ const carView = (props: ICar) => {
   // create buttons for motion control
   const roadButtons = document.createElement('div');
   roadButtons.classList.add('car__buttons');
-  const btnDrive = uiButton({
+  const btnDrive = baseButton({
     text: 'D',
     customClass: 'button--drive',
     disabled: false,
   });
-  const btnStop = uiButton({
+  const btnStop = baseButton({
     text: 'R',
     customClass: 'button--stop',
     disabled: true,

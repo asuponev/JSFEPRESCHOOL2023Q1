@@ -7,7 +7,7 @@ interface IProps {
   onClick?: () => void;
 }
 
-const uiButton = (props: IProps): HTMLButtonElement => {
+const baseButton = (props: IProps): HTMLButtonElement => {
   const button = document.createElement('button');
   button.textContent = props.text;
   button.classList.add('button');
@@ -18,4 +18,4 @@ const uiButton = (props: IProps): HTMLButtonElement => {
   return button;
 };
 
-export default uiButton;
+export default baseButton;

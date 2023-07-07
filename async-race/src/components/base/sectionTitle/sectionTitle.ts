@@ -6,13 +6,13 @@ interface IProps {
   customClass?: string;
 }
 
-const uiSectionTitle = (props: IProps): HTMLHeadingElement => {
+const baseSectionTitle = (props: IProps): HTMLHeadingElement => {
   const sectionTitle = document.createElement('h1');
-  sectionTitle.textContent = `${props.text} (${props.count})`;
   sectionTitle.classList.add('section__title');
+  sectionTitle.textContent = `${props.text} (${props.count})`;
   if (props.customClass) sectionTitle.classList.add(props.customClass);
 
   return sectionTitle;
 };
 
-export default uiSectionTitle;
+export default baseSectionTitle;

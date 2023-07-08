@@ -1,15 +1,32 @@
 @import '../../assets/variables';
 
 .garage {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   padding: 0 24px;
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
   &__items {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin: 24px 0;
+    margin: 12px 0 24px;
   }
 }

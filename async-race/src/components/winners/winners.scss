@@ -1,0 +1,21 @@
+.winners {
+  padding: 0 24px;
+
+  &__table {
+    width: min(500px, 100%);
+    font-size: 14px;
+    margin: 12px 0 24px;
+
+    &__row {
+      text-align: left;
+      
+      th, td {
+        padding: 8px 16px 8px 0;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}

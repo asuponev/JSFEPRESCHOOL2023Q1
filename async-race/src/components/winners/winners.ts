@@ -17,7 +17,7 @@ try {
   errorText = error as string;
 }
 
-const winnersView = async () => {
+const winnersView = async (): Promise<HTMLElement> => {
   const winners = document.createElement('section');
   winners.classList.add('section', 'winners');
 

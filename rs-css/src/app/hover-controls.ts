@@ -6,11 +6,11 @@ export default class HoverControls {
   }
 
   private addTooltip(): void {
-    const elements: NodeListOf<HTMLElement> = document.querySelectorAll(
+    const elements: NodeListOf<HTMLElement> | null = document.querySelectorAll(
       'circle, square, field, ball'
     );
 
-    elements.forEach((element: HTMLElement): void => {
+    elements?.forEach((element: HTMLElement): void => {
       const tooltip = document.createElement('span');
       tooltip.classList.add('tooltip');
       const idx = element.getAttribute('data-html-element');
@@ -25,19 +25,20 @@ export default class HoverControls {
   }
 
   private hoverElement(): void {
-    const elements: NodeListOf<HTMLElement> =
-      document.querySelectorAll('[data-html-element');
-    elements.forEach((el: HTMLElement): void => {
+    const elements: NodeListOf<HTMLElement> | null = document.querySelectorAll(
+      '[data-html-element]'
+    );
+    elements?.forEach((el: HTMLElement): void => {
       el.addEventListener('mouseover', () => this.mouseOverElement(el));
       el.addEventListener('mouseleave', () => this.mouseLeaveElement(el));
     });
   }
 
   private hoverLine(): void {
-    const lines: NodeListOf<HTMLElement> =
-      document.querySelectorAll('[data-html-line');
+    const lines: NodeListOf<HTMLElement> | null =
+      document.querySelectorAll('[data-html-line]');
 
-    lines.forEach((line: HTMLElement): void => {
+    lines?.forEach((line: HTMLElement): void => {
       line.addEventListener('mouseover', () => this.mouseOverLine(line));
 
       line.addEventListener('mouseleave', () => this.mouseLeaveLine(line));

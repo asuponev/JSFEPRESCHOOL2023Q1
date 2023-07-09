@@ -5,3 +5,5 @@
 **Migration to TS**: [https://rolling-scopes-school.github.io/elsuppo-JSFE2023Q1/migration-newip-to-ts/](https://rolling-scopes-school.github.io/elsuppo-JSFE2023Q1/migration-newip-to-ts/)
 
 **RS-CSS**: [https://rolling-scopes-school.github.io/elsuppo-JSFE2023Q1/rs-css/](https://rolling-scopes-school.github.io/elsuppo-JSFE2023Q1/rs-css/)
+
+**ASYNC-RACE**: [https://rolling-scopes-school.github.io/elsuppo-JSFE2023Q1/async-race/](https://rolling-scopes-school.github.io/elsuppo-JSFE2023Q1/async-race/)

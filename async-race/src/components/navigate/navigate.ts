@@ -1,3 +1,5 @@
+import onClickNavigate from '../../actions/onClickNavigate';
+import getCurrentPage from '../../services/getCurrentPage';
 import baseButton from '../base/button/button';
 import './navigate.scss';
 
@@ -8,14 +10,18 @@ const navigateView = (): HTMLDivElement => {
   const btnToGarage = baseButton({
     text: 'to garage',
     customClass: 'button--main',
-    disabled: true,
+    disabled: getCurrentPage() === 'garage',
+    onClick: onClickNavigate,
   });
+  btnToGarage.id = 'btn-garage';
 
   const btnToWinners = baseButton({
     text: 'to winners',
     customClass: 'button--main',
-    disabled: false,
+    disabled: getCurrentPage() === 'winners',
+    onClick: onClickNavigate,
   });
+  btnToWinners.id = 'btn-winners';
 
   navigateElement.append(btnToGarage, btnToWinners);
 

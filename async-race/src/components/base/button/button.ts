@@ -13,7 +13,7 @@ const baseButton = (props: IProps): HTMLButtonElement => {
   button.classList.add('button');
   if (props.customClass) button.classList.add(props.customClass);
   if (props.disabled) button.disabled = true;
-  if (props.onClick) button.onclick = props.onClick;
+  if (props.onClick) button.addEventListener('click', props.onClick);
 
   return button;
 };

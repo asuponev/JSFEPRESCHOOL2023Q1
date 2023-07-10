@@ -42,6 +42,15 @@
     }
   }
 
+  &--selected {
+    background: $bg-button-main;
+    font-weight: 600;
+
+    &:hover {
+      background: $bg-button-main;
+    }
+  }
+
   &--drive {
     width: 24px;
     height: 24px;

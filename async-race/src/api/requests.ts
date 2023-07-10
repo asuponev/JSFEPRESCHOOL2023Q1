@@ -67,6 +67,10 @@ export const deleteCar = async (id: number): Promise<void> => {
     await fetch(`${endpoints.garage}/${id}`, {
       method: 'DELETE',
     });
+
+    await fetch(`${endpoints.winners}/${id}`, {
+      method: 'DELETE',
+    });
   } catch (error) {
     throw new Error('Something went wrong');
   }

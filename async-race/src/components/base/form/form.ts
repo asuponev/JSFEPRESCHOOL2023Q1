@@ -19,6 +19,7 @@ const baseForm = (props: IProps) => {
   inputName.id = `form-${props.id}-name`;
   inputName.name = 'name';
   inputName.classList.add('form__input', 'form__input--name');
+  inputName.required = true;
 
   const inputColor = document.createElement('input');
   inputColor.id = `form-${props.id}-color`;

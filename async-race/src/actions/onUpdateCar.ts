@@ -1,14 +1,15 @@
 import { updateCar } from '../api/requests';
 import { ICar } from '../types/types';
+import onResetUpdate from './onResetUpdate';
 
 const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   let updatedCar: ICar | undefined;
   event.preventDefault();
 
-  const form = event.target as HTMLFormElement;
-  const formData = new FormData(form);
+  const updateForm = event.target as HTMLFormElement;
+  const formData = new FormData(updateForm);
 
-  const id = Number(form.dataset.carId);
+  const id = Number(updateForm.dataset.carId);
   const name = formData.get('name')?.toString();
   const color = formData.get('color')?.toString();
 
@@ -17,7 +18,7 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
       document.querySelector('#form-create-name');
     const inputCreateColor: HTMLInputElement | null =
       document.querySelector('#form-create-color');
-    const brnCreate: HTMLButtonElement | null = document.querySelector(
+    const btnCreate: HTMLButtonElement | null = document.querySelector(
       '#form-create-button'
     );
 
@@ -25,22 +26,23 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
       document.querySelector('#form-update-name');
     const inputUpdateColor: HTMLInputElement | null =
       document.querySelector('#form-update-color');
-    const brnUpdate: HTMLButtonElement | null = document.querySelector(
+    const btnUpdate: HTMLButtonElement | null = document.querySelector(
       '#form-update-button'
     );
 
     if (name && color) {
       try {
         updatedCar = await updateCar({ id, name, color });
-        form.reset();
-        form.removeAttribute('data-car-id');
 
-        if (inputCreateName) inputCreateName.disabled = false;
-        if (inputCreateColor) inputCreateColor.disabled = false;
-        if (brnCreate) brnCreate.disabled = false;
-        if (inputUpdateName) inputUpdateName.disabled = true;
-        if (inputUpdateColor) inputUpdateColor.disabled = true;
-        if (brnUpdate) brnUpdate.disabled = true;
+        onResetUpdate(
+          inputCreateName,
+          inputCreateColor,
+          btnCreate,
+          updateForm,
+          inputUpdateName,
+          inputUpdateColor,
+          btnUpdate
+        );
       } catch (error) {
         console.log(error);
       }

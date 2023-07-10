@@ -1,11 +1,12 @@
 import { ICar } from '../types/types';
+import onResetUpdate from './onResetUpdate';
 
-const onSelectCar = (car: ICar): void => {
+const onSelectCar = (event: MouseEvent, car: ICar): void => {
   const inputCreateName: HTMLInputElement | null =
     document.querySelector('#form-create-name');
   const inputCreateColor: HTMLInputElement | null =
     document.querySelector('#form-create-color');
-  const brnCreate: HTMLButtonElement | null = document.querySelector(
+  const btnCreate: HTMLButtonElement | null = document.querySelector(
     '#form-create-button'
   );
 
@@ -15,13 +16,13 @@ const onSelectCar = (car: ICar): void => {
     document.querySelector('#form-update-name');
   const inputUpdateColor: HTMLInputElement | null =
     document.querySelector('#form-update-color');
-  const brnUpdate: HTMLButtonElement | null = document.querySelector(
+  const btnUpdate: HTMLButtonElement | null = document.querySelector(
     '#form-update-button'
   );
 
   if (inputCreateName) inputCreateName.disabled = true;
   if (inputCreateColor) inputCreateColor.disabled = true;
-  if (brnCreate) brnCreate.disabled = true;
+  if (btnCreate) btnCreate.disabled = true;
 
   if (updateForm) updateForm.dataset.carId = `${car.id}`;
 
@@ -35,7 +36,25 @@ const onSelectCar = (car: ICar): void => {
     inputUpdateColor.value = car.color;
   }
 
-  if (brnUpdate) brnUpdate.disabled = false;
+  if (btnUpdate) btnUpdate.disabled = false;
+
+  const btnPrevSelected: HTMLButtonElement | null =
+    document.querySelector('.button--selected');
+  btnPrevSelected?.classList.remove('button--selected');
+  const btnCurSelected = event.target as HTMLButtonElement;
+  if (btnPrevSelected === btnCurSelected) {
+    onResetUpdate(
+      inputCreateName,
+      inputCreateColor,
+      btnCreate,
+      updateForm,
+      inputUpdateName,
+      inputUpdateColor,
+      btnUpdate
+    );
+  } else {
+    btnCurSelected.classList.add('button--selected');
+  }
 };
 
 export default onSelectCar;

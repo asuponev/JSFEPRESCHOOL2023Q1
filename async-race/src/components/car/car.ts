@@ -15,7 +15,7 @@ const carView = (props: ICar) => {
     text: 'select',
     customClass: 'button--minor',
   });
-  btnSelect.addEventListener('click', () => onSelectCar(props));
+  btnSelect.addEventListener('click', (event) => onSelectCar(event, props));
   const btnDelete = baseButton({
     text: 'delete',
     customClass: 'button--minor',

@@ -11,17 +11,17 @@ interface IProps {
 
 const baseForm = (props: IProps) => {
   const form = document.createElement('form');
-  form.id = props.id;
+  form.id = `form-${props.id}`;
   form.classList.add('form');
   form.addEventListener('submit', (event) => props.onSubmit(event));
 
   const inputName = document.createElement('input');
-  inputName.id = `${props.id}-name`;
+  inputName.id = `form-${props.id}-name`;
   inputName.name = 'name';
   inputName.classList.add('form__input', 'form__input--name');
 
   const inputColor = document.createElement('input');
-  inputColor.id = `${props.id}-color`;
+  inputColor.id = `form-${props.id}-color`;
   inputColor.name = 'color';
   inputColor.type = 'color';
   inputColor.classList.add('form__input', 'form__input--color');
@@ -31,6 +31,7 @@ const baseForm = (props: IProps) => {
     customClass: 'button--minor',
   });
   btnSubmit.type = 'submit';
+  btnSubmit.id = `form-${props.id}-button`;
 
   if (props.disabled) {
     inputName.disabled = true;

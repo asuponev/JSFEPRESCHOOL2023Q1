@@ -4,6 +4,8 @@ import baseButton from '../base/button/button';
 import carIconView from './car-icon/car-icon';
 import onDeleteCar from '../../actions/onDeleteCar';
 import onSelectCar from '../../actions/onSelectCar';
+import onStartOneCar from '../../actions/onStartOneCar';
+import onStopOneCar from '../../actions/onStopOneCar';
 
 const carView = (props: ICar) => {
   const car = document.createElement('div');
@@ -15,12 +17,10 @@ const carView = (props: ICar) => {
     text: 'select',
     customClass: 'button--minor',
   });
-  btnSelect.addEventListener('click', (event) => onSelectCar(event, props));
   const btnDelete = baseButton({
     text: 'delete',
     customClass: 'button--minor',
   });
-  btnDelete.addEventListener('click', () => onDeleteCar(props));
   // create title car element
   const carTitle = document.createElement('p');
   carTitle.textContent = props.name;
@@ -44,10 +44,21 @@ const carView = (props: ICar) => {
   roadButtons.append(btnDrive, btnStop);
   // create car icon
   const roadCarIcon = carIconView(props.color);
+  roadCarIcon.id = `car-${props.id}`;
   // create finish element
   const roadFinishIcon = document.createElement('div');
   roadFinishIcon.classList.add('car__road__finish');
   roadFinishIcon.textContent = 'FINISH';
+
+  // add listeners
+  btnSelect.addEventListener('click', (event) => onSelectCar(event, props));
+  btnDelete.addEventListener('click', () => onDeleteCar(props));
+  btnDrive.addEventListener('click', (event) =>
+    onStartOneCar(event, props.id, roadCarIcon, roadFinishIcon, btnStop)
+  );
+  btnStop.addEventListener('click', (event) =>
+    onStopOneCar(event, props.id, roadCarIcon, btnDrive)
+  );
 
   carRoad.append(roadButtons, roadCarIcon, roadFinishIcon);
 

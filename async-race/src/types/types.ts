@@ -9,3 +9,12 @@ export interface IWinner {
   wins: number;
   time: number;
 }
+
+export interface IEnginePerformance {
+  velocity: number;
+  distance: number;
+}
+
+export interface IEngineStatus {
+  success: boolean;
+}

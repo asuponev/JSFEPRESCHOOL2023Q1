@@ -29,10 +29,46 @@
     height: auto;
     display: flex;
     align-items: end;
-    
+
     svg {
       margin-bottom: 4px;
       filter: drop-shadow(1px 1px 4px $bg-secondary);
+    }
+
+    &--broken {
+      @keyframes broke {
+        100% {
+          transform: translateX(-1px);
+        }
+        50% {
+          transform: translateX(1px);
+        }
+        0% {
+          transform: translateX(-1px);
+        }
+      }
+
+      svg {
+        animation: broke 0.1s linear infinite;
+      }
+    }
+
+    &--finished {
+      @keyframes finish {
+        100% {
+          transform: translateY(-16px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+        0% {
+          transform: translateY(0px);
+        }
+      }
+      
+      svg {
+        animation: finish 0.4s linear infinite;
+      }
     }
   }
 }

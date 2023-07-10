@@ -9,6 +9,6 @@
 
 body {
   font: 400 16px/1.5 'DM Sans', sans-serif;
-  background: $bg-main;
+  background: linear-gradient(90deg, $bg-secondary2, $bg-main);
   color: $text-main;
 }

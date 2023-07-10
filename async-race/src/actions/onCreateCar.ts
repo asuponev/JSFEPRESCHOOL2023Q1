@@ -7,7 +7,7 @@ const onCreateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   const form = event.target as HTMLFormElement;
   const formData = new FormData(form);
 
-  const name = formData.get('name')?.toString();
+  const name = formData.get('name')?.toString().trim();
   const color = formData.get('color')?.toString();
 
   let newCar: ICar | undefined;

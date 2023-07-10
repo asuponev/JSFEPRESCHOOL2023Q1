@@ -10,7 +10,7 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   const formData = new FormData(updateForm);
 
   const id = Number(updateForm.dataset.carId);
-  const name = formData.get('name')?.toString();
+  const name = formData.get('name')?.toString().trim();
   const color = formData.get('color')?.toString();
 
   if (window.confirm('are you sure you want to update this car')) {

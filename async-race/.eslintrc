@@ -26,6 +26,7 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/return-await": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "no-alert": "off"
   }
 }

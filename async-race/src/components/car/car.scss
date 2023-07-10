@@ -14,11 +14,12 @@
     border-bottom: 1px dashed $bg-secondary;
     display: flex;
     gap: 12px;
-    height: 48px;
+    height: 32px;
 
     &__finish {
       margin-left: auto;
       margin-right: 56px;
+      font-size: 10px;
       writing-mode: vertical-rl;
     }
   }

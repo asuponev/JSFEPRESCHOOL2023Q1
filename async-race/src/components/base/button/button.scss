@@ -43,9 +43,10 @@
   }
 
   &--drive {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     font-size: 14px;
+    padding: 0;
     background: $bg-button-drive;
     color: $text-button-drive;
     border: 1px solid $text-button-drive;
@@ -62,9 +63,10 @@
   }
 
   &--stop {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     font-size: 14px;
+    padding: 0;
     background: $bg-button-stop;
     color: $text-button-stop;
     border: 1px solid $text-button-stop;

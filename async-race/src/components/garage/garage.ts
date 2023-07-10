@@ -1,12 +1,13 @@
 import { getAllCars } from '../../api/requests';
 import { ICar } from '../../types/types';
+import onCreateCar from '../../actions/onCreateCar';
 import carView from '../car/car';
 import basePaginationBtns from '../base/pagination/paginationBtns';
 import basePaginationTitle from '../base/pagination/paginationTitle';
 import baseSectionTitle from '../base/sectionTitle/sectionTitle';
-import './garage.scss';
 import baseForm from '../base/form/form';
 import baseButton from '../base/button/button';
+import './garage.scss';
 
 const garagePage = 1;
 let cars: ICar[] | undefined;
@@ -26,8 +27,16 @@ const garageView = (): HTMLElement => {
     // create controls (forms for create/update, buttons for race/reset and generate cars)
     const garageControls = document.createElement('div');
     garageControls.classList.add('garage__controls');
-    const formCreate = baseForm({ id: 'create', disabled: false });
-    const formUpdate = baseForm({ id: 'update', disabled: true });
+    const formCreate = baseForm({
+      id: 'create',
+      onSubmit: onCreateCar,
+      disabled: false,
+    });
+    const formUpdate = baseForm({
+      id: 'update',
+      onSubmit: onCreateCar,
+      disabled: true,
+    });
     const garageControlsBtns = document.createElement('div');
     garageControlsBtns.classList.add('garage__buttons');
     const btnRace = baseButton({

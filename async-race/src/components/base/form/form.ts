@@ -5,6 +5,7 @@ type InputId = 'create' | 'update';
 
 interface IProps {
   id: InputId;
+  onSubmit: (event: SubmitEvent) => void;
   disabled?: boolean;
 }
 
@@ -12,6 +13,7 @@ const baseForm = (props: IProps) => {
   const form = document.createElement('form');
   form.id = props.id;
   form.classList.add('form');
+  form.addEventListener('submit', (event) => props.onSubmit(event));
 
   const inputName = document.createElement('input');
   inputName.id = `${props.id}-name`;

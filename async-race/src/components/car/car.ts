@@ -3,6 +3,7 @@ import { ICar } from '../../types/types';
 import baseButton from '../base/button/button';
 import carIconView from './car-icon/car-icon';
 import onDeleteCar from '../../actions/onDeleteCar';
+import onSelectCar from '../../actions/onSelectCar';
 
 const carView = (props: ICar) => {
   const car = document.createElement('div');
@@ -14,6 +15,7 @@ const carView = (props: ICar) => {
     text: 'select',
     customClass: 'button--minor',
   });
+  btnSelect.addEventListener('click', () => onSelectCar(props));
   const btnDelete = baseButton({
     text: 'delete',
     customClass: 'button--minor',

@@ -8,6 +8,7 @@ import baseSectionTitle from '../base/sectionTitle/sectionTitle';
 import baseForm from '../base/form/form';
 import baseButton from '../base/button/button';
 import './garage.scss';
+import onUpdateCar from '../../actions/onUpdateCar';
 
 const garagePage = 1;
 let cars: ICar[] | undefined;
@@ -34,7 +35,7 @@ const garageView = (): HTMLElement => {
     });
     const formUpdate = baseForm({
       id: 'update',
-      onSubmit: onCreateCar,
+      onSubmit: onUpdateCar,
       disabled: true,
     });
     const garageControlsBtns = document.createElement('div');

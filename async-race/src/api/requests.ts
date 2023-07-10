@@ -71,3 +71,20 @@ export const deleteCar = async (id: number): Promise<void> => {
     throw new Error('Something went wrong');
   }
 };
+
+export const updateCar = async (car: ICar) => {
+  try {
+    const response = await fetch(`${endpoints.garage}/${car.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ name: car.name, color: car.color }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data: ICar = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Something went wrong');
+  }
+};

@@ -1,7 +1,7 @@
 import endpoints from '../constants/url';
 import { ICar, IWinner } from '../types/types';
 
-export const getAllCars = async (page: number, limit = 7) => {
+export const getAllCars = async (page: number, limit = 7): Promise<ICar[]> => {
   try {
     const response = await fetch(
       `${endpoints.garage}?_page=${page}&_limit=${limit}`
@@ -16,7 +16,7 @@ export const getAllCars = async (page: number, limit = 7) => {
   }
 };
 
-export const getCarById = async (id: number) => {
+export const getCarById = async (id: number): Promise<ICar> => {
   try {
     const response = await fetch(`${endpoints.garage}/${id}`);
 
@@ -27,7 +27,10 @@ export const getCarById = async (id: number) => {
   }
 };
 
-export const getWinners = async (page: number, limit = 10) => {
+export const getWinners = async (
+  page: number,
+  limit = 10
+): Promise<IWinner[]> => {
   try {
     const response = await fetch(
       `${endpoints.winners}?_page=${page}&_limit=${limit}`
@@ -42,7 +45,7 @@ export const getWinners = async (page: number, limit = 10) => {
   }
 };
 
-export const createCar = async (values: Omit<ICar, 'id'>) => {
+export const createCar = async (values: Omit<ICar, 'id'>): Promise<ICar> => {
   try {
     const response = await fetch(endpoints.garage, {
       method: 'POST',
@@ -54,6 +57,16 @@ export const createCar = async (values: Omit<ICar, 'id'>) => {
 
     const data: ICar = await response.json();
     return data;
+  } catch (error) {
+    throw new Error('Something went wrong');
+  }
+};
+
+export const deleteCar = async (id: number): Promise<void> => {
+  try {
+    await fetch(`${endpoints.garage}/${id}`, {
+      method: 'DELETE',
+    });
   } catch (error) {
     throw new Error('Something went wrong');
   }

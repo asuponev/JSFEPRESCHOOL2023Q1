@@ -2,6 +2,7 @@ import './car.scss';
 import { ICar } from '../../types/types';
 import baseButton from '../base/button/button';
 import carIconView from './car-icon/car-icon';
+import onDeleteCar from '../../actions/onDeleteCar';
 
 const carView = (props: ICar) => {
   const car = document.createElement('div');
@@ -17,6 +18,7 @@ const carView = (props: ICar) => {
     text: 'delete',
     customClass: 'button--minor',
   });
+  btnDelete.addEventListener('click', () => onDeleteCar(props));
   // create title car element
   const carTitle = document.createElement('p');
   carTitle.textContent = props.name;

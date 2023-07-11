@@ -16,12 +16,13 @@ const winnersView = async (): Promise<HTMLElement> => {
   if (!state.winners.fetchError) {
     const { items, page, count } = state.winners;
     const sectionTitle = baseSectionTitle({
+      id: 'winners-title',
       text: 'Winners',
       count,
     });
 
     const paginationTitle = basePaginationTitle({
-      text: 'Page',
+      id: 'pagination-title-winners',
       page,
     });
 

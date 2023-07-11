@@ -11,17 +11,19 @@ const garageContentView = (): HTMLDivElement => {
   const garageContent = document.createElement('div');
   garageContent.classList.add('garage__content');
   const sectionTitle = baseSectionTitle({
+    id: 'garage-title',
     text: 'Garage',
     count,
   });
   const paginationTitle = basePaginationTitle({
-    text: 'Page',
+    id: 'pagination-title-garage',
     page,
   });
 
   const garageItems = document.createElement('div');
   garageItems.classList.add('garage__items');
   garageItems.append(...items.map((car: ICar): HTMLDivElement => carView(car)));
+  state.html.addToElements('garage-items', garageItems);
 
   const paginationBtns = basePaginationBtns();
 

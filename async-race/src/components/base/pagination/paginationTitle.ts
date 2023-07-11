@@ -1,13 +1,21 @@
+import state from '../../../state/state';
+
 interface IProps {
-  text: string;
+  id: string;
   page: number;
   customClass?: string;
 }
 
-const basePaginationTitle = (props: IProps): HTMLParagraphElement => {
+const basePaginationTitle = ({
+  id,
+  page,
+  customClass,
+}: IProps): HTMLParagraphElement => {
   const paginationTitle = document.createElement('p');
-  paginationTitle.textContent = `${props.text} #${props.page}`;
-  if (props.customClass) paginationTitle.classList.add(props.customClass);
+  paginationTitle.textContent = `Page #${page}`;
+  if (customClass) paginationTitle.classList.add(customClass);
+
+  state.html.addToElements(id, paginationTitle);
 
   return paginationTitle;
 };

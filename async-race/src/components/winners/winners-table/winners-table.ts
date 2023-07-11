@@ -1,4 +1,6 @@
-const winnersTableView = (tableItems: HTMLTableRowElement[]) => {
+const winnersTableView = (
+  tableItems: HTMLTableRowElement[]
+): HTMLTableElement => {
   const table = document.createElement('table');
   table.classList.add('winners__table');
 

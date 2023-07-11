@@ -1,10 +1,10 @@
-import { getWinners } from '../../api/requests';
 import { IWinner } from '../../types/types';
+import { getWinners } from '../../api/requests';
 import basePaginationBtns from '../base/pagination/paginationBtns';
 import basePaginationTitle from '../base/pagination/paginationTitle';
 import baseSectionTitle from '../base/sectionTitle/sectionTitle';
-import winnersItem from './winners-item';
-import winnersTableView from './winners-table';
+import winnersItem from './winners-item/winners-item';
+import winnersTableView from './winners-table/winners-table';
 import './winners.scss';
 
 const winnersPage = 1;
@@ -37,7 +37,10 @@ const winnersView = async (): Promise<HTMLElement> => {
 
     const winnersTable = winnersTableView(
       await Promise.all(
-        winnersItems.map(async (winner: IWinner) => await winnersItem(winner))
+        winnersItems.map(
+          async (winner: IWinner): Promise<HTMLTableRowElement> =>
+            await winnersItem(winner)
+        )
       )
     );
 

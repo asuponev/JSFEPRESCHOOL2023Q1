@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: 16px;
 
-  &__buttons {
+  &__header {
     display: flex;
     gap: 12px;
   }
@@ -26,6 +26,11 @@
     display: flex;
     gap: 12px;
     height: 32px;
+
+    &__buttons {
+      display: flex;
+      gap: 12px;
+    }
 
     &__finish {
       margin-left: auto;

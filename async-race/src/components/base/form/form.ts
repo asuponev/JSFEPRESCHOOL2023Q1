@@ -25,6 +25,7 @@ const baseForm = (props: IProps) => {
   inputColor.id = `form-${props.id}-color`;
   inputColor.name = 'color';
   inputColor.type = 'color';
+  inputColor.defaultValue = '#e2e8f0';
   inputColor.classList.add('form__input', 'form__input--color');
 
   const btnSubmit = baseButton({

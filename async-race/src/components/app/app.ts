@@ -2,7 +2,7 @@ import state from '../../state/state';
 import getCurrentPage from '../../services/getCurrentPage';
 import garageView from '../garage/garage';
 import winnersView from '../winners/winners';
-import navigateView from '../navigate/navigate';
+import headerView from '../header/header';
 
 const app = async (): Promise<void> => {
   const currentPage: string = getCurrentPage();
@@ -15,9 +15,9 @@ const app = async (): Promise<void> => {
   if (currentPage === 'garage') garage.classList.remove('hidden');
   if (currentPage === 'winners') winners.classList.remove('hidden');
 
-  const navigate = navigateView();
+  const header = headerView();
 
-  document.body.append(navigate, garage, winners);
+  document.body.append(header, garage, winners);
 };
 
 export default app;

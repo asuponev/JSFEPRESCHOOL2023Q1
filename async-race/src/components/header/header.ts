@@ -1,11 +1,11 @@
 import onClickNavigate from '../../actions/onClickNavigate';
 import getCurrentPage from '../../services/getCurrentPage';
 import baseButton from '../base/button/button';
-import './navigate.scss';
+import './header.scss';
 
-const navigateView = (): HTMLDivElement => {
-  const navigateElement = document.createElement('div');
-  navigateElement.classList.add('navigate');
+const headerView = (): HTMLElement => {
+  const headerElement = document.createElement('header');
+  headerElement.classList.add('header');
 
   const btnToGarage = baseButton({
     text: 'to garage',
@@ -26,9 +26,9 @@ const navigateView = (): HTMLDivElement => {
     onClickNavigate(event, [btnToGarage], 'winners')
   );
 
-  navigateElement.append(btnToGarage, btnToWinners);
+  headerElement.append(btnToGarage, btnToWinners);
 
-  return navigateElement;
+  return headerElement;
 };
 
-export default navigateView;
+export default headerView;

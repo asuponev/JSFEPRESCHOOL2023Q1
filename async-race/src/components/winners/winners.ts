@@ -10,11 +10,11 @@ import './winners.scss';
 
 const winnersView = async (): Promise<HTMLElement> => {
   await fetchWinners();
+  const { items, page, count, fetchError } = state.winners;
   const winners = document.createElement('section');
   winners.classList.add('section', 'winners', 'hidden');
 
-  if (!state.winners.fetchError) {
-    const { items, page, count } = state.winners;
+  if (!fetchError) {
     const sectionTitle = baseSectionTitle({
       id: 'winners-title',
       text: 'Winners',
@@ -39,7 +39,7 @@ const winnersView = async (): Promise<HTMLElement> => {
 
     winners.append(sectionTitle, paginationTitle, winnersTable, paginationBtns);
   } else {
-    winners.textContent = state.winners.fetchError;
+    winners.textContent = fetchError;
   }
 
   return winners;

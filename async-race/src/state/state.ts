@@ -1,8 +1,14 @@
-import { HTMLElements, ICar, IElement } from '../types/types';
+import { HTMLElements, ICar, IElement, IWinner } from '../types/types';
 
 const state = {
   cars: {
     items: [] as ICar[],
+    count: '',
+    page: 1,
+    fetchError: '',
+  },
+  winners: {
+    items: [] as IWinner[],
     count: '',
     page: 1,
     fetchError: '',

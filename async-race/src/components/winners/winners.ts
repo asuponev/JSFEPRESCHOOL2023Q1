@@ -1,5 +1,6 @@
 import { IWinner } from '../../types/types';
-import { getWinners } from '../../api/requests';
+import state from '../../state/state';
+import fetchWinners from '../../actions/fetchWinners';
 import basePaginationBtns from '../base/pagination/paginationBtns';
 import basePaginationTitle from '../base/pagination/paginationTitle';
 import baseSectionTitle from '../base/sectionTitle/sectionTitle';
@@ -7,37 +8,26 @@ import winnersItem from './winners-item/winners-item';
 import winnersTableView from './winners-table/winners-table';
 import './winners.scss';
 
-const winnersPage = 1;
-let winnersItems: IWinner[];
-let winnersCount: string;
-let errorText: string;
-
-try {
-  const { data, count } = await getWinners(winnersPage);
-  winnersItems = data;
-  winnersCount = count;
-} catch (error) {
-  errorText = error as string;
-}
-
 const winnersView = async (): Promise<HTMLElement> => {
+  await fetchWinners();
   const winners = document.createElement('section');
   winners.classList.add('section', 'winners', 'hidden');
 
-  if (winnersItems) {
+  if (!state.winners.fetchError) {
+    const { items, page, count } = state.winners;
     const sectionTitle = baseSectionTitle({
       text: 'Winners',
-      count: winnersCount,
+      count,
     });
 
     const paginationTitle = basePaginationTitle({
       text: 'Page',
-      page: winnersPage,
+      page,
     });
 
     const winnersTable = winnersTableView(
       await Promise.all(
-        winnersItems.map(
+        items.map(
           async (winner: IWinner): Promise<HTMLTableRowElement> =>
             await winnersItem(winner)
         )
@@ -48,7 +38,7 @@ const winnersView = async (): Promise<HTMLElement> => {
 
     winners.append(sectionTitle, paginationTitle, winnersTable, paginationBtns);
   } else {
-    winners.textContent = errorText;
+    winners.textContent = state.winners.fetchError;
   }
 
   return winners;

@@ -10,6 +10,16 @@ export interface IWinner {
   time: number;
 }
 
+export interface IResponseCars {
+  data: ICar[];
+  count: string;
+}
+
+export interface IResponseWinners {
+  data: IWinner[];
+  count: string;
+}
+
 export interface IEnginePerformance {
   velocity: number;
   distance: number;

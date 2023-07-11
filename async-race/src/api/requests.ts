@@ -3,17 +3,22 @@ import {
   ICar,
   IEnginePerformance,
   IEngineStatus,
+  IResponseCars,
+  IResponseWinners,
   IWinner,
 } from '../types/types';
 
-export const getAllCars = async (page: number, limit = 7): Promise<ICar[]> => {
+export const getAllCars = async (
+  page: number,
+  limit = 7
+): Promise<IResponseCars> => {
   try {
     const response = await fetch(
       `${endpoints.garage}?_page=${page}&_limit=${limit}`
     );
-
     const data: ICar[] = await response.json();
-    return data;
+    const count = response.headers.get('X-Total-Count') as string;
+    return { data, count };
   } catch (error) {
     throw new Error(
       'Something went wrong. Most likely, you need to run the server locally from this repo: https://github.com/mikhama/async-race-api'
@@ -35,14 +40,15 @@ export const getCarById = async (id: number): Promise<ICar> => {
 export const getWinners = async (
   page: number,
   limit = 10
-): Promise<IWinner[]> => {
+): Promise<IResponseWinners> => {
   try {
     const response = await fetch(
       `${endpoints.winners}?_page=${page}&_limit=${limit}`
     );
 
     const data: IWinner[] = await response.json();
-    return data;
+    const count = response.headers.get('X-Total-Count') as string;
+    return { data, count };
   } catch (error) {
     throw new Error(
       'Something went wrong. Most likely, you need to run the server locally from this repo: https://github.com/mikhama/async-race-api'

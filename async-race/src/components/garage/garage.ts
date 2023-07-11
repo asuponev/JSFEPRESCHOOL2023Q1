@@ -11,11 +11,14 @@ import './garage.scss';
 import onUpdateCar from '../../actions/onUpdateCar';
 
 const garagePage = 1;
-let cars: ICar[] | undefined;
+let cars: ICar[];
+let carsCount: string;
 let errorText: string;
 
 try {
-  cars = await getAllCars(garagePage);
+  const { data, count } = await getAllCars(garagePage);
+  cars = data;
+  carsCount = count;
 } catch (error) {
   errorText = error as string;
 }
@@ -64,7 +67,7 @@ const garageView = (): HTMLElement => {
 
     const sectionTitle = baseSectionTitle({
       text: 'Garage',
-      count: cars.length,
+      count: carsCount,
     });
 
     const paginationTitle = basePaginationTitle({

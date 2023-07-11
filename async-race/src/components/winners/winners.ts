@@ -8,11 +8,14 @@ import winnersTableView from './winners-table';
 import './winners.scss';
 
 const winnersPage = 1;
-let winnersItems: IWinner[] | undefined;
+let winnersItems: IWinner[];
+let winnersCount: string;
 let errorText: string;
 
 try {
-  winnersItems = await getWinners(winnersPage);
+  const { data, count } = await getWinners(winnersPage);
+  winnersItems = data;
+  winnersCount = count;
 } catch (error) {
   errorText = error as string;
 }
@@ -24,7 +27,7 @@ const winnersView = async (): Promise<HTMLElement> => {
   if (winnersItems) {
     const sectionTitle = baseSectionTitle({
       text: 'Winners',
-      count: winnersItems.length,
+      count: winnersCount,
     });
 
     const paginationTitle = basePaginationTitle({

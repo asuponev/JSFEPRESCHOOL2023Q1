@@ -2,7 +2,7 @@ import './sectionTitle.scss';
 
 interface IProps {
   text: string;
-  count: number;
+  count: string;
   customClass?: string;
 }
 

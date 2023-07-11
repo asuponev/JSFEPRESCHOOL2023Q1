@@ -17,8 +17,8 @@ export const getAllCars = async (
       `${endpoints.garage}?_page=${page}&_limit=${limit}`
     );
     const data: ICar[] = await response.json();
-    const count = response.headers.get('X-Total-Count') as string;
-    return { data, count };
+    const count = response.headers.get('X-Total-Count');
+    return { data, count: Number(count) };
   } catch (error) {
     throw new Error(
       'Something went wrong. Most likely, you need to run the server locally from this repo: https://github.com/mikhama/async-race-api'
@@ -47,8 +47,8 @@ export const getWinners = async (
     );
 
     const data: IWinner[] = await response.json();
-    const count = response.headers.get('X-Total-Count') as string;
-    return { data, count };
+    const count = response.headers.get('X-Total-Count');
+    return { data, count: Number(count) };
   } catch (error) {
     throw new Error(
       'Something went wrong. Most likely, you need to run the server locally from this repo: https://github.com/mikhama/async-race-api'

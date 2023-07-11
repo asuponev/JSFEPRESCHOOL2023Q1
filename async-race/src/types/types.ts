@@ -12,12 +12,12 @@ export interface IWinner {
 
 export interface IResponseCars {
   data: ICar[];
-  count: string;
+  count: number;
 }
 
 export interface IResponseWinners {
   data: IWinner[];
-  count: string;
+  count: number;
 }
 
 export interface IEnginePerformance {

@@ -23,7 +23,12 @@ const carView = (props: ICar) => {
   });
   // create title car element
   const carTitle = document.createElement('p');
-  carTitle.textContent = props.name;
+  carTitle.classList.add('car__title');
+  const carTitleName = document.createElement('span');
+  carTitleName.textContent = props.name;
+  const carTitleNumber = document.createElement('span');
+  carTitleNumber.textContent = `#${props.id}`;
+  carTitle.append(carTitleName, carTitleNumber);
   carButtons.append(btnSelect, btnDelete, carTitle);
   // create road element
   const carRoad = document.createElement('div');

@@ -7,7 +7,7 @@ import navigateView from '../navigate/navigate';
 const app = async (): Promise<void> => {
   const currentPage: string = getCurrentPage();
 
-  const garage = garageView();
+  const garage = await garageView();
   const winners = await winnersView();
   state.html.addToElements('garage', garage);
   state.html.addToElements('winners', winners);

@@ -1,33 +1,21 @@
-import { ICar } from '../../types/types';
-import { getAllCars } from '../../api/requests';
+import state from '../../state/state';
+import fetchCars from '../../actions/fetchCars';
 import garageControlsView from './garage-controls/garage-controls';
 import garageContentView from './garage-content/garage-content';
 import './garage.scss';
 
-const garagePage = 1;
-let cars: ICar[];
-let carCount: string;
-let errorText: string;
-
-try {
-  const { data, count } = await getAllCars(garagePage);
-  cars = data;
-  carCount = count;
-} catch (error) {
-  errorText = error as string;
-}
-
-const garageView = (): HTMLElement => {
+const garageView = async (): Promise<HTMLElement> => {
+  await fetchCars();
   const garage = document.createElement('section');
   garage.classList.add('section', 'garage', 'hidden');
 
-  if (cars) {
+  if (!state.cars.fetchError) {
     const garageControls = garageControlsView();
-    const garageContent = garageContentView({ carCount, garagePage, cars });
+    const garageContent = garageContentView();
 
     garage.append(garageControls, garageContent);
   } else {
-    garage.textContent = errorText;
+    garage.textContent = state.cars.fetchError;
   }
 
   return garage;

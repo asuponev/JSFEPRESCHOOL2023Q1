@@ -1,6 +1,12 @@
-import { HTMLElements, IElement } from '../types/types';
+import { HTMLElements, ICar, IElement } from '../types/types';
 
 const state = {
+  cars: {
+    items: [] as ICar[],
+    count: '',
+    page: 1,
+    fetchError: '',
+  },
   html: {
     elements: [] as IElement[],
     addToElements: (id: string, element: HTMLElements): void => {

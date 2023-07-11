@@ -1,34 +1,27 @@
 import { ICar } from '../../../types/types';
+import state from '../../../state/state';
 import basePaginationBtns from '../../base/pagination/paginationBtns';
 import basePaginationTitle from '../../base/pagination/paginationTitle';
 import baseSectionTitle from '../../base/sectionTitle/sectionTitle';
 import carView from '../../car/car';
 
-interface IProps {
-  carCount: string;
-  garagePage: number;
-  cars: ICar[];
-}
+const garageContentView = (): HTMLDivElement => {
+  const { items, page, count } = state.cars;
 
-const garageContentView = ({
-  carCount,
-  garagePage,
-  cars,
-}: IProps): HTMLDivElement => {
   const garageContent = document.createElement('div');
   garageContent.classList.add('garage__content');
   const sectionTitle = baseSectionTitle({
     text: 'Garage',
-    count: carCount,
+    count,
   });
   const paginationTitle = basePaginationTitle({
     text: 'Page',
-    page: garagePage,
+    page,
   });
 
   const garageItems = document.createElement('div');
   garageItems.classList.add('garage__items');
-  garageItems.append(...cars.map((car: ICar): HTMLDivElement => carView(car)));
+  garageItems.append(...items.map((car: ICar): HTMLDivElement => carView(car)));
 
   const paginationBtns = basePaginationBtns();
 

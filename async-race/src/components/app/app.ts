@@ -1,16 +1,19 @@
+import state from '../../state/state';
 import getCurrentPage from '../../services/getCurrentPage';
 import garageView from '../garage/garage';
-import navigateView from '../navigate/navigate';
 import winnersView from '../winners/winners';
+import navigateView from '../navigate/navigate';
 
 const app = async (): Promise<void> => {
   const currentPage: string = getCurrentPage();
 
   const garage = garageView();
   const winners = await winnersView();
+  state.html.addToElements('garage', garage);
+  state.html.addToElements('winners', winners);
 
-  garage.style.display = currentPage === 'garage' ? 'block' : 'none';
-  winners.style.display = currentPage === 'winners' ? 'block' : 'none';
+  if (currentPage === 'garage') garage.classList.remove('hidden');
+  if (currentPage === 'winners') winners.classList.remove('hidden');
 
   const navigate = navigateView();
 

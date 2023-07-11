@@ -1,4 +1,23 @@
+type HTMLElements = HTMLElementTagNameMap[keyof HTMLElementTagNameMap];
+
+interface IElement {
+  id: string;
+  element: HTMLElements;
+}
+
 const state = {
+  html: {
+    elements: [] as IElement[],
+    addToElements: (id: string, element: HTMLElements): void => {
+      state.html.elements.push({ id, element });
+    },
+    getElements: (elementIds: string[]): IElement[] => {
+      return state.html.elements.filter((item) => elementIds.includes(item.id));
+    },
+    getElement: (elementId: string): HTMLElements | undefined => {
+      return state.html.elements.find((item) => item.id === elementId)?.element;
+    },
+  },
   engine: {
     starts: [] as number[],
     addStartedEngine: (carId: number): void => {

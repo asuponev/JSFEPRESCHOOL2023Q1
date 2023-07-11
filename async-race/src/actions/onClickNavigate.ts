@@ -1,21 +1,28 @@
-import getCurrentPage from '../services/getCurrentPage';
+import state from '../state/state';
 import setCurrentPage from '../services/setCurrentPage';
+import pages from '../constants/pages';
+import { IElement } from '../types/types';
 
-const onClickNavigate = (): void => {
-  const garage: HTMLElement | null = document.querySelector('.garage');
-  const winners: HTMLElement | null = document.querySelector('.winners');
-  const btnG: HTMLButtonElement | null = document.querySelector('#btn-garage');
-  const btnW: HTMLButtonElement | null = document.querySelector('#btn-winners');
+const onClickNavigate = (
+  event: MouseEvent,
+  neighborButtons: HTMLButtonElement[],
+  newPage: string
+): void => {
+  const targetButton = event.target as HTMLButtonElement;
+  const pageElements: IElement[] = state.html.getElementsByIds(pages);
 
-  const currentPage: string = getCurrentPage();
-
-  if (garage && winners && btnG && btnW) {
-    garage.style.display = currentPage === 'garage' ? 'none' : 'block';
-    winners.style.display = currentPage === 'winners' ? 'none' : 'block';
-    btnG.disabled = currentPage === 'winners';
-    btnW.disabled = currentPage === 'garage';
-    setCurrentPage(currentPage === 'garage' ? 'winners' : 'garage');
-  }
+  targetButton.disabled = true;
+  pageElements.forEach((item) => {
+    if (item.id === newPage) {
+      item.element?.classList.remove('hidden');
+    } else {
+      item.element?.classList.add('hidden');
+    }
+  });
+  neighborButtons.forEach((button): void => {
+    button.disabled = false;
+  });
+  setCurrentPage(newPage);
 };
 
 export default onClickNavigate;

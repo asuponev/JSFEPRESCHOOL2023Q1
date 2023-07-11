@@ -11,17 +11,20 @@ const navigateView = (): HTMLDivElement => {
     text: 'to garage',
     customClass: 'button--main',
     disabled: getCurrentPage() === 'garage',
-    onClick: onClickNavigate,
   });
-  btnToGarage.id = 'btn-garage';
 
   const btnToWinners = baseButton({
     text: 'to winners',
     customClass: 'button--main',
     disabled: getCurrentPage() === 'winners',
-    onClick: onClickNavigate,
   });
-  btnToWinners.id = 'btn-winners';
+
+  btnToGarage.addEventListener('click', (event) =>
+    onClickNavigate(event, [btnToWinners], 'garage')
+  );
+  btnToWinners.addEventListener('click', (event) =>
+    onClickNavigate(event, [btnToGarage], 'winners')
+  );
 
   navigateElement.append(btnToGarage, btnToWinners);
 

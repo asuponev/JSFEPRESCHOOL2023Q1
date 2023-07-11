@@ -19,7 +19,7 @@ try {
 
 const garageView = (): HTMLElement => {
   const garage = document.createElement('section');
-  garage.classList.add('section', 'garage');
+  garage.classList.add('section', 'garage', 'hidden');
 
   if (cars) {
     const garageControls = garageControlsView();

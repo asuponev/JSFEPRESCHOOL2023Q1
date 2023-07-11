@@ -28,3 +28,10 @@ export interface IEnginePerformance {
 export interface IEngineStatus {
   success: boolean;
 }
+
+export type HTMLElements = HTMLElementTagNameMap[keyof HTMLElementTagNameMap];
+
+export interface IElement {
+  id: string;
+  element: HTMLElements;
+}

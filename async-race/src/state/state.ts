@@ -1,9 +1,4 @@
-type HTMLElements = HTMLElementTagNameMap[keyof HTMLElementTagNameMap];
-
-interface IElement {
-  id: string;
-  element: HTMLElements;
-}
+import { HTMLElements, IElement } from '../types/types';
 
 const state = {
   html: {
@@ -11,7 +6,7 @@ const state = {
     addToElements: (id: string, element: HTMLElements): void => {
       state.html.elements.push({ id, element });
     },
-    getElements: (elementIds: string[]): IElement[] => {
+    getElementsByIds: (elementIds: string[]): IElement[] => {
       return state.html.elements.filter((item) => elementIds.includes(item.id));
     },
     getElement: (elementId: string): HTMLElements | undefined => {

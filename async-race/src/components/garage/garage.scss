@@ -29,4 +29,8 @@
     gap: 16px;
     margin: 12px 0 24px;
   }
+
+  &.hidden {
+    display: none;
+  }
 }

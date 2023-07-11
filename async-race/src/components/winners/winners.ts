@@ -22,7 +22,7 @@ try {
 
 const winnersView = async (): Promise<HTMLElement> => {
   const winners = document.createElement('section');
-  winners.classList.add('section', 'winners');
+  winners.classList.add('section', 'winners', 'hidden');
 
   if (winnersItems) {
     const sectionTitle = baseSectionTitle({

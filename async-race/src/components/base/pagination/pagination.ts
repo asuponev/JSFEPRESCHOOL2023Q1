@@ -5,9 +5,10 @@ import './pagination.scss';
 interface IProps {
   id: string;
   page: number;
+  count: number;
 }
 
-const paginationView = ({ id, page }: IProps) => {
+const paginationView = ({ id, page, count }: IProps) => {
   const pagination = document.createElement('div');
   pagination.classList.add('pagination');
 
@@ -18,8 +19,18 @@ const paginationView = ({ id, page }: IProps) => {
 
   const paginationBtns = document.createElement('div');
   paginationBtns.classList.add('pagination__buttons');
-  const btnPrev = baseButton({ text: '<', customClass: 'button--main' });
-  const btnNext = baseButton({ text: '>', customClass: 'button--main' });
+  const btnPrev = baseButton({
+    text: '<',
+    customClass: 'button--main',
+    disabled: page === 1,
+  });
+  const btnNext = baseButton({
+    text: '>',
+    customClass: 'button--main',
+    disabled: count <= 7 || page === Math.ceil(count / 7),
+  });
+  htmlState.addToElements('button-prev', btnPrev);
+  htmlState.addToElements('button-next', btnNext);
   paginationBtns.append(btnPrev, btnNext);
 
   pagination.append(paginationTitle, paginationBtns);

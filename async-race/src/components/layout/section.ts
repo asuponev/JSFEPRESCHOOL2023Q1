@@ -21,6 +21,7 @@ const sectionLayout = ({ id, count, page }: IProps): HTMLElement => {
   const pagination = paginationView({
     id: `pagination-title-${id}`,
     page,
+    count,
   });
 
   section.append(sectionTitle, pagination);

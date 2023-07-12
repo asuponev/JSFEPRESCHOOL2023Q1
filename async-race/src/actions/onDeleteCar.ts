@@ -9,7 +9,7 @@ const onDeleteCar = async (car: ICar): Promise<void> => {
       await deleteCar(car.id);
 
       carsState.removeItem(car.id);
-      removeCarFromGarageItems(car.id, carsState.count);
+      removeCarFromGarageItems(car.id, carsState.page, carsState.count);
     } catch (error) {
       console.log(error);
     }

@@ -19,7 +19,7 @@ const onCreateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
       newCar = await createCar({ name, color });
 
       carsState.addItems([newCar]);
-      addCarToGarageItems([newCar], carsState.count);
+      addCarToGarageItems([newCar], carsState.page, carsState.count);
 
       form.reset();
     } catch (error) {

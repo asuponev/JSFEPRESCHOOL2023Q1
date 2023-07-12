@@ -17,7 +17,7 @@ const paginationView = ({ id, page, count }: IProps) => {
   const paginationTitle = document.createElement('p');
   paginationTitle.classList.add('pagination__title');
   paginationTitle.textContent = `Page #${page}`;
-  htmlState.addToElements(id, paginationTitle);
+  htmlState.addToElements(`pagination-title-${id}`, paginationTitle);
 
   const paginationBtns = document.createElement('div');
   paginationBtns.classList.add('pagination__buttons');
@@ -33,8 +33,8 @@ const paginationView = ({ id, page, count }: IProps) => {
     disabled: count <= 7 || page === Math.ceil(count / 7),
     onClick: onClickNext,
   });
-  htmlState.addToElements('button-prev', btnPrev);
-  htmlState.addToElements('button-next', btnNext);
+  htmlState.addToElements(`button-prev-${id}`, btnPrev);
+  htmlState.addToElements(`button-next-${id}`, btnNext);
   paginationBtns.append(btnPrev, btnNext);
 
   pagination.append(paginationTitle, paginationBtns);

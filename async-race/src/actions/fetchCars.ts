@@ -1,13 +1,13 @@
 import { getAllCars } from '../api/requests';
-import state from '../state/state';
+import carsState from '../state/carsState';
 
 const fetchCars = async () => {
   try {
-    const { data, count } = await getAllCars(state.cars.page);
-    state.cars.items = data;
-    state.cars.count = count;
+    const { data, count } = await getAllCars(carsState.page);
+    carsState.items = data;
+    carsState.count = count;
   } catch (error) {
-    state.cars.fetchError = error as string;
+    carsState.fetchError = error as string;
   }
 };
 

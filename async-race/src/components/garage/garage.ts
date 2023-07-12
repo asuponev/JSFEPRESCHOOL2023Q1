@@ -1,4 +1,4 @@
-import state from '../../state/state';
+import carsState from '../../state/carsState';
 import fetchCars from '../../actions/fetchCars';
 import garageControlsView from './garage-controls/garage-controls';
 import garageContentView from './garage-content/garage-content';
@@ -6,16 +6,17 @@ import './garage.scss';
 
 const garageView = async (): Promise<HTMLElement> => {
   await fetchCars();
+  const { fetchError } = carsState;
   const garage = document.createElement('section');
   garage.classList.add('section', 'garage', 'hidden');
 
-  if (!state.cars.fetchError) {
+  if (!fetchError) {
     const garageControls = garageControlsView();
     const garageContent = garageContentView();
 
     garage.append(garageControls, garageContent);
   } else {
-    garage.textContent = state.cars.fetchError;
+    garage.textContent = fetchError;
   }
 
   return garage;

@@ -1,4 +1,4 @@
-import state from '../state/state';
+import htmlState from '../state/htmlState';
 import setCurrentPage from '../services/setCurrentPage';
 import pages from '../constants/pages';
 import { IElement } from '../types/types';
@@ -9,7 +9,7 @@ const onClickNavigate = (
   newPage: string
 ): void => {
   const targetButton = event.target as HTMLButtonElement;
-  const pageElements: IElement[] = state.html.getElementsByIds(pages);
+  const pageElements: IElement[] = htmlState.getElementsByIds(pages);
 
   targetButton.disabled = true;
   pageElements.forEach((item) => {

@@ -1,51 +1,11 @@
-import { HTMLElements, ICar, IElement, IWinner } from '../types/types';
+import { IWinner } from '../types/types';
 
 const state = {
-  cars: {
-    items: [] as ICar[],
-    count: 0,
-    page: 1,
-    fetchError: '',
-    addItems: (newCars: ICar[]): void => {
-      state.cars.items.push(...newCars);
-      state.cars.count += newCars.length;
-    },
-    removeItem: (carId: number): void => {
-      state.cars.items = state.cars.items.filter((item) => item.id !== carId);
-      state.cars.count -= 1;
-      state.html.getElement(`car-${carId}`)?.remove();
-      state.html.elements = state.html.elements.filter(
-        (item) => item.id !== `car-${carId}`
-      );
-
-      const garageTitle = state.html.getElement('garage-title');
-      if (garageTitle) garageTitle.textContent = `Garage (${state.cars.count})`;
-    },
-    updateItem: (car: ICar): void => {
-      state.cars.items.forEach((item, idx) => {
-        if (item.id === car.id) {
-          state.cars.items[idx] = car;
-        }
-      });
-    },
-  },
   winners: {
     items: [] as IWinner[],
     count: 0,
     page: 1,
     fetchError: '',
-  },
-  html: {
-    elements: [] as IElement[],
-    addToElements: (id: string, element: HTMLElements): void => {
-      state.html.elements.push({ id, element });
-    },
-    getElementsByIds: (elementIds: string[]): IElement[] => {
-      return state.html.elements.filter((item) => elementIds.includes(item.id));
-    },
-    getElement: (elementId: string): HTMLElements | undefined => {
-      return state.html.elements.find((item) => item.id === elementId)?.element;
-    },
   },
   engine: {
     starts: [] as number[],

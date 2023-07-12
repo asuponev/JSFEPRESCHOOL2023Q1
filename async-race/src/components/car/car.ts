@@ -1,5 +1,5 @@
 import { ICar } from '../../types/types';
-import state from '../../state/state';
+import htmlState from '../../state/htmlState';
 import carRoadView from './car-road/car-road';
 import carHeaderView from './car-header/car-header';
 import './car.scss';
@@ -13,7 +13,7 @@ const carView = (car: ICar): HTMLDivElement => {
 
   carElement.append(carHeader, carRoad);
 
-  state.html.addToElements(carElement.id, carElement);
+  htmlState.addToElements(carElement.id, carElement);
 
   return carElement;
 };

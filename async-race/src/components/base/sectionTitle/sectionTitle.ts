@@ -1,4 +1,4 @@
-import state from '../../../state/state';
+import htmlState from '../../../state/htmlState';
 import './sectionTitle.scss';
 
 interface IProps {
@@ -19,7 +19,7 @@ const baseSectionTitle = ({
   sectionTitle.textContent = `${text} (${count})`;
   if (customClass) sectionTitle.classList.add(customClass);
 
-  state.html.addToElements(id, sectionTitle);
+  htmlState.addToElements(id, sectionTitle);
 
   return sectionTitle;
 };

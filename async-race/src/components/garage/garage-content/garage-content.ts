@@ -1,12 +1,13 @@
 import { ICar } from '../../../types/types';
-import state from '../../../state/state';
+import carsState from '../../../state/carsState';
+import htmlState from '../../../state/htmlState';
 import basePaginationBtns from '../../base/pagination/paginationBtns';
 import basePaginationTitle from '../../base/pagination/paginationTitle';
 import baseSectionTitle from '../../base/sectionTitle/sectionTitle';
 import carView from '../../car/car';
 
 const garageContentView = (): HTMLDivElement => {
-  const { items, page, count } = state.cars;
+  const { items, page, count } = carsState;
 
   const garageContent = document.createElement('div');
   garageContent.classList.add('garage__content');
@@ -23,7 +24,7 @@ const garageContentView = (): HTMLDivElement => {
   const garageItems = document.createElement('div');
   garageItems.classList.add('garage__items');
   garageItems.append(...items.map((car: ICar): HTMLDivElement => carView(car)));
-  state.html.addToElements('garage-items', garageItems);
+  htmlState.addToElements('garage-items', garageItems);
 
   const paginationBtns = basePaginationBtns();
 

@@ -1,7 +1,7 @@
 import { ICar } from '../types/types';
-import state from '../state/state';
+import carsState from '../state/carsState';
 import { createCar } from '../api/requests';
-import updateHtmlGarage from './updateHtmlGarage';
+import addCarToGarageItems from './view-updaters/addCarToGarageItems';
 
 const onCreateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   event.preventDefault();
@@ -17,8 +17,10 @@ const onCreateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   if (name && color) {
     try {
       newCar = await createCar({ name, color });
-      state.cars.addItems([newCar]);
-      updateHtmlGarage([newCar]);
+
+      carsState.addItems([newCar]);
+      addCarToGarageItems([newCar], carsState.count);
+
       form.reset();
     } catch (error) {
       console.log(error);

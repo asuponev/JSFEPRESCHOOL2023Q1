@@ -1,8 +1,8 @@
-import { updateCar } from '../api/requests';
-import state from '../state/state';
 import { ICar } from '../types/types';
+import { updateCar } from '../api/requests';
+import carsState from '../state/carsState';
 import onResetUpdate from './onResetUpdate';
-import updateHtmlCar from './updateHtmlCar';
+import updateCarInGarageItems from './view-updaters/updateCarInGarageItems';
 
 const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   let updatedCar: ICar | undefined;
@@ -35,8 +35,10 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
     if (name && color) {
       try {
         updatedCar = await updateCar({ id, name, color });
-        state.cars.updateItem(updatedCar);
-        updateHtmlCar(updatedCar);
+
+        carsState.updateItem(updatedCar);
+        updateCarInGarageItems(updatedCar);
+
         onResetUpdate(
           inputCreateName,
           inputCreateColor,

@@ -1,5 +1,5 @@
 import getCurrentPage from '../../services/getCurrentPage';
-import state from '../../state/state';
+import htmlState from '../../state/htmlState';
 import garageView from '../garage/garage';
 import winnersView from '../winners/winners';
 
@@ -10,8 +10,8 @@ const mainView = async (): Promise<HTMLElement> => {
 
   const garage = await garageView();
   const winners = await winnersView();
-  state.html.addToElements('garage', garage);
-  state.html.addToElements('winners', winners);
+  htmlState.addToElements('garage', garage);
+  htmlState.addToElements('winners', winners);
 
   if (currentPage === 'garage') garage.classList.remove('hidden');
   if (currentPage === 'winners') winners.classList.remove('hidden');

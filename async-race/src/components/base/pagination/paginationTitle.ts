@@ -1,4 +1,4 @@
-import state from '../../../state/state';
+import htmlState from '../../../state/htmlState';
 
 interface IProps {
   id: string;
@@ -15,7 +15,7 @@ const basePaginationTitle = ({
   paginationTitle.textContent = `Page #${page}`;
   if (customClass) paginationTitle.classList.add(customClass);
 
-  state.html.addToElements(id, paginationTitle);
+  htmlState.addToElements(id, paginationTitle);
 
   return paginationTitle;
 };

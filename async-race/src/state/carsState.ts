@@ -8,6 +8,8 @@ interface ICarState {
   addItems: (cars: ICar[]) => void;
   removeItem: (carId: number) => void;
   updateItem: (car: ICar) => void;
+  nextPage: () => void;
+  prevPage: () => void;
 }
 
 const carsState: ICarState = {
@@ -29,6 +31,19 @@ const carsState: ICarState = {
         carsState.items[index] = car;
       }
     });
+  },
+  nextPage: (): void => {
+    if (
+      carsState.count > 7 ||
+      carsState.page < Math.ceil(carsState.count / 7)
+    ) {
+      carsState.page += 1;
+    }
+  },
+  prevPage: (): void => {
+    if (carsState.page > 1) {
+      carsState.page -= 1;
+    }
   },
 };
 

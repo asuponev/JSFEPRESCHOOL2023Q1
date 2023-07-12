@@ -1,3 +1,5 @@
+import onClickNext from '../../../actions/onClickNext';
+import onClickPrev from '../../../actions/onClickPrev';
 import htmlState from '../../../state/htmlState';
 import baseButton from '../button/button';
 import './pagination.scss';
@@ -23,11 +25,13 @@ const paginationView = ({ id, page, count }: IProps) => {
     text: '<',
     customClass: 'button--main',
     disabled: page === 1,
+    onClick: onClickPrev,
   });
   const btnNext = baseButton({
     text: '>',
     customClass: 'button--main',
     disabled: count <= 7 || page === Math.ceil(count / 7),
+    onClick: onClickNext,
   });
   htmlState.addToElements('button-prev', btnPrev);
   htmlState.addToElements('button-next', btnNext);

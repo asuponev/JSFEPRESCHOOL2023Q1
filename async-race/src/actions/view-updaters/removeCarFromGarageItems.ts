@@ -1,16 +1,11 @@
+import carsState from '../../state/carsState';
 import htmlState from '../../state/htmlState';
-import updatePaginationBtns from './updatePaginationBtns';
 import updateSectionTitle from './updateSectionTitle';
 
-const removeCarFromGarageItems = (
-  carId: number,
-  currentPage: number,
-  newCount: number
-) => {
-  htmlState.getElementById(`car-${carId}`)?.remove();
+const removeCarFromGarageItems = (carId: number) => {
+  carsState.removeItem(carId);
   htmlState.removeFromElements(`car-${carId}`);
-  updateSectionTitle('garage-title', newCount);
-  updatePaginationBtns(currentPage, newCount);
+  updateSectionTitle('garage-title', carsState.count);
 };
 
 export default removeCarFromGarageItems;

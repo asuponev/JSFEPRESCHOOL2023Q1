@@ -1,6 +1,5 @@
 import { ICar } from '../types/types';
 import { updateCar } from '../api/requests';
-import carsState from '../state/carsState';
 import htmlState from '../state/htmlState';
 import onResetUpdate from './onResetUpdate';
 import updateCarInGarageItems from './view-updaters/updateCarInGarageItems';
@@ -40,8 +39,6 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
     if (name && color) {
       try {
         updatedCar = await updateCar({ id, name, color });
-
-        carsState.updateItem(updatedCar);
         updateCarInGarageItems(updatedCar);
         htmlState.currentSelectCar = null;
 

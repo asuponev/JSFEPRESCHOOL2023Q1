@@ -5,7 +5,6 @@ interface ICar {
 
 const carNames: ICar = {
   brands: [
-    'Lightning',
     'Tesla',
     'Chevrolet',
     'Toyota',
@@ -32,7 +31,6 @@ const carNames: ICar = {
   ],
   models: [
     'McQueen',
-    'Tesla',
     '3008',
     'Octavia',
     'Kodiaq',

@@ -1,9 +1,7 @@
 import { IWinner } from '../../types/types';
 import state from '../../state/state';
 import fetchWinners from '../../actions/fetchWinners';
-import basePaginationBtns from '../base/pagination/paginationBtns';
-import basePaginationTitle from '../base/pagination/paginationTitle';
-import baseSectionTitle from '../base/sectionTitle/sectionTitle';
+import sectionLayout from '../layout/section';
 import winnersItem from './winners-item/winners-item';
 import winnersTableView from './winners-table/winners-table';
 import './winners.scss';
@@ -11,21 +9,9 @@ import './winners.scss';
 const winnersView = async (): Promise<HTMLElement> => {
   await fetchWinners();
   const { items, page, count, fetchError } = state.winners;
-  const winners = document.createElement('section');
-  winners.classList.add('section', 'winners', 'hidden');
+  const winners = sectionLayout({ id: 'winners', count, page });
 
   if (!fetchError) {
-    const sectionTitle = baseSectionTitle({
-      id: 'winners-title',
-      text: 'Winners',
-      count,
-    });
-
-    const paginationTitle = basePaginationTitle({
-      id: 'pagination-title-winners',
-      page,
-    });
-
     const winnersTable = winnersTableView(
       await Promise.all(
         items.map(
@@ -35,9 +21,7 @@ const winnersView = async (): Promise<HTMLElement> => {
       )
     );
 
-    const paginationBtns = basePaginationBtns();
-
-    winners.append(sectionTitle, paginationTitle, winnersTable, paginationBtns);
+    winners.append(winnersTable);
   } else {
     winners.textContent = fetchError;
   }

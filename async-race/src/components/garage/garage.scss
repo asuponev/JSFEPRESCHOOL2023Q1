@@ -9,6 +9,7 @@
     max-width: 400px;
     gap: 12px;
     margin-bottom: 32px;
+    order: 1;
   }
 
   &__buttons {
@@ -17,17 +18,12 @@
     gap: 12px;
   }
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
   &__items {
     display: flex;
     flex-direction: column;
     gap: 16px;
     margin: 12px 0 24px;
+    order: 4;
   }
 
   &.hidden {

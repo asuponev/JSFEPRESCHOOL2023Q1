@@ -1,4 +1,13 @@
 .pagination {
+  order: 3;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+
+  &__title {
+    margin-right: 32px;
+  }
+
   &__buttons {
     display: flex;
     gap: 12px;

@@ -1,5 +1,5 @@
 import { enableDriveMode } from '../api/requests';
-import state from '../state/state';
+import moveState from '../state/moveState';
 
 const driveMode = async (
   id: number,
@@ -15,7 +15,7 @@ const driveMode = async (
   } catch (error) {
     console.log(error);
     animate.pause();
-    if (state.engine.isEngineStarts(id)) {
+    if (moveState.isEngineStarts(id)) {
       car.classList.add('car__icon--broken');
     }
   }

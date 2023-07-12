@@ -1,7 +1,7 @@
 import { startCarEngine } from '../api/requests';
 import addCarAnimate from '../services/addCarAnimate';
 import getDistanceFromCarToFinish from '../services/getDistanceFromCarToFinish';
-import state from '../state/state';
+import moveState from '../state/moveState';
 import driveMode from './driveMode';
 
 const onStartOneCar = async (
@@ -16,13 +16,13 @@ const onStartOneCar = async (
     btnDrive.disabled = true;
 
     const { velocity, distance } = await startCarEngine(id);
-    state.engine.addStartedEngine(id);
+    moveState.addStartedEngine(id);
 
     const timeMs = Math.round(distance / velocity);
     const distancePx = getDistanceFromCarToFinish(carElement, finishElement);
 
     const animate = addCarAnimate(carElement, distancePx, timeMs);
-    state.driveCar.addAnimation(animate);
+    moveState.addAnimation(animate);
 
     btnStop.disabled = false;
 

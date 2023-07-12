@@ -1,5 +1,5 @@
 import { stopCarEngine } from '../api/requests';
-import state from '../state/state';
+import moveState from '../state/moveState';
 
 const onStopOneCar = async (
   event: MouseEvent,
@@ -12,10 +12,10 @@ const onStopOneCar = async (
     btnStop.disabled = true;
 
     await stopCarEngine(id);
-    state.engine.removeStoppedEngine(id);
+    moveState.removeStoppedEngine(id);
 
-    state.driveCar.stopAnimation(`animate-${car.id}`);
-    state.driveCar.removeAnimation(`animate-${car.id}`);
+    moveState.stopAnimation(`animate-${car.id}`);
+    moveState.removeAnimation(`animate-${car.id}`);
 
     car.classList.remove('car__icon--broken', 'car__icon--finished');
 

@@ -1,3 +1,4 @@
+import htmlState from '../../../state/htmlState';
 import baseButton from '../button/button';
 import './form.scss';
 
@@ -40,6 +41,11 @@ const baseForm = (props: IProps) => {
     inputColor.disabled = true;
     btnSubmit.disabled = true;
   }
+
+  htmlState.addToElements(form.id, form);
+  htmlState.addToElements(inputName.id, inputName);
+  htmlState.addToElements(inputColor.id, inputColor);
+  htmlState.addToElements(btnSubmit.id, btnSubmit);
 
   form.append(inputName, inputColor, btnSubmit);
   return form;

@@ -2,6 +2,7 @@ import { HTMLElements, IElement } from '../types/types';
 
 interface IHtmlState {
   elements: IElement[];
+  currentSelectCar: HTMLButtonElement | null;
   addToElements: (id: string, element: HTMLElements) => void;
   removeFromElements: (id: string) => void;
   getElementById: (elementId: string) => HTMLElements | undefined;
@@ -10,6 +11,7 @@ interface IHtmlState {
 
 const htmlState: IHtmlState = {
   elements: [],
+  currentSelectCar: null,
   addToElements: (id: string, element: HTMLElements): void => {
     htmlState.elements.push({ id, element });
   },

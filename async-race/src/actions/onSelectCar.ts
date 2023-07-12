@@ -1,24 +1,28 @@
 import { ICar } from '../types/types';
+import htmlState from '../state/htmlState';
 import onResetUpdate from './onResetUpdate';
 
 const onSelectCar = (event: MouseEvent, car: ICar): void => {
-  const inputCreateName: HTMLInputElement | null =
-    document.querySelector('#form-create-name');
-  const inputCreateColor: HTMLInputElement | null =
-    document.querySelector('#form-create-color');
-  const btnCreate: HTMLButtonElement | null = document.querySelector(
-    '#form-create-button'
-  );
+  const inputCreateName = htmlState.getElementById(
+    'form-create-name'
+  ) as HTMLInputElement;
+  const inputCreateColor = htmlState.getElementById(
+    'form-create-color'
+  ) as HTMLInputElement;
+  const btnCreate = htmlState.getElementById(
+    'form-create-button'
+  ) as HTMLButtonElement;
 
-  const updateForm: HTMLFormElement | null =
-    document.querySelector('#form-update');
-  const inputUpdateName: HTMLInputElement | null =
-    document.querySelector('#form-update-name');
-  const inputUpdateColor: HTMLInputElement | null =
-    document.querySelector('#form-update-color');
-  const btnUpdate: HTMLButtonElement | null = document.querySelector(
-    '#form-update-button'
-  );
+  const updateForm = htmlState.getElementById('form-update') as HTMLFormElement;
+  const inputUpdateName = htmlState.getElementById(
+    'form-update-name'
+  ) as HTMLInputElement;
+  const inputUpdateColor = htmlState.getElementById(
+    'form-update-color'
+  ) as HTMLInputElement;
+  const btnUpdate = htmlState.getElementById(
+    'form-update-button'
+  ) as HTMLButtonElement;
 
   if (inputCreateName) inputCreateName.disabled = true;
   if (inputCreateColor) inputCreateColor.disabled = true;
@@ -38,9 +42,10 @@ const onSelectCar = (event: MouseEvent, car: ICar): void => {
 
   if (btnUpdate) btnUpdate.disabled = false;
 
-  const btnPrevSelected: HTMLButtonElement | null =
-    document.querySelector('.button--selected');
+  const btnPrevSelected: HTMLButtonElement | null = htmlState.currentSelectCar;
   btnPrevSelected?.classList.remove('button--selected');
+  htmlState.currentSelectCar = null;
+
   const btnCurSelected = event.target as HTMLButtonElement;
   if (btnPrevSelected === btnCurSelected) {
     onResetUpdate(
@@ -54,7 +59,10 @@ const onSelectCar = (event: MouseEvent, car: ICar): void => {
     );
   } else {
     btnCurSelected.classList.add('button--selected');
+    htmlState.currentSelectCar = btnCurSelected;
   }
+
+  console.log(htmlState.currentSelectCar);
 };
 
 export default onSelectCar;

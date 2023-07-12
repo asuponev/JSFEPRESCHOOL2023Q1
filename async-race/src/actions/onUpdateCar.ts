@@ -1,6 +1,7 @@
 import { ICar } from '../types/types';
 import { updateCar } from '../api/requests';
 import carsState from '../state/carsState';
+import htmlState from '../state/htmlState';
 import onResetUpdate from './onResetUpdate';
 import updateCarInGarageItems from './view-updaters/updateCarInGarageItems';
 
@@ -16,21 +17,25 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   const color = formData.get('color')?.toString();
 
   if (window.confirm('are you sure you want to update this car')) {
-    const inputCreateName: HTMLInputElement | null =
-      document.querySelector('#form-create-name');
-    const inputCreateColor: HTMLInputElement | null =
-      document.querySelector('#form-create-color');
-    const btnCreate: HTMLButtonElement | null = document.querySelector(
-      '#form-create-button'
-    );
+    const inputCreateName = htmlState.getElementById(
+      'form-create-name'
+    ) as HTMLInputElement;
+    const inputCreateColor = htmlState.getElementById(
+      'form-create-color'
+    ) as HTMLInputElement;
+    const btnCreate = htmlState.getElementById(
+      'form-create-button'
+    ) as HTMLButtonElement;
 
-    const inputUpdateName: HTMLInputElement | null =
-      document.querySelector('#form-update-name');
-    const inputUpdateColor: HTMLInputElement | null =
-      document.querySelector('#form-update-color');
-    const btnUpdate: HTMLButtonElement | null = document.querySelector(
-      '#form-update-button'
-    );
+    const inputUpdateName = htmlState.getElementById(
+      'form-update-name'
+    ) as HTMLInputElement;
+    const inputUpdateColor = htmlState.getElementById(
+      'form-update-color'
+    ) as HTMLInputElement;
+    const btnUpdate = htmlState.getElementById(
+      'form-update-button'
+    ) as HTMLButtonElement;
 
     if (name && color) {
       try {
@@ -38,6 +43,7 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
 
         carsState.updateItem(updatedCar);
         updateCarInGarageItems(updatedCar);
+        htmlState.currentSelectCar = null;
 
         onResetUpdate(
           inputCreateName,

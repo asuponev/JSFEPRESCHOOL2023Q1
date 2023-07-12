@@ -1,4 +1,5 @@
 import onCreateCar from '../../../actions/onCreateCar';
+import onGenerateCars from '../../../actions/onGenerateCars';
 import onUpdateCar from '../../../actions/onUpdateCar';
 import baseButton from '../../base/button/button';
 import baseForm from '../../base/form/form';
@@ -34,6 +35,7 @@ const garageControlsView = (): HTMLDivElement => {
     text: 'generate cars',
     customClass: 'button--minor',
   });
+  btnGenerateCars.addEventListener('click', (event) => onGenerateCars(event));
   garageControlsBtns.append(btnRace, btnReset, btnGenerateCars);
 
   garageControls.append(formCreate, formUpdate, garageControlsBtns);

@@ -1,22 +1,26 @@
 import { ICar } from '../../types/types';
 import htmlState from '../../state/htmlState';
+import carsState from '../../state/carsState';
 import carView from '../../components/car/car';
 import updateSectionTitle from './updateSectionTitle';
 import updatePaginationBtns from './updatePaginationBtns';
 
-const addCarToGarageItems = (
-  newItems: ICar[],
-  currentPage: number,
-  newCount: number
-) => {
+const addCarToGarageItems = (newItems: ICar[]) => {
+  carsState.addItems(newItems);
+
   const garageItems = htmlState.getElementById('garage-items');
-  if (garageItems?.children.length && garageItems?.children.length < 7) {
+  if (garageItems) {
+    const currentLengthGarage = garageItems?.children.length;
+    const needRenderCar = 7 - currentLengthGarage;
     garageItems?.append(
-      ...newItems.map((car: ICar): HTMLDivElement => carView(car))
+      ...newItems
+        .slice(0, needRenderCar)
+        .map((car: ICar): HTMLDivElement => carView(car))
     );
   }
-  updateSectionTitle('garage-title', newCount);
-  updatePaginationBtns(currentPage, newCount);
+
+  updateSectionTitle('garage-title', carsState.count);
+  updatePaginationBtns(carsState.page, carsState.count);
 };
 
 export default addCarToGarageItems;

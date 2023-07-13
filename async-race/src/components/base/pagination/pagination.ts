@@ -1,5 +1,4 @@
-import onClickNext from '../../../actions/onClickNext';
-import onClickPrev from '../../../actions/onClickPrev';
+import onClickPagination from '../../../actions/onClickPagination';
 import htmlState from '../../../state/htmlState';
 import baseButton from '../button/button';
 import './pagination.scss';
@@ -11,6 +10,7 @@ interface IProps {
 }
 
 const paginationView = ({ id, page, count }: IProps) => {
+  const itemsOnPage = id === 'garage' ? 7 : 10;
   const pagination = document.createElement('div');
   pagination.classList.add('pagination');
 
@@ -25,16 +25,19 @@ const paginationView = ({ id, page, count }: IProps) => {
     text: '<',
     customClass: 'button--main',
     disabled: page === 1,
-    onClick: onClickPrev,
   });
   const btnNext = baseButton({
     text: '>',
     customClass: 'button--main',
-    disabled: count <= 7 || page === Math.ceil(count / 7),
-    onClick: onClickNext,
+    disabled: count <= itemsOnPage || page === Math.ceil(count / itemsOnPage),
   });
+
+  btnPrev.addEventListener('click', () => onClickPagination(id, 'prev'));
+  btnNext.addEventListener('click', () => onClickPagination(id, 'next'));
+
   htmlState.addToElements(`button-prev-${id}`, btnPrev);
   htmlState.addToElements(`button-next-${id}`, btnNext);
+
   paginationBtns.append(btnPrev, btnNext);
 
   pagination.append(paginationTitle, paginationBtns);

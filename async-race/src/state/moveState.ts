@@ -7,6 +7,7 @@ interface IMoveState {
   addAnimation: (animation: Animation) => void;
   stopAnimation: (animationId: string) => void;
   removeAnimation: (animationId: string) => void;
+  resetAllAnimation: () => void;
 }
 
 const moveState: IMoveState = {
@@ -35,6 +36,10 @@ const moveState: IMoveState = {
     moveState.animations = moveState.animations.filter(
       (animation) => animation.id !== animationId
     );
+  },
+  resetAllAnimation: (): void => {
+    moveState.animations.forEach((animation) => animation.cancel());
+    moveState.animations = [];
   },
 };
 

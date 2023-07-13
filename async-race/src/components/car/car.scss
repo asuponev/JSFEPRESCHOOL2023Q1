@@ -26,6 +26,34 @@
     display: flex;
     gap: 12px;
     height: 32px;
+    position: relative;
+
+    @keyframes illumination {
+      0% {
+        filter: drop-shadow(1px 1px 4px #f1f5f9);
+      }
+      50% {
+        filter: drop-shadow(1px 1px 4px #64748b);
+      }
+      100% {
+        filter: drop-shadow(1px 1px 4px #1e293b);
+      }
+    }
+
+    &__message {
+      display: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: $bg-button-main;
+      filter: drop-shadow(1px 1px 4px $text-main);
+      text-transform: uppercase;
+      animation: illumination 0.5s infinite;
+
+      &.display {
+        display: block;
+      }
+    }
 
     &__buttons {
       display: flex;
@@ -81,7 +109,7 @@
           transform: translateY(0px);
         }
       }
-      
+
       svg {
         animation: finish 0.4s linear infinite;
       }

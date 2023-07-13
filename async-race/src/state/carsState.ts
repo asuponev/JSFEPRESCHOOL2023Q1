@@ -6,6 +6,7 @@ interface ICarState {
   resets: Record<string, () => Promise<void>>;
   count: number;
   page: number;
+  currentRaceWinner: number | null;
   fetchError: string;
   addItems: (cars: ICar[]) => void;
   removeItem: (carId: number) => void;
@@ -20,6 +21,7 @@ const carsState: ICarState = {
   resets: {},
   count: 0,
   page: 1,
+  currentRaceWinner: null,
   fetchError: '',
   addItems: (newCars: ICar[]): void => {
     newCars.forEach((car) => {

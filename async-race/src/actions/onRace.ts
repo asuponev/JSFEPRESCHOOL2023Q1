@@ -1,5 +1,7 @@
 import carsState from '../state/carsState';
 import htmlState from '../state/htmlState';
+import winnersState from '../state/winnersState';
+import updateDisplayWinner from './view-updaters/updateDisplayWinner';
 
 const raceAll = async (
   promises: Promise<{ id: number; time: number | null }>[],
@@ -28,8 +30,11 @@ const onRace = async (event: MouseEvent) => {
   );
   const ids = carsState.items.map((item) => item.id);
 
-  const winner = await raceAll(promises, ids);
-  console.log(winner);
+  // get race winner:
+  const { id, time } = await raceAll(promises, ids);
+  updateDisplayWinner(id);
+  winnersState.addWinner({ id, time: time / 1000 });
+  console.log(winnersState.items);
 };
 
 export default onRace;

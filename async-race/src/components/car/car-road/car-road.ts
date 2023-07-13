@@ -4,8 +4,11 @@ import onStopOneCar from '../../../actions/onStopOneCar';
 import baseButton from '../../base/button/button';
 import carIconView from '../car-icon/car-icon';
 import carsState from '../../../state/carsState';
+import htmlState from '../../../state/htmlState';
 
 const carRoadView = (car: ICar): HTMLDivElement => {
+  const { id, name, color } = car;
+
   const carRoad = document.createElement('div');
   carRoad.classList.add('car__road');
   // create buttons for motion control
@@ -23,26 +26,24 @@ const carRoadView = (car: ICar): HTMLDivElement => {
   });
   roadButtons.append(btnDrive, btnStop);
   // create car icon
-  const roadCarIcon = carIconView(car.color);
-  roadCarIcon.id = `car-icon-${car.id}`;
+  const roadCarIcon = carIconView(color);
+  roadCarIcon.id = `car-icon-${id}`;
   // create finish element
   const roadFinishIcon = document.createElement('div');
   roadFinishIcon.classList.add('car__road__finish');
-
   roadFinishIcon.textContent = 'FINISH';
 
+  const winnerMessage = document.createElement('div');
+  winnerMessage.classList.add('car__road__message');
+  winnerMessage.textContent = `winner: ${name} #${id}`;
+  htmlState.addToElements(`winner-car-${id}`, winnerMessage);
+
   const startCar = (): Promise<{ id: number; time: number | null }> => {
-    return onStartOneCar(
-      car.id,
-      roadCarIcon,
-      roadFinishIcon,
-      btnDrive,
-      btnStop
-    );
+    return onStartOneCar(id, roadCarIcon, roadFinishIcon, btnDrive, btnStop);
   };
 
   const stopCar = (): Promise<void> => {
-    return onStopOneCar(car.id, roadCarIcon, btnDrive, btnStop);
+    return onStopOneCar(id, roadCarIcon, btnDrive, btnStop);
   };
 
   // add listeners
@@ -50,10 +51,10 @@ const carRoadView = (car: ICar): HTMLDivElement => {
   btnStop.addEventListener('click', stopCar);
 
   // add actions to state
-  carsState.actions[car.id] = startCar;
-  carsState.resets[car.id] = stopCar;
+  carsState.actions[id] = startCar;
+  carsState.resets[id] = stopCar;
 
-  carRoad.append(roadButtons, roadCarIcon, roadFinishIcon);
+  carRoad.append(roadButtons, roadCarIcon, roadFinishIcon, winnerMessage);
 
   return carRoad;
 };

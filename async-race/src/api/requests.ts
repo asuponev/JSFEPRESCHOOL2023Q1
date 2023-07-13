@@ -142,3 +142,37 @@ export const enableDriveMode = async (id: number) => {
     throw new Error('Something went wrong');
   }
 };
+
+export const createWinner = async (winner: IWinner): Promise<IWinner> => {
+  try {
+    const response = await fetch(endpoints.winners, {
+      method: 'POST',
+      body: JSON.stringify(winner),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data: IWinner = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Something went wrong');
+  }
+};
+
+export const updateWinner = async (winner: IWinner) => {
+  try {
+    const response = await fetch(`${endpoints.winners}/${winner.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ wins: winner.wins, time: winner.time }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data: IWinner = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Something went wrong');
+  }
+};

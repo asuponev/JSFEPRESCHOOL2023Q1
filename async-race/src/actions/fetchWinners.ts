@@ -1,13 +1,13 @@
 import { getWinners } from '../api/requests';
-import state from '../state/state';
+import winnersState from '../state/winnersState';
 
 const fetchWinners = async () => {
   try {
-    const { data, count } = await getWinners(state.winners.page);
-    state.winners.items = data;
-    state.winners.count = count;
+    const { data, count } = await getWinners(winnersState.page);
+    winnersState.items = data;
+    winnersState.count = count;
   } catch (error) {
-    state.winners.fetchError = error as string;
+    winnersState.fetchError = error as string;
   }
 };
 

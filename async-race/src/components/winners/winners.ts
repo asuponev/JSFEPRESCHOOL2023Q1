@@ -1,5 +1,5 @@
 import { IWinner } from '../../types/types';
-import state from '../../state/state';
+import winnersState from '../../state/winnersState';
 import fetchWinners from '../../actions/fetchWinners';
 import sectionLayout from '../layout/section';
 import winnersItem from './winners-item/winners-item';
@@ -8,7 +8,7 @@ import './winners.scss';
 
 const winnersView = async (): Promise<HTMLElement> => {
   await fetchWinners();
-  const { items, page, count, fetchError } = state.winners;
+  const { items, page, count, fetchError } = winnersState;
   const winners = sectionLayout({ id: 'winners', count, page });
 
   if (!fetchError) {

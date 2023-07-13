@@ -1,3 +1,4 @@
+import { createWinner, updateWinner } from '../api/requests';
 import carsState from '../state/carsState';
 import htmlState from '../state/htmlState';
 import winnersState from '../state/winnersState';
@@ -33,8 +34,13 @@ const onRace = async (event: MouseEvent) => {
   // get race winner:
   const { id, time } = await raceAll(promises, ids);
   updateDisplayWinner(id);
-  winnersState.addWinner({ id, time: time / 1000 });
-  console.log(winnersState.items);
+  const winner = winnersState.addWinner({ id, time: time / 1000 });
+  console.log(winner);
+  if (winner.wins > 1) {
+    await updateWinner(winner);
+  } else {
+    await createWinner(winner);
+  }
 };
 
 export default onRace;

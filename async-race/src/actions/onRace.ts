@@ -23,7 +23,9 @@ const onRace = async (event: MouseEvent) => {
   btnRace.disabled = true;
   if (btnReset) btnReset.disabled = false;
 
-  const promises = carsState.items.map((item) => carsState.actions[item.id]());
+  const promises = carsState.items.map((item) =>
+    carsState.actions[item.id]?.()
+  );
   const ids = carsState.items.map((item) => item.id);
 
   const winner = await raceAll(promises, ids);

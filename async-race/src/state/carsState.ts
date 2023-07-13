@@ -22,7 +22,11 @@ const carsState: ICarState = {
   page: 1,
   fetchError: '',
   addItems: (newCars: ICar[]): void => {
-    carsState.items.push(...newCars);
+    newCars.forEach((car) => {
+      if (carsState.items.length < 7) {
+        carsState.items.push(car);
+      }
+    });
     carsState.count += newCars.length;
   },
   removeItem: (carId: number): void => {

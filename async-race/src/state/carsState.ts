@@ -2,6 +2,8 @@ import { ICar } from '../types/types';
 
 interface ICarState {
   items: ICar[];
+  actions: Record<string, () => Promise<{ id: number; time: number | null }>>;
+  resets: Record<string, () => Promise<void>>;
   count: number;
   page: number;
   fetchError: string;
@@ -14,6 +16,8 @@ interface ICarState {
 
 const carsState: ICarState = {
   items: [],
+  actions: {},
+  resets: {},
   count: 0,
   page: 1,
   fetchError: '',

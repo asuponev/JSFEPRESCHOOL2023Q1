@@ -3,6 +3,7 @@ import onStartOneCar from '../../../actions/onStartOneCar';
 import onStopOneCar from '../../../actions/onStopOneCar';
 import baseButton from '../../base/button/button';
 import carIconView from '../car-icon/car-icon';
+import carsState from '../../../state/carsState';
 
 const carRoadView = (car: ICar): HTMLDivElement => {
   const carRoad = document.createElement('div');
@@ -23,19 +24,34 @@ const carRoadView = (car: ICar): HTMLDivElement => {
   roadButtons.append(btnDrive, btnStop);
   // create car icon
   const roadCarIcon = carIconView(car.color);
-  roadCarIcon.id = `car-${car.id}`;
+  roadCarIcon.id = `car-icon-${car.id}`;
   // create finish element
   const roadFinishIcon = document.createElement('div');
   roadFinishIcon.classList.add('car__road__finish');
+
   roadFinishIcon.textContent = 'FINISH';
 
+  const startCar = (): Promise<{ id: number; time: number | null }> => {
+    return onStartOneCar(
+      car.id,
+      roadCarIcon,
+      roadFinishIcon,
+      btnDrive,
+      btnStop
+    );
+  };
+
+  const stopCar = (): Promise<void> => {
+    return onStopOneCar(car.id, roadCarIcon, btnDrive, btnStop);
+  };
+
   // add listeners
-  btnDrive.addEventListener('click', (event) =>
-    onStartOneCar(event, car.id, roadCarIcon, roadFinishIcon, btnStop)
-  );
-  btnStop.addEventListener('click', (event) =>
-    onStopOneCar(event, car.id, roadCarIcon, btnDrive)
-  );
+  btnDrive.addEventListener('click', startCar);
+  btnStop.addEventListener('click', stopCar);
+
+  // add actions to state
+  carsState.actions[car.id] = startCar;
+  carsState.resets[car.id] = stopCar;
 
   carRoad.append(roadButtons, roadCarIcon, roadFinishIcon);
 

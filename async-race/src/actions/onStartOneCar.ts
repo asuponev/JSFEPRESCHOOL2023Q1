@@ -5,31 +5,28 @@ import moveState from '../state/moveState';
 import driveMode from './driveMode';
 
 const onStartOneCar = async (
-  event: MouseEvent,
   id: number,
   carElement: HTMLDivElement,
   finishElement: HTMLDivElement,
+  btnDrive: HTMLButtonElement,
   btnStop: HTMLButtonElement
-): Promise<void> => {
-  try {
-    const btnDrive = event.target as HTMLButtonElement;
-    btnDrive.disabled = true;
+): Promise<{ id: number; time: number | null }> => {
+  btnDrive.disabled = true;
 
-    const { velocity, distance } = await startCarEngine(id);
-    moveState.addStartedEngine(id);
+  const { velocity, distance } = await startCarEngine(id);
+  moveState.addStartedEngine(id);
 
-    const timeMs = Math.round(distance / velocity);
-    const distancePx = getDistanceFromCarToFinish(carElement, finishElement);
+  const timeMs = Math.round(distance / velocity);
+  const distancePx = getDistanceFromCarToFinish(carElement, finishElement);
 
-    const animate = addCarAnimate(carElement, distancePx, timeMs);
-    moveState.addAnimation(animate);
+  const animate = addCarAnimate(carElement, distancePx, timeMs);
+  moveState.addAnimation(animate);
 
-    btnStop.disabled = false;
+  btnStop.disabled = false;
 
-    await driveMode(id, carElement, animate);
-  } catch (error) {
-    console.log(error);
-  }
+  const { success } = await driveMode(id, carElement, animate);
+  if (!success) return { id, time: null };
+  return { id, time: timeMs };
 };
 
 export default onStartOneCar;

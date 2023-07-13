@@ -2,13 +2,12 @@ import { stopCarEngine } from '../api/requests';
 import moveState from '../state/moveState';
 
 const onStopOneCar = async (
-  event: MouseEvent,
   id: number,
   car: HTMLDivElement,
-  btnDrive: HTMLButtonElement
+  btnDrive: HTMLButtonElement,
+  btnStop: HTMLButtonElement
 ): Promise<void> => {
   try {
-    const btnStop = event.target as HTMLButtonElement;
     btnStop.disabled = true;
 
     await stopCarEngine(id);

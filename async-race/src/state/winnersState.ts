@@ -26,6 +26,7 @@ const winnersState: IWinnersState = {
     } else {
       newWinner = { ...winner, wins: 1 };
       winnersState.items.push(newWinner);
+      winnersState.count += 1;
     }
     return newWinner;
   },

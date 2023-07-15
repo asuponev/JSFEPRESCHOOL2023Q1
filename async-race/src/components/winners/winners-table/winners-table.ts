@@ -1,3 +1,5 @@
+import htmlState from '../../../state/htmlState';
+
 const winnersTableView = (
   tableItems: HTMLTableRowElement[]
 ): HTMLTableElement => {
@@ -29,6 +31,7 @@ const winnersTableView = (
 
   const tBody = document.createElement('tbody');
   tBody.append(...tableItems);
+  htmlState.addToElements('winners-table', tBody);
 
   table.append(tHead, tBody);
   return table;

@@ -3,6 +3,7 @@ import carsState from '../state/carsState';
 import htmlState from '../state/htmlState';
 import winnersState from '../state/winnersState';
 import updateDisplayWinner from './view-updaters/updateDisplayWinner';
+import updateWinnersPage from './view-updaters/updateWinners';
 
 const raceAll = async (
   promises: Promise<{ id: number; time: number | null }>[],
@@ -41,6 +42,7 @@ const onRace = async (event: MouseEvent) => {
   } else {
     await createWinner(winner);
   }
+  updateWinnersPage();
 };
 
 export default onRace;

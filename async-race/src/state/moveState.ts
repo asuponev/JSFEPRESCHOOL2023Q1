@@ -40,6 +40,7 @@ const moveState: IMoveState = {
   resetAllAnimation: (): void => {
     moveState.animations.forEach((animation) => animation.cancel());
     moveState.animations = [];
+    moveState.startedEngine = [];
   },
 };
 

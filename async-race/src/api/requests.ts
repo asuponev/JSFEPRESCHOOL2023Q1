@@ -78,10 +78,6 @@ export const deleteCar = async (id: number): Promise<void> => {
     await fetch(`${endpoints.garage}/${id}`, {
       method: 'DELETE',
     });
-
-    await fetch(`${endpoints.winners}/${id}`, {
-      method: 'DELETE',
-    });
   } catch (error) {
     throw new Error('Something went wrong');
   }
@@ -183,6 +179,16 @@ export const getWinner = async (id: number): Promise<IWinner> => {
 
     const data: IWinner = await response.json();
     return data;
+  } catch (error) {
+    throw new Error('Something went wrong');
+  }
+};
+
+export const deleteWinner = async (id: number): Promise<void> => {
+  try {
+    await fetch(`${endpoints.winners}/${id}`, {
+      method: 'DELETE',
+    });
   } catch (error) {
     throw new Error('Something went wrong');
   }

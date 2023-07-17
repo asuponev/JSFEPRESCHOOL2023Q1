@@ -6,6 +6,8 @@ interface IWinnersState {
   page: number;
   fetchError: string;
   addWinner: (winner: Omit<IWinner, 'wins'>) => IWinner;
+  prevPage: () => void;
+  nextPage: () => void;
 }
 
 const winnersState: IWinnersState = {
@@ -29,6 +31,19 @@ const winnersState: IWinnersState = {
       winnersState.count += 1;
     }
     return newWinner;
+  },
+  nextPage: (): void => {
+    if (
+      winnersState.count > 10 ||
+      winnersState.page < Math.ceil(winnersState.count / 10)
+    ) {
+      winnersState.page += 1;
+    }
+  },
+  prevPage: (): void => {
+    if (winnersState.page > 1) {
+      winnersState.page -= 1;
+    }
   },
 };
 

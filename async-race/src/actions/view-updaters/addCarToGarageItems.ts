@@ -20,7 +20,7 @@ const addCarToGarageItems = (newItems: ICar[]) => {
   }
 
   updateSectionTitle('garage-title', carsState.count);
-  updatePaginationBtns(carsState.page, carsState.count);
+  updatePaginationBtns('garage', carsState.page, carsState.count);
 };
 
 export default addCarToGarageItems;

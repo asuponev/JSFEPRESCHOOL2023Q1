@@ -16,7 +16,7 @@ const updateGaragePagination = () => {
     );
   }
   updatePaginationTitle('pagination-title-garage', page);
-  updatePaginationBtns(page, count);
+  updatePaginationBtns('garage', page, count);
 };
 
 export default updateGaragePagination;

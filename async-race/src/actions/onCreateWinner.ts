@@ -1,11 +1,10 @@
 import { createWinner, getWinner, updateWinner } from '../api/requests';
 import winnersState from '../state/winnersState';
 import { IWinner } from '../types/types';
-import fetchWinners from './fetchWinners';
 import updatePaginationBtns from './view-updaters/updatePaginationBtns';
 import updateWinnersPage from './view-updaters/updateWinnersPage';
 
-const onCreateWinner = async (winner: Omit<IWinner, 'wins'>) => {
+const onCreateWinner = async (winner: Omit<IWinner, 'wins'>): Promise<void> => {
   const oldWinner = await getWinner(winner.id);
   if (oldWinner.id) {
     const { id, wins, time } = oldWinner;
@@ -15,8 +14,7 @@ const onCreateWinner = async (winner: Omit<IWinner, 'wins'>) => {
   } else {
     await createWinner({ ...winner, wins: 1 });
   }
-  await fetchWinners();
-  updateWinnersPage();
+  await updateWinnersPage();
   updatePaginationBtns('winners', winnersState.page, winnersState.count);
 };
 

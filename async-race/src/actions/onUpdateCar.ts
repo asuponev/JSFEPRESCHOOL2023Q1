@@ -3,6 +3,7 @@ import { updateCar } from '../api/requests';
 import htmlState from '../state/htmlState';
 import onResetUpdate from './onResetUpdate';
 import updateCarInGarageItems from './view-updaters/updateCarInGarageItems';
+import updateWinnersPage from './view-updaters/updateWinnersPage';
 
 const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   let updatedCar: ICar | undefined;
@@ -51,6 +52,7 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
           inputUpdateColor,
           btnUpdate
         );
+        await updateWinnersPage();
       } catch (error) {
         console.log(error);
       }

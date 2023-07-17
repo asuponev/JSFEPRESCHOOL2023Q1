@@ -14,7 +14,11 @@ const onStartOneCar = async (
 ): Promise<{ id: number; time: number | null }> => {
   btnDrive.disabled = true;
   const btnRace = htmlState.getElementById('btn-race') as HTMLButtonElement;
+  const btnWinnersPage = htmlState.getElementById(
+    'btn-winners'
+  ) as HTMLButtonElement;
   if (btnRace) btnRace.disabled = true;
+  if (btnWinnersPage) btnWinnersPage.disabled = true;
 
   const { velocity, distance } = await startCarEngine(id);
   moveState.addStartedEngine(id);
@@ -28,6 +32,9 @@ const onStartOneCar = async (
   btnStop.disabled = false;
 
   const { success } = await driveMode(id, carElement, animate);
+
+  if (btnWinnersPage) btnWinnersPage.disabled = false;
+
   if (!success) return { id, time: null };
   return { id, time: timeMs };
 };

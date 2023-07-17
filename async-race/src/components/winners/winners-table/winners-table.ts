@@ -1,3 +1,4 @@
+import onClickSort from '../../../actions/onClickSort';
 import htmlState from '../../../state/htmlState';
 
 const winnersTableView = (
@@ -20,10 +21,15 @@ const winnersTableView = (
   thName.textContent = 'Name';
 
   const thWins = document.createElement('th');
+  thWins.classList.add('wins');
   thWins.textContent = 'Wins';
 
   const thBestTime = document.createElement('th');
+  thBestTime.classList.add('time');
   thBestTime.textContent = 'Best time (sec.)';
+
+  thWins.addEventListener('click', (event) => onClickSort(event, thBestTime));
+  thBestTime.addEventListener('click', (event) => onClickSort(event, thWins));
 
   tr.append(thNumber, thCar, thName, thWins, thBestTime);
 

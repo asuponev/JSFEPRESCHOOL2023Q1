@@ -8,14 +8,9 @@ import {
   IWinner,
 } from '../types/types';
 
-export const getAllCars = async (
-  page: number,
-  limit = 7
-): Promise<IResponseCars> => {
+export const getAllCars = async (page: number): Promise<IResponseCars> => {
   try {
-    const response = await fetch(
-      `${endpoints.garage}?_page=${page}&_limit=${limit}`
-    );
+    const response = await fetch(`${endpoints.garage}?_page=${page}&_limit=7`);
     const data: ICar[] = await response.json();
     const count = response.headers.get('X-Total-Count');
     return { data, count: Number(count) };
@@ -39,11 +34,12 @@ export const getCarById = async (id: number): Promise<ICar> => {
 
 export const getWinners = async (
   page: number,
-  limit = 10
+  sort?: string,
+  order?: string
 ): Promise<IResponseWinners> => {
   try {
     const response = await fetch(
-      `${endpoints.winners}?_page=${page}&_limit=${limit}`
+      `${endpoints.winners}?_page=${page}&_limit=10&_sort=${sort}&_order=${order}`
     );
 
     const data: IWinner[] = await response.json();

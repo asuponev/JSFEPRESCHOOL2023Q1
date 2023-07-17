@@ -3,7 +3,8 @@ import winnersState from '../state/winnersState';
 
 const fetchWinners = async () => {
   try {
-    const { data, count } = await getWinners(winnersState.page);
+    const { sort, order } = winnersState;
+    const { data, count } = await getWinners(winnersState.page, sort, order);
     winnersState.items = data;
     winnersState.count = count;
   } catch (error) {

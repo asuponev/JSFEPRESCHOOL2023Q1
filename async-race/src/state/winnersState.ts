@@ -4,6 +4,8 @@ interface IWinnersState {
   items: IWinner[];
   count: number;
   page: number;
+  sort: string;
+  order: string;
   fetchError: string;
   prevPage: () => void;
   nextPage: () => void;
@@ -13,6 +15,8 @@ const winnersState: IWinnersState = {
   items: [],
   count: 0,
   page: 1,
+  sort: '',
+  order: '',
   fetchError: '',
   nextPage: (): void => {
     if (

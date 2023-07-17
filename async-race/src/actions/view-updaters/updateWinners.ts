@@ -11,7 +11,9 @@ const updateWinnersPage = async () => {
   if (winnersTable) {
     winnersTable.innerHTML = '';
     const winnersItems: HTMLTableRowElement[] = await Promise.all(
-      items.map(async (winner: IWinner) => await winnersItem(winner))
+      items.map(
+        async (winner: IWinner, i: number) => await winnersItem(winner, i)
+      )
     );
     winnersTable.append(...winnersItems);
   }

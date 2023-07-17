@@ -2,14 +2,17 @@ import { IWinner, ICar } from '../../../types/types';
 import { getCarById } from '../../../api/requests';
 import carIconView from '../../car/car-icon/car-icon';
 
-const winnersItem = async (winner: IWinner): Promise<HTMLTableRowElement> => {
+const winnersItem = async (
+  winner: IWinner,
+  index: number
+): Promise<HTMLTableRowElement> => {
   const car: ICar = await getCarById(winner.id);
 
   const tr = document.createElement('tr');
   tr.classList.add('winners__table__row');
 
   const tdNumber = document.createElement('td');
-  tdNumber.textContent = `${winner.id}`;
+  tdNumber.textContent = `${index + 1}`;
 
   const tdCar = document.createElement('td');
   tdCar.append(carIconView(car.color));

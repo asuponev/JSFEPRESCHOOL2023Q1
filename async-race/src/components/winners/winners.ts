@@ -15,8 +15,8 @@ const winnersView = async (): Promise<HTMLElement> => {
     const winnersTable = winnersTableView(
       await Promise.all(
         items.map(
-          async (winner: IWinner): Promise<HTMLTableRowElement> =>
-            await winnersItem(winner)
+          async (winner: IWinner, i: number): Promise<HTMLTableRowElement> =>
+            await winnersItem(winner, i)
         )
       )
     );

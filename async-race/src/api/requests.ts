@@ -176,3 +176,14 @@ export const updateWinner = async (winner: IWinner) => {
     throw new Error('Something went wrong');
   }
 };
+
+export const getWinner = async (id: number): Promise<IWinner> => {
+  try {
+    const response = await fetch(`${endpoints.winners}/${id}`);
+
+    const data: IWinner = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Something went wrong');
+  }
+};

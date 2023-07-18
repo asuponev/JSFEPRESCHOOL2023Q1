@@ -1,4 +1,3 @@
-// import htmlState from '../../../state/htmlState';
 import carStore from '../../../store/carStore';
 import baseButton from '../button/button';
 import './form.scss';
@@ -42,11 +41,6 @@ const baseForm = ({ id, onSubmit, disabled }: IProps) => {
     inputColor.disabled = true;
     btnSubmit.disabled = true;
   }
-
-  // htmlState.addToElements(form.id, form);
-  // htmlState.addToElements(inputName.id, inputName);
-  // htmlState.addToElements(inputColor.id, inputColor);
-  // htmlState.addToElements(btnSubmit.id, btnSubmit);
 
   carStore.subscribe((state) => {
     if (id === 'create') {

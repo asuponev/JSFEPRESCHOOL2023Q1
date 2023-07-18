@@ -1,14 +1,13 @@
 import { getWinners } from '../api/requests';
-import winnersState from '../state/winnersState';
+import winnersStore from '../store/winnersStore';
 
 const fetchWinners = async () => {
   try {
-    const { sort, order } = winnersState;
-    const { data, count } = await getWinners(winnersState.page, sort, order);
-    winnersState.items = data;
-    winnersState.count = count;
+    const { page, sort, order } = winnersStore.getState();
+    const { data, count } = await getWinners(page, sort, order);
+    winnersStore.dispatch({ type: 'FETCH', payload: data, count });
   } catch (error) {
-    winnersState.fetchError = error as string;
+    winnersStore.dispatch({ type: 'FETCH_ERROR', error: error as string });
   }
 };
 

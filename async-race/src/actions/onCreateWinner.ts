@@ -1,8 +1,6 @@
 import { createWinner, getWinner, updateWinner } from '../api/requests';
-import winnersState from '../state/winnersState';
+import winnersStore from '../store/winnersStore';
 import { IWinner } from '../types/types';
-import updatePaginationBtns from './view-updaters/updatePaginationBtns';
-import updateWinnersPage from './view-updaters/updateWinnersPage';
 
 const onCreateWinner = async (winner: Omit<IWinner, 'wins'>): Promise<void> => {
   const oldWinner = await getWinner(winner.id);
@@ -11,11 +9,11 @@ const onCreateWinner = async (winner: Omit<IWinner, 'wins'>): Promise<void> => {
     const newTime = time <= winner.time ? time : winner.time;
     const updatedWinner = { id, wins: wins + 1, time: newTime };
     await updateWinner(updatedWinner);
+    winnersStore.dispatch({ type: 'UPDATE_WINNER', payload: [updatedWinner] });
   } else {
-    await createWinner({ ...winner, wins: 1 });
+    const newWinner = await createWinner({ ...winner, wins: 1 });
+    winnersStore.dispatch({ type: 'ADD_WINNER', payload: [newWinner] });
   }
-  await updateWinnersPage();
-  updatePaginationBtns('winners', winnersState.page, winnersState.count);
 };
 
 export default onCreateWinner;

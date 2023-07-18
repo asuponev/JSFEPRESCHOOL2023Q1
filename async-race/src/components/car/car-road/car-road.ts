@@ -5,7 +5,6 @@ import onStartOneCar from '../../../actions/onStartOneCar';
 import onStopOneCar from '../../../actions/onStopOneCar';
 import baseButton from '../../base/button/button';
 import carIconView from '../car-icon/car-icon';
-import htmlState from '../../../state/htmlState';
 
 const carRoadView = (car: ICar): HTMLDivElement => {
   const { id, name, color } = car;
@@ -39,7 +38,6 @@ const carRoadView = (car: ICar): HTMLDivElement => {
   const winnerMessage = document.createElement('div');
   winnerMessage.classList.add('car__road__message');
   winnerMessage.textContent = `winner: ${name} #${id}`;
-  htmlState.addToElements(`winner-car-${id}`, winnerMessage); //
 
   const startCar = (): Promise<{ id: number; time: number | null }> => {
     return onStartOneCar(id, roadCarIcon, roadFinishIcon, btnDrive, btnStop);

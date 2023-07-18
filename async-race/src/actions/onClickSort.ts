@@ -1,5 +1,5 @@
-import winnersState from '../state/winnersState';
-import updateWinnersPage from './view-updaters/updateWinnersPage';
+import winnersStore from '../store/winnersStore';
+import fetchWinners from './fetchWinners';
 
 const onClickSort = async (
   event: MouseEvent,
@@ -7,37 +7,40 @@ const onClickSort = async (
 ) => {
   const target = event.target as HTMLTableCellElement;
   const targetClass = target.className.split(' ')[0];
+  const { sort, order } = winnersStore.getState();
 
-  switch (winnersState.sort) {
+  switch (sort) {
     case targetClass: {
       break;
     }
     default:
-      winnersState.sort = targetClass;
-      winnersState.order = '';
+      winnersStore.dispatch({
+        type: 'SORT_MODE',
+        sort: targetClass,
+        order: '',
+      });
   }
 
-  switch (winnersState.order) {
+  switch (order) {
     case '': {
       target?.classList.add('sort--asc');
-      winnersState.order = 'ASC';
+      winnersStore.dispatch({ type: 'SORT_MODE', order: 'ASC' });
       break;
     }
     case 'ASC': {
       target?.classList.remove('sort--asc');
       target?.classList.add('sort--desc');
-      winnersState.order = 'DESC';
+      winnersStore.dispatch({ type: 'SORT_MODE', order: 'DESC' });
       break;
     }
     case 'DESC': {
       target?.classList.remove('sort--desc');
-      winnersState.order = '';
-      winnersState.sort = '';
+      winnersStore.dispatch({ type: 'OFF_SORT_MODE' });
       break;
     }
   }
 
-  await updateWinnersPage();
+  await fetchWinners();
   otherField?.classList.remove('sort--desc');
   otherField?.classList.remove('sort--asc');
 };

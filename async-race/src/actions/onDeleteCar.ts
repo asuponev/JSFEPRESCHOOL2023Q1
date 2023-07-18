@@ -1,7 +1,8 @@
 import { ICar } from '../types/types';
 import { deleteCar, deleteWinner, getWinner } from '../api/requests';
-import updateWinnersPage from './view-updaters/updateWinnersPage';
 import carStore from '../store/carStore';
+import winnersStore from '../store/winnersStore';
+import fetchWinners from './fetchWinners';
 
 const onDeleteCar = async (car: ICar): Promise<void> => {
   if (window.confirm(`are you sure you want to remove "${car.name}"?`)) {
@@ -11,8 +12,8 @@ const onDeleteCar = async (car: ICar): Promise<void> => {
       const isWinner = await getWinner(car.id);
       if (isWinner.id) {
         await deleteWinner(car.id);
-        // dispatch remove winner
-        await updateWinnersPage();
+        winnersStore.dispatch({ type: 'REMOVE_WINNER', winnerId: car.id });
+        await fetchWinners();
       }
     } catch (error) {
       console.log(error);

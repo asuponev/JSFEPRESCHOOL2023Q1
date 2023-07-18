@@ -18,6 +18,16 @@
           padding-right: 0;
         }
       }
+
+      &--name {
+        display: flex;
+
+        span:nth-child(2) {
+          font-size: 10px;
+          font-style: italic;
+          margin-left: 4px;
+        }
+      }
     }
 
     .wins,

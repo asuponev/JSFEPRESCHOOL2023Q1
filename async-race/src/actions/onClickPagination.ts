@@ -1,9 +1,8 @@
 import moveState from '../state/moveState';
-import winnersState from '../state/winnersState';
 import carStore from '../store/carStore';
+import winnersStore from '../store/winnersStore';
 import fetchCars from './fetchCars';
 import fetchWinners from './fetchWinners';
-import updateWinnersPagination from './view-updaters/updateWinnersPagination';
 
 const onClickPagination = async (
   view: string,
@@ -15,18 +14,15 @@ const onClickPagination = async (
     } else {
       carStore.dispatch({ type: 'NEXT_PAGE' });
     }
-
     await fetchCars();
     moveState.resetAllAnimation();
   } else {
     if (direction === 'prev') {
-      winnersState.prevPage();
+      winnersStore.dispatch({ type: 'PREV_PAGE' });
     } else {
-      winnersState.nextPage();
+      winnersStore.dispatch({ type: 'NEXT_PAGE' });
     }
-
     await fetchWinners();
-    updateWinnersPagination();
   }
 };
 

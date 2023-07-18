@@ -1,9 +1,10 @@
 import onClickSort from '../../../actions/onClickSort';
-import htmlState from '../../../state/htmlState';
+import winnersStore from '../../../store/winnersStore';
+import { IWinner } from '../../../types/types';
+import winnersItem from '../winners-item/winners-item';
 
-const winnersTableView = (
-  tableItems: HTMLTableRowElement[]
-): HTMLTableElement => {
+const winnersTableView = async (): Promise<HTMLTableElement> => {
+  // const { items } = winnersStore.getState();
   const table = document.createElement('table');
   table.classList.add('winners__table');
 
@@ -36,10 +37,32 @@ const winnersTableView = (
   tHead.append(tr);
 
   const tBody = document.createElement('tbody');
-  tBody.append(...tableItems);
-  htmlState.addToElements('winners-table', tBody);
 
   table.append(tHead, tBody);
+
+  // subscription to update items
+  winnersStore.subscribe(async (state) => {
+    const currentItemsId: number[] = [];
+    tBody.childNodes.forEach((element) => {
+      if (element instanceof HTMLTableRowElement) {
+        currentItemsId.push(Number(element.dataset.winnerId));
+      }
+    });
+
+    const tableItems: HTMLTableRowElement[] = await Promise.all(
+      state.items.map(
+        async (winner: IWinner, i: number): Promise<HTMLTableRowElement> =>
+          await winnersItem(winner, i)
+      )
+    );
+
+    tableItems.forEach((element) => {
+      if (!currentItemsId.includes(Number(element.dataset.winnerId))) {
+        tBody.append(element);
+      }
+    });
+  });
+
   return table;
 };
 

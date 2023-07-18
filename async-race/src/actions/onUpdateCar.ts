@@ -1,9 +1,5 @@
 import { ICar } from '../types/types';
 import { updateCar } from '../api/requests';
-// import htmlState from '../state/htmlState';
-// import onResetUpdate from './onResetUpdate';
-// import updateCarInGarageItems from './view-updaters/updateCarInGarageItems';
-import updateWinnersPage from './view-updaters/updateWinnersPage';
 import carStore from '../store/carStore';
 
 const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
@@ -22,19 +18,6 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
       try {
         updatedCar = await updateCar({ id, name, color });
         carStore.dispatch({ type: 'UPDATE_ITEM', payload: [updatedCar] });
-        // updateCarInGarageItems(updatedCar);
-        // htmlState.currentSelectCar = null;
-
-        // onResetUpdate(
-        //   inputCreateName,
-        //   inputCreateColor,
-        //   btnCreate,
-        //   updateForm,
-        //   inputUpdateName,
-        //   inputUpdateColor,
-        //   btnUpdate
-        // );
-        await updateWinnersPage();
       } catch (error) {
         console.log(error);
       }

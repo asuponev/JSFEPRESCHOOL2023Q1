@@ -22,6 +22,7 @@ const onStopOneCar = async (
     btnDrive.disabled = false;
     if (moveState.startedEngine.length === 0) {
       carStore.dispatch({ type: 'OFF_RACE_MODE' });
+      carStore.dispatch({ type: 'REMOVE_CURRENT_WINNER' });
     }
   } catch (error) {
     console.log(error);

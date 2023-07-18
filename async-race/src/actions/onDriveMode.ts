@@ -2,7 +2,7 @@ import { enableDriveMode } from '../api/requests';
 import moveState from '../state/moveState';
 import { IEngineStatus } from '../types/types';
 
-const driveMode = async (
+const onDriveMode = async (
   id: number,
   car: HTMLDivElement,
   animate: Animation
@@ -24,4 +24,4 @@ const driveMode = async (
   }
 };
 
-export default driveMode;
+export default onDriveMode;

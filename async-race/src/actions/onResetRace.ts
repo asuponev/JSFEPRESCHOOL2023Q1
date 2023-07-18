@@ -1,17 +1,18 @@
-import carsState from '../state/carsState';
-import htmlState from '../state/htmlState';
-import updateDisplayWinner from './view-updaters/updateDisplayWinner';
+import actionsStore from '../store/actionsStore';
+import carStore from '../store/carStore';
 
 const onResetRace = async (event: MouseEvent) => {
-  const btnReset = event.target as HTMLButtonElement;
-  const btnRace = htmlState.getElementById('btn-race') as HTMLButtonElement;
-  btnReset.disabled = true;
-  updateDisplayWinner();
+  const { items } = carStore.getState();
+  const { resets } = actionsStore;
 
-  const promises = carsState.items.map((item) => carsState.resets[item.id]?.());
+  const btnReset = event.target as HTMLButtonElement;
+  btnReset.disabled = true;
+  carStore.dispatch({ type: 'REMOVE_CURRENT_WINNER' });
+
+  const promises = items.map((item) => resets[item.id]?.());
   await Promise.all(promises);
 
-  btnRace.disabled = false;
+  carStore.dispatch({ type: 'OFF_RACE_MODE' });
 };
 
 export default onResetRace;

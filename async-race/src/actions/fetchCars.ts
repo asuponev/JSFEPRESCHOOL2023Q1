@@ -1,13 +1,14 @@
 import { getAllCars } from '../api/requests';
-import carsState from '../state/carsState';
+// import carsState from '../state/carsState';
+import carStore from '../store/carStore';
 
-const fetchCars = async () => {
+const fetchCars = async (): Promise<void> => {
   try {
-    const { data, count } = await getAllCars(carsState.page);
-    carsState.items = data;
-    carsState.count = count;
+    const { page } = carStore.getState();
+    const { data, count } = await getAllCars(page);
+    carStore.dispatch({ type: 'FETCH', payload: data, count });
   } catch (error) {
-    carsState.fetchError = error as string;
+    carStore.dispatch({ type: 'FETCH_ERROR', error: error as string });
   }
 };
 

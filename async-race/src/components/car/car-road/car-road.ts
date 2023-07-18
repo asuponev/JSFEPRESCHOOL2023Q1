@@ -1,9 +1,10 @@
 import { ICar } from '../../../types/types';
+import carStore from '../../../store/carStore';
+import actionsStore from '../../../store/actionsStore';
 import onStartOneCar from '../../../actions/onStartOneCar';
 import onStopOneCar from '../../../actions/onStopOneCar';
 import baseButton from '../../base/button/button';
 import carIconView from '../car-icon/car-icon';
-import carsState from '../../../state/carsState';
 import htmlState from '../../../state/htmlState';
 
 const carRoadView = (car: ICar): HTMLDivElement => {
@@ -26,8 +27,10 @@ const carRoadView = (car: ICar): HTMLDivElement => {
   });
   roadButtons.append(btnDrive, btnStop);
   // create car icon
-  const roadCarIcon = carIconView(color);
+  const roadCarIcon = document.createElement('div');
+  roadCarIcon.classList.add('car__icon');
   roadCarIcon.id = `car-icon-${id}`;
+  roadCarIcon.innerHTML = carIconView(color);
   // create finish element
   const roadFinishIcon = document.createElement('div');
   roadFinishIcon.classList.add('car__road__finish');
@@ -36,7 +39,7 @@ const carRoadView = (car: ICar): HTMLDivElement => {
   const winnerMessage = document.createElement('div');
   winnerMessage.classList.add('car__road__message');
   winnerMessage.textContent = `winner: ${name} #${id}`;
-  htmlState.addToElements(`winner-car-${id}`, winnerMessage);
+  htmlState.addToElements(`winner-car-${id}`, winnerMessage); //
 
   const startCar = (): Promise<{ id: number; time: number | null }> => {
     return onStartOneCar(id, roadCarIcon, roadFinishIcon, btnDrive, btnStop);
@@ -50,11 +53,25 @@ const carRoadView = (car: ICar): HTMLDivElement => {
   btnDrive.addEventListener('click', startCar);
   btnStop.addEventListener('click', stopCar);
 
-  // add actions to state
-  carsState.actions[id] = startCar;
-  carsState.resets[id] = stopCar;
+  // add actions to store
+  actionsStore.actions[id] = startCar;
+  actionsStore.resets[id] = stopCar;
 
   carRoad.append(roadButtons, roadCarIcon, roadFinishIcon, winnerMessage);
+
+  // color change subscription
+  carStore.subscribe((state) => {
+    const foundCar = state.items.find((item) => item.id === car.id);
+    if (foundCar && foundCar.id === car.id && foundCar.color !== car.color) {
+      roadCarIcon.innerHTML = carIconView(foundCar.color);
+    }
+
+    if (state.currentRaceWinner === car.id) {
+      winnerMessage.classList.add('display');
+    } else {
+      winnerMessage.classList.remove('display');
+    }
+  });
 
   return carRoad;
 };

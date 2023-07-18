@@ -1,12 +1,25 @@
 import { ICar } from '../../../types/types';
-import htmlState from '../../../state/htmlState';
 import carView from '../../car/car';
+import carStore from '../../../store/carStore';
 
-const garageItemsView = (items: ICar[]): HTMLDivElement => {
+const garageItemsView = (): HTMLDivElement => {
   const garageItems = document.createElement('div');
   garageItems.classList.add('garage__items');
-  garageItems.append(...items.map((car: ICar): HTMLDivElement => carView(car)));
-  htmlState.addToElements('garage-items', garageItems);
+
+  carStore.subscribe((state) => {
+    const currentItemsId: number[] = [];
+    garageItems.childNodes.forEach((element) => {
+      if (element instanceof HTMLElement) {
+        currentItemsId.push(Number(element.dataset.carId));
+      }
+    });
+
+    state.items.forEach((item: ICar) => {
+      if (!currentItemsId.includes(item.id)) {
+        garageItems.append(carView(item));
+      }
+    });
+  });
 
   return garageItems;
 };

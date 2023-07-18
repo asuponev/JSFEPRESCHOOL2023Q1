@@ -1,9 +1,10 @@
 import { ICar } from '../types/types';
 import { updateCar } from '../api/requests';
-import htmlState from '../state/htmlState';
-import onResetUpdate from './onResetUpdate';
-import updateCarInGarageItems from './view-updaters/updateCarInGarageItems';
+// import htmlState from '../state/htmlState';
+// import onResetUpdate from './onResetUpdate';
+// import updateCarInGarageItems from './view-updaters/updateCarInGarageItems';
 import updateWinnersPage from './view-updaters/updateWinnersPage';
+import carStore from '../store/carStore';
 
 const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   let updatedCar: ICar | undefined;
@@ -17,41 +18,22 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   const color = formData.get('color')?.toString();
 
   if (window.confirm('are you sure you want to update this car')) {
-    const inputCreateName = htmlState.getElementById(
-      'form-create-name'
-    ) as HTMLInputElement;
-    const inputCreateColor = htmlState.getElementById(
-      'form-create-color'
-    ) as HTMLInputElement;
-    const btnCreate = htmlState.getElementById(
-      'form-create-button'
-    ) as HTMLButtonElement;
-
-    const inputUpdateName = htmlState.getElementById(
-      'form-update-name'
-    ) as HTMLInputElement;
-    const inputUpdateColor = htmlState.getElementById(
-      'form-update-color'
-    ) as HTMLInputElement;
-    const btnUpdate = htmlState.getElementById(
-      'form-update-button'
-    ) as HTMLButtonElement;
-
     if (name && color) {
       try {
         updatedCar = await updateCar({ id, name, color });
-        updateCarInGarageItems(updatedCar);
-        htmlState.currentSelectCar = null;
+        carStore.dispatch({ type: 'UPDATE_ITEM', payload: [updatedCar] });
+        // updateCarInGarageItems(updatedCar);
+        // htmlState.currentSelectCar = null;
 
-        onResetUpdate(
-          inputCreateName,
-          inputCreateColor,
-          btnCreate,
-          updateForm,
-          inputUpdateName,
-          inputUpdateColor,
-          btnUpdate
-        );
+        // onResetUpdate(
+        //   inputCreateName,
+        //   inputCreateColor,
+        //   btnCreate,
+        //   updateForm,
+        //   inputUpdateName,
+        //   inputUpdateColor,
+        //   btnUpdate
+        // );
         await updateWinnersPage();
       } catch (error) {
         console.log(error);

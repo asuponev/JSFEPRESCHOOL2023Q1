@@ -1,4 +1,5 @@
-import htmlState from '../../../state/htmlState';
+// import htmlState from '../../../state/htmlState';
+import carStore from '../../../store/carStore';
 import baseButton from '../button/button';
 import './form.scss';
 
@@ -10,42 +11,65 @@ interface IProps {
   disabled?: boolean;
 }
 
-const baseForm = (props: IProps) => {
+const baseForm = ({ id, onSubmit, disabled }: IProps) => {
   const form = document.createElement('form');
-  form.id = `form-${props.id}`;
+  form.id = `form-${id}`;
   form.classList.add('form');
-  form.addEventListener('submit', (event) => props.onSubmit(event));
+  form.addEventListener('submit', (event) => onSubmit(event));
 
   const inputName = document.createElement('input');
-  inputName.id = `form-${props.id}-name`;
+  inputName.id = `form-${id}-name`;
   inputName.name = 'name';
   inputName.classList.add('form__input', 'form__input--name');
   inputName.required = true;
 
   const inputColor = document.createElement('input');
-  inputColor.id = `form-${props.id}-color`;
+  inputColor.id = `form-${id}-color`;
   inputColor.name = 'color';
   inputColor.type = 'color';
   inputColor.defaultValue = '#e2e8f0';
   inputColor.classList.add('form__input', 'form__input--color');
 
   const btnSubmit = baseButton({
-    text: props.id,
+    text: id,
     customClass: 'button--minor',
   });
   btnSubmit.type = 'submit';
-  btnSubmit.id = `form-${props.id}-button`;
+  btnSubmit.id = `form-${id}-button`;
 
-  if (props.disabled) {
+  if (disabled) {
     inputName.disabled = true;
     inputColor.disabled = true;
     btnSubmit.disabled = true;
   }
 
-  htmlState.addToElements(form.id, form);
-  htmlState.addToElements(inputName.id, inputName);
-  htmlState.addToElements(inputColor.id, inputColor);
-  htmlState.addToElements(btnSubmit.id, btnSubmit);
+  // htmlState.addToElements(form.id, form);
+  // htmlState.addToElements(inputName.id, inputName);
+  // htmlState.addToElements(inputColor.id, inputColor);
+  // htmlState.addToElements(btnSubmit.id, btnSubmit);
+
+  carStore.subscribe((state) => {
+    if (id === 'create') {
+      inputName.disabled = state.isUpdate;
+      inputColor.disabled = state.isUpdate;
+      btnSubmit.disabled = state.isUpdate;
+    }
+
+    if (id === 'update') {
+      inputName.disabled = !state.isUpdate;
+      inputColor.disabled = !state.isUpdate;
+      btnSubmit.disabled = !state.isUpdate;
+    }
+
+    if (id === 'update' && state.selectedCar) {
+      form.dataset.carId = `${state.selectedCar.id}`;
+      inputName.value = state.selectedCar.name;
+      inputColor.value = state.selectedCar.color;
+    } else if (id === 'update' && !state.selectedCar) {
+      inputName.value = '';
+      inputColor.value = '#e2e8f0';
+    }
+  });
 
   form.append(inputName, inputColor, btnSubmit);
   return form;

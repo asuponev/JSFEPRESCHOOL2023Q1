@@ -1,7 +1,6 @@
-import carsState from '../state/carsState';
-import htmlState from '../state/htmlState';
+import actionsStore from '../store/actionsStore';
+import carStore from '../store/carStore';
 import onCreateWinner from './onCreateWinner';
-import updateDisplayWinner from './view-updaters/updateDisplayWinner';
 
 const raceAll = async (
   promises: Promise<{ id: number; time: number | null }>[],
@@ -19,20 +18,17 @@ const raceAll = async (
   return { id, time };
 };
 
-const onRace = async (event: MouseEvent) => {
-  const btnRace = event.target as HTMLButtonElement;
-  const btnReset = htmlState.getElementById('btn-reset') as HTMLButtonElement;
-  btnRace.disabled = true;
-  if (btnReset) btnReset.disabled = false;
+const onRace = async () => {
+  carStore.dispatch({ type: 'ON_RACE_MODE' });
+  const { items } = carStore.getState();
+  const { actions } = actionsStore;
 
-  const promises = carsState.items.map((item) =>
-    carsState.actions[item.id]?.()
-  );
-  const ids = carsState.items.map((item) => item.id);
+  const promises = items.map((item) => actions[item.id]?.());
+  const ids = items.map((item) => item.id);
 
   // get race winner:
   const { id, time } = await raceAll(promises, ids);
-  updateDisplayWinner(id);
+  carStore.dispatch({ type: 'ADD_CURRENT_WINNER', winnerId: id });
   await onCreateWinner({ id, time: time / 1000 });
 };
 

@@ -1,10 +1,8 @@
-import carsState from '../state/carsState';
-import htmlState from '../state/htmlState';
 import moveState from '../state/moveState';
 import winnersState from '../state/winnersState';
+import carStore from '../store/carStore';
 import fetchCars from './fetchCars';
 import fetchWinners from './fetchWinners';
-import updateGaragePagination from './view-updaters/updateGaragePagination';
 import updateWinnersPagination from './view-updaters/updateWinnersPagination';
 
 const onClickPagination = async (
@@ -13,17 +11,12 @@ const onClickPagination = async (
 ): Promise<void> => {
   if (view === 'garage') {
     if (direction === 'prev') {
-      carsState.prevPage();
+      carStore.dispatch({ type: 'PREV_PAGE' });
     } else {
-      carsState.nextPage();
+      carStore.dispatch({ type: 'NEXT_PAGE' });
     }
 
     await fetchCars();
-    const btnReset = htmlState.getElementById('btn-reset') as HTMLButtonElement;
-    const btnRace = htmlState.getElementById('btn-race') as HTMLButtonElement;
-    if (btnRace) btnRace.disabled = false;
-    if (btnReset) btnReset.disabled = true;
-    updateGaragePagination();
     moveState.resetAllAnimation();
   } else {
     if (direction === 'prev') {

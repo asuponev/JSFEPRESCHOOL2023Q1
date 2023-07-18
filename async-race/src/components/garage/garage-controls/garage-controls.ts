@@ -3,7 +3,7 @@ import onGenerateCars from '../../../actions/onGenerateCars';
 import onRace from '../../../actions/onRace';
 import onResetRace from '../../../actions/onResetRace';
 import onUpdateCar from '../../../actions/onUpdateCar';
-import htmlState from '../../../state/htmlState';
+import carStore from '../../../store/carStore';
 import baseButton from '../../base/button/button';
 import baseForm from '../../base/form/form';
 
@@ -28,6 +28,7 @@ const garageControlsView = (): HTMLDivElement => {
     text: 'race',
     customClass: 'button--main',
     disabled: false,
+    onClick: onRace,
   });
   const btnReset = baseButton({
     text: 'reset',
@@ -39,16 +40,18 @@ const garageControlsView = (): HTMLDivElement => {
     customClass: 'button--minor',
   });
 
-  btnRace.addEventListener('click', (event) => onRace(event));
   btnReset.addEventListener('click', (event) => onResetRace(event));
   btnGenerateCars.addEventListener('click', (event) => onGenerateCars(event));
-
-  htmlState.addToElements('btn-race', btnRace);
-  htmlState.addToElements('btn-reset', btnReset);
 
   garageControlsBtns.append(btnRace, btnReset, btnGenerateCars);
 
   garageControls.append(formCreate, formUpdate, garageControlsBtns);
+
+  // race mode change subscription
+  carStore.subscribe((state) => {
+    btnRace.disabled = state.isRace;
+    btnReset.disabled = !state.isRace;
+  });
 
   return garageControls;
 };

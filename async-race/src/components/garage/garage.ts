@@ -1,18 +1,18 @@
-import carsState from '../../state/carsState';
 import fetchCars from '../../actions/fetchCars';
+import carStore from '../../store/carStore';
+import sectionLayout from '../layout/section';
 import garageControlsView from './garage-controls/garage-controls';
 import garageItemsView from './garage-items/garage-items';
 import './garage.scss';
-import sectionLayout from '../layout/section';
 
 const garageView = async (): Promise<HTMLElement> => {
   await fetchCars();
-  const { items, count, page, fetchError } = carsState;
-  const garage = sectionLayout({ id: 'garage', count, page });
+  const { fetchError } = carStore.getState();
+  const garage = sectionLayout('garage');
 
   if (!fetchError) {
     const garageControls = garageControlsView();
-    const garageItems = garageItemsView(items);
+    const garageItems = garageItemsView();
 
     garage.append(garageControls, garageItems);
   } else {

@@ -1,6 +1,6 @@
 import onClickNavigate from '../../actions/onClickNavigate';
 import getCurrentPage from '../../services/getCurrentPage';
-import htmlState from '../../state/htmlState';
+import carStore from '../../store/carStore';
 import baseButton from '../base/button/button';
 import './header.scss';
 
@@ -27,9 +27,11 @@ const headerView = (): HTMLElement => {
     onClickNavigate(event, [btnToGarage], 'winners')
   );
 
-  htmlState.addToElements('btn-winners', btnToWinners);
-
   headerElement.append(btnToGarage, btnToWinners);
+
+  carStore.subscribe((state) => {
+    btnToWinners.disabled = state.isWalkBlocking;
+  });
 
   return headerElement;
 };

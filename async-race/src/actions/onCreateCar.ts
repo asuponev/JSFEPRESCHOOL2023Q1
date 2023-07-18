@@ -1,8 +1,8 @@
 import { ICar } from '../types/types';
 import { createCar } from '../api/requests';
-import addCarToGarageItems from './view-updaters/addCarToGarageItems';
+import carStore from '../store/carStore';
 
-const onCreateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
+const onCreateCar = async (event: SubmitEvent): Promise<void> => {
   event.preventDefault();
 
   const form = event.target as HTMLFormElement;
@@ -11,19 +11,15 @@ const onCreateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   const name = formData.get('name')?.toString().trim();
   const color = formData.get('color')?.toString();
 
-  let newCar: ICar | undefined;
-
   if (name && color) {
     try {
-      newCar = await createCar({ name, color });
-      addCarToGarageItems([newCar]);
+      const newCar: ICar = await createCar({ name, color });
+      carStore.dispatch({ type: 'ADD_ITEMS', payload: [newCar] });
       form.reset();
     } catch (error) {
       console.log(error);
     }
   }
-
-  return newCar;
 };
 
 export default onCreateCar;

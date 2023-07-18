@@ -48,7 +48,7 @@ const winnersItem = async (
       tdWins.textContent = `${foundWinner.wins}`;
     }
     if (foundWinner && foundWinner.time !== winner.time) {
-      tdWins.textContent = `${foundWinner.time.toFixed(2)}`;
+      tdBestTime.textContent = `${foundWinner.time.toFixed(2)}`;
     }
   });
 

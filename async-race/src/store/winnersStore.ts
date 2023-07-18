@@ -1,3 +1,4 @@
+import createStore, { IStore } from '../services/createStore';
 import { IWinner } from '../types/types';
 
 interface IWinnersState {
@@ -18,34 +19,6 @@ interface IWinnersAction {
   sort?: string;
   order?: string;
 }
-
-interface IStore {
-  getState: () => IWinnersState;
-  subscribe: (fn: (state: IWinnersState) => void) => void;
-  dispatch: (action: IWinnersAction) => void;
-}
-
-const createStore = (
-  reducer: (state: IWinnersState, action: IWinnersAction) => IWinnersState,
-  initialState: IWinnersState
-): IStore => {
-  const subscribers: ((state: IWinnersState) => void)[] = [];
-  let currentState = initialState;
-
-  return {
-    getState() {
-      return currentState;
-    },
-    subscribe(fn) {
-      subscribers.push(fn);
-      fn(currentState);
-    },
-    dispatch(action) {
-      currentState = reducer(currentState, action);
-      subscribers.forEach((fn) => fn(currentState));
-    },
-  };
-};
 
 const initialState: IWinnersState = {
   items: [],
@@ -120,6 +93,9 @@ const reducer = (
   }
 };
 
-const winnersStore: IStore = createStore(reducer, initialState);
+const winnersStore: IStore<IWinnersState, IWinnersAction> = createStore(
+  reducer,
+  initialState
+);
 
 export default winnersStore;

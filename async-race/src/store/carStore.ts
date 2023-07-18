@@ -1,3 +1,4 @@
+import createStore, { IStore } from '../services/createStore';
 import { ICar } from '../types/types';
 
 interface ICarState {
@@ -19,34 +20,6 @@ interface ICarAction {
   error?: string;
   winnerId?: number;
 }
-
-interface IStore {
-  getState: () => ICarState;
-  subscribe: (fn: (state: ICarState) => void) => void;
-  dispatch: (action: ICarAction) => void;
-}
-
-const createStore = (
-  reducer: (state: ICarState, action: ICarAction) => ICarState,
-  initialState: ICarState
-): IStore => {
-  const subscribers: ((state: ICarState) => void)[] = [];
-  let currentState = initialState;
-
-  return {
-    getState() {
-      return currentState;
-    },
-    subscribe(fn) {
-      subscribers.push(fn);
-      fn(currentState);
-    },
-    dispatch(action) {
-      currentState = reducer(currentState, action);
-      subscribers.forEach((fn) => fn(currentState));
-    },
-  };
-};
 
 const initialState: ICarState = {
   items: [],
@@ -137,6 +110,9 @@ const reducer = (state: ICarState, action: ICarAction): ICarState => {
   }
 };
 
-const carStore: IStore = createStore(reducer, initialState);
+const carStore: IStore<ICarState, ICarAction> = createStore(
+  reducer,
+  initialState
+);
 
 export default carStore;

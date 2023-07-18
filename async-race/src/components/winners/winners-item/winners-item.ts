@@ -58,7 +58,7 @@ const winnersItem = async (
       carIcon.innerHTML = carIconView(foundCar.color);
     }
     if (foundCar && foundCar.name !== car.name) {
-      carName.textContent = car.name;
+      carName.textContent = foundCar.name;
       carId.textContent = `#${car.id}`;
     }
   });

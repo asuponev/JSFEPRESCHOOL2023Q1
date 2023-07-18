@@ -4,7 +4,7 @@ import fetchWinners from './fetchWinners';
 const onClickSort = async (
   event: MouseEvent,
   otherField: HTMLTableCellElement
-) => {
+): Promise<void> => {
   const target = event.target as HTMLTableCellElement;
   const targetClass = target.className.split(' ')[0];
   const { sort, order } = winnersStore.getState();

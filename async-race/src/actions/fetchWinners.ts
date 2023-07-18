@@ -1,7 +1,7 @@
-import { getWinners } from '../api/requests';
+import { getWinners } from '../services/apiWinners';
 import winnersStore from '../store/winnersStore';
 
-const fetchWinners = async () => {
+const fetchWinners = async (): Promise<void> => {
   try {
     const { page, sort, order } = winnersStore.getState();
     const { data, count } = await getWinners(page, sort, order);

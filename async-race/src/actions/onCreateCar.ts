@@ -1,6 +1,6 @@
-import { ICar } from '../types/types';
-import { createCar } from '../api/requests';
+import { createCar } from '../services/apiGarage';
 import carStore from '../store/carStore';
+import { ICar } from '../types/types';
 
 const onCreateCar = async (event: SubmitEvent): Promise<void> => {
   event.preventDefault();

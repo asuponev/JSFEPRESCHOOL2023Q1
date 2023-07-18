@@ -1,9 +1,7 @@
-import { ICar } from '../types/types';
-import { updateCar } from '../api/requests';
+import { updateCar } from '../services/apiGarage';
 import carStore from '../store/carStore';
 
-const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
-  let updatedCar: ICar | undefined;
+const onUpdateCar = async (event: SubmitEvent): Promise<void> => {
   event.preventDefault();
 
   const updateForm = event.target as HTMLFormElement;
@@ -16,14 +14,13 @@ const onUpdateCar = async (event: SubmitEvent): Promise<ICar | undefined> => {
   if (window.confirm('are you sure you want to update this car')) {
     if (name && color) {
       try {
-        updatedCar = await updateCar({ id, name, color });
+        const updatedCar = await updateCar({ id, name, color });
         carStore.dispatch({ type: 'UPDATE_ITEM', payload: [updatedCar] });
       } catch (error) {
         console.log(error);
       }
     }
   }
-  return updatedCar;
 };
 
 export default onUpdateCar;

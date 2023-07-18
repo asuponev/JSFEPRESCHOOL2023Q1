@@ -1,4 +1,4 @@
-import { createCar } from '../api/requests';
+import { createCar } from '../services/apiGarage';
 import getRandomCars from '../services/getRandomCars';
 import carStore from '../store/carStore';
 

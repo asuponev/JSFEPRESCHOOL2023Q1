@@ -10,7 +10,7 @@ interface IProps {
   disabled?: boolean;
 }
 
-const baseForm = ({ id, onSubmit, disabled }: IProps) => {
+const baseForm = ({ id, onSubmit, disabled }: IProps): HTMLFormElement => {
   const form = document.createElement('form');
   form.id = `form-${id}`;
   form.classList.add('form');

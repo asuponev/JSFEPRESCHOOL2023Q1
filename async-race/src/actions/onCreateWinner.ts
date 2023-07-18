@@ -1,4 +1,4 @@
-import { createWinner, getWinner, updateWinner } from '../api/requests';
+import { createWinner, getWinner, updateWinner } from '../services/apiWinners';
 import winnersStore from '../store/winnersStore';
 import { IWinner } from '../types/types';
 

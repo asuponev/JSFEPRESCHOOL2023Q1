@@ -1,15 +1,15 @@
-import { IWinner, ICar } from '../../../types/types';
-import { getCarById } from '../../../api/requests';
-import carIconView from '../../car/car-icon/car-icon';
+import { getCar } from '../../../services/apiGarage';
 import winnersStore from '../../../store/winnersStore';
 import carStore from '../../../store/carStore';
+import carIconView from '../../car/car-icon/car-icon';
+import { IWinner, ICar } from '../../../types/types';
 
 const winnersItem = async (
   winner: IWinner,
   index: number
 ): Promise<HTMLTableRowElement> => {
   const { page } = winnersStore.getState();
-  const car: ICar = await getCarById(winner.id);
+  const car: ICar = await getCar(winner.id);
 
   const tr = document.createElement('tr');
   tr.classList.add('winners__table__row');

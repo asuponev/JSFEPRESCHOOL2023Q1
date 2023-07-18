@@ -1,7 +1,7 @@
 import actionsStore from '../store/actionsStore';
 import carStore from '../store/carStore';
 
-const onResetRace = async (event: MouseEvent) => {
+const onResetRace = async (event: MouseEvent): Promise<void> => {
   const { items } = carStore.getState();
   const { resets } = actionsStore;
 

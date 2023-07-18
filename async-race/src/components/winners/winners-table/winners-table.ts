@@ -1,10 +1,9 @@
 import onClickSort from '../../../actions/onClickSort';
 import winnersStore from '../../../store/winnersStore';
-import { IWinner } from '../../../types/types';
 import winnersItem from '../winners-item/winners-item';
+import { IWinner } from '../../../types/types';
 
 const winnersTableView = async (): Promise<HTMLTableElement> => {
-  // const { items } = winnersStore.getState();
   const table = document.createElement('table');
   table.classList.add('winners__table');
 

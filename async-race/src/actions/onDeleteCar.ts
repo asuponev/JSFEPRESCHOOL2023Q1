@@ -1,8 +1,9 @@
-import { ICar } from '../types/types';
-import { deleteCar, deleteWinner, getWinner } from '../api/requests';
+import { deleteCar } from '../services/apiGarage';
+import { deleteWinner, getWinner } from '../services/apiWinners';
 import carStore from '../store/carStore';
 import winnersStore from '../store/winnersStore';
 import fetchWinners from './fetchWinners';
+import { ICar } from '../types/types';
 
 const onDeleteCar = async (car: ICar): Promise<void> => {
   if (window.confirm(`are you sure you want to remove "${car.name}"?`)) {

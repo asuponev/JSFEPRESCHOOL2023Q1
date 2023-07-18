@@ -4,7 +4,7 @@ import onClickPagination from '../../../actions/onClickPagination';
 import baseButton from '../button/button';
 import './pagination.scss';
 
-const paginationView = (id: string) => {
+const paginationView = (id: string): HTMLDivElement => {
   const pagination = document.createElement('div');
   pagination.classList.add('pagination');
 

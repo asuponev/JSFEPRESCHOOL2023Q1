@@ -1,5 +1,5 @@
-import { ICar } from '../types/types';
 import carStore from '../store/carStore';
+import { ICar } from '../types/types';
 
 const onSelectCar = (event: MouseEvent, car: ICar): void => {
   const btnCurrentSelect = event.target as HTMLButtonElement;

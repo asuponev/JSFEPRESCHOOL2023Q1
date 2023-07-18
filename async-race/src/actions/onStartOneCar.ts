@@ -1,8 +1,8 @@
 import { startCarEngine } from '../api/requests';
 import addCarAnimate from '../services/addCarAnimate';
 import getDistanceFromCarToFinish from '../services/getDistanceFromCarToFinish';
-import htmlState from '../state/htmlState';
-import moveState from '../state/moveState';
+import carStore from '../store/carStore';
+import moveState from '../store/moveState';
 import onDriveMode from './onDriveMode';
 
 const onStartOneCar = async (
@@ -13,9 +13,7 @@ const onStartOneCar = async (
   btnStop: HTMLButtonElement
 ): Promise<{ id: number; time: number | null }> => {
   btnDrive.disabled = true;
-  const btnRace = htmlState.getElementById('btn-race') as HTMLButtonElement;
-  if (btnRace) btnRace.disabled = true;
-
+  carStore.dispatch({ type: 'ON_RACE_MODE' });
   const { velocity, distance } = await startCarEngine(id);
   moveState.addStartedEngine(id);
 

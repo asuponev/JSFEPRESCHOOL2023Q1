@@ -20,6 +20,7 @@ const raceAll = async (
 
 const onRace = async () => {
   carStore.dispatch({ type: 'ON_RACE_MODE' });
+  carStore.dispatch({ type: 'BLOCK_PAGI_AND_NAV' });
   const { items } = carStore.getState();
   const { actions } = actionsStore;
 

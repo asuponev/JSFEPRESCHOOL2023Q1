@@ -93,6 +93,8 @@ const reducer = (state: ICarState, action: ICarAction): ICarState => {
       return newState;
     case 'ON_RACE_MODE':
       newState.isRace = true;
+      return newState;
+    case 'BLOCK_PAGI_AND_NAV':
       newState.isWalkBlocking = true;
       return newState;
     case 'OFF_RACE_MODE':

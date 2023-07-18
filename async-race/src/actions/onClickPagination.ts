@@ -1,4 +1,4 @@
-import moveState from '../state/moveState';
+import moveState from '../store/moveState';
 import carStore from '../store/carStore';
 import winnersStore from '../store/winnersStore';
 import fetchCars from './fetchCars';

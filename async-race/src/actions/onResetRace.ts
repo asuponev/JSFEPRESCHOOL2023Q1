@@ -7,12 +7,12 @@ const onResetRace = async (event: MouseEvent) => {
 
   const btnReset = event.target as HTMLButtonElement;
   btnReset.disabled = true;
-  carStore.dispatch({ type: 'REMOVE_CURRENT_WINNER' });
 
   const promises = items.map((item) => resets[item.id]?.());
   await Promise.all(promises);
 
   carStore.dispatch({ type: 'OFF_RACE_MODE' });
+  carStore.dispatch({ type: 'REMOVE_CURRENT_WINNER' });
 };
 
 export default onResetRace;

@@ -1,6 +1,6 @@
 import onClickNavigate from '../../actions/onClickNavigate';
-import getCurrentPage from '../../services/getCurrentPage';
 import carStore from '../../store/carStore';
+import navigateStore from '../../store/navigateStore';
 import baseButton from '../base/button/button';
 import './header.scss';
 
@@ -11,26 +11,25 @@ const headerView = (): HTMLElement => {
   const btnToGarage = baseButton({
     text: 'to garage',
     customClass: 'button--main',
-    disabled: getCurrentPage() === 'garage',
   });
 
   const btnToWinners = baseButton({
     text: 'to winners',
     customClass: 'button--main',
-    disabled: getCurrentPage() === 'winners',
   });
 
-  btnToGarage.addEventListener('click', (event) =>
-    onClickNavigate(event, [btnToWinners], 'garage')
-  );
-  btnToWinners.addEventListener('click', (event) =>
-    onClickNavigate(event, [btnToGarage], 'winners')
-  );
+  btnToGarage.addEventListener('click', () => onClickNavigate('garage'));
+  btnToWinners.addEventListener('click', () => onClickNavigate('winners'));
 
   headerElement.append(btnToGarage, btnToWinners);
 
   carStore.subscribe((state) => {
     btnToWinners.disabled = state.isWalkBlocking;
+  });
+
+  navigateStore.subscribe((state) => {
+    btnToGarage.disabled = state.currentView === 'garage';
+    btnToWinners.disabled = state.currentView === 'winners';
   });
 
   return headerElement;

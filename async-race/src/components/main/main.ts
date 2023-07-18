@@ -1,22 +1,25 @@
-import getCurrentPage from '../../services/getCurrentPage';
-import htmlState from '../../state/htmlState';
+import navigateStore from '../../store/navigateStore';
 import garageView from '../garage/garage';
 import winnersView from '../winners/winners';
 
 const mainView = async (): Promise<HTMLElement> => {
-  const currentPage: string = getCurrentPage();
-
   const main = document.createElement('main');
 
   const garage = await garageView();
   const winners = await winnersView();
-  htmlState.addToElements('garage', garage);
-  htmlState.addToElements('winners', winners);
-
-  if (currentPage === 'garage') garage.classList.remove('hidden');
-  if (currentPage === 'winners') winners.classList.remove('hidden');
 
   main.append(garage, winners);
+
+  navigateStore.subscribe((state) => {
+    if (state.currentView === 'winners') {
+      garage.classList.add('hidden');
+      winners.classList.remove('hidden');
+    } else {
+      garage.classList.remove('hidden');
+      winners.classList.add('hidden');
+    }
+  });
+
   return main;
 };
 

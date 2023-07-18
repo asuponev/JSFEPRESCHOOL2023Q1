@@ -1,28 +1,7 @@
-import htmlState from '../state/htmlState';
-import setCurrentPage from '../services/setCurrentPage';
-import pages from '../constants/pages';
-import { IElement } from '../types/types';
+import navigateStore from '../store/navigateStore';
 
-const onClickNavigate = (
-  event: MouseEvent,
-  neighborButtons: HTMLButtonElement[],
-  newPage: string
-): void => {
-  const targetButton = event.target as HTMLButtonElement;
-  const pageElements: IElement[] = htmlState.getElementsByIds(pages);
-
-  targetButton.disabled = true;
-  pageElements.forEach((item) => {
-    if (item.id === newPage) {
-      item.element?.classList.remove('hidden');
-    } else {
-      item.element?.classList.add('hidden');
-    }
-  });
-  neighborButtons.forEach((button): void => {
-    button.disabled = false;
-  });
-  setCurrentPage(newPage);
+const onClickNavigate = (newPage: string): void => {
+  navigateStore.dispatch({ type: 'SET_CURRENT_VIEW', payload: newPage });
 };
 
 export default onClickNavigate;

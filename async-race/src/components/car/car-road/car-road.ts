@@ -67,8 +67,11 @@ const carRoadView = ({ id, name, color }: ICar): HTMLDivElement => {
 
     if (state.currentRaceWinner === id) {
       winnerMessage.classList.add('display');
+      roadCarIcon.classList.remove('car__icon--finished');
+      roadCarIcon.classList.add('car__icon--winner');
     } else {
       winnerMessage.classList.remove('display');
+      roadCarIcon.classList.remove('car__icon--winner');
     }
   });
 

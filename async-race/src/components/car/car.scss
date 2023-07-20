@@ -79,7 +79,19 @@
       filter: drop-shadow(1px 1px 4px $bg-secondary);
     }
 
-    &--broken {
+    &--broken {      
+      position: relative;
+
+      &::after {
+        content: "Uh-oh noooo!";
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        white-space: nowrap;
+      }
+
       @keyframes broke {
         100% {
           transform: translateX(-1px);
@@ -98,20 +110,30 @@
     }
 
     &--finished {
-      @keyframes finish {
-        100% {
-          transform: translateY(-16px);
-        }
-        50% {
-          transform: translateY(-8px);
-        }
-        0% {
-          transform: translateY(0px);
-        }
-      }
+      position: relative;
 
-      svg {
-        animation: finish 0.4s linear infinite;
+      &::after {
+        content: "Yay! I finished";
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        white-space: nowrap;
+      }
+    }
+
+    &--winner {
+      position: relative;
+
+      &::after {
+        content: "Yes! Yes! Yes!";
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        white-space: nowrap;
       }
     }
   }

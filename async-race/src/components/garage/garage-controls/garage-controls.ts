@@ -10,6 +10,7 @@ import baseForm from '../../base/form/form';
 const garageControlsView = (): HTMLDivElement => {
   const garageControls = document.createElement('div');
   garageControls.classList.add('garage__controls');
+
   // create forms for create/update car
   const formCreate = baseForm({
     id: 'create',
@@ -21,6 +22,7 @@ const garageControlsView = (): HTMLDivElement => {
     onSubmit: onUpdateCar,
     disabled: true,
   });
+
   // create buttons for race/reset and generate cars
   const garageControlsBtns = document.createElement('div');
   garageControlsBtns.classList.add('garage__buttons');
@@ -34,15 +36,13 @@ const garageControlsView = (): HTMLDivElement => {
     text: 'reset',
     customClass: 'button--main',
     disabled: true,
+    onClick: (event: MouseEvent) => onResetRace(event),
   });
   const btnGenerateCars = baseButton({
     text: 'generate cars',
     customClass: 'button--minor',
+    onClick: (event: MouseEvent) => onGenerateCars(event),
   });
-
-  btnReset.addEventListener('click', (event) => onResetRace(event));
-  btnGenerateCars.addEventListener('click', (event) => onGenerateCars(event));
-
   garageControlsBtns.append(btnRace, btnReset, btnGenerateCars);
 
   garageControls.append(formCreate, formUpdate, garageControlsBtns);

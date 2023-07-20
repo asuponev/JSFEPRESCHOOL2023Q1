@@ -16,17 +16,15 @@ const paginationView = (id: string): HTMLDivElement => {
   const btnPrev = baseButton({
     text: '<',
     customClass: 'button--main',
+    onClick: () => onClickPagination(id, 'prev'),
   });
   const btnNext = baseButton({
     text: '>',
     customClass: 'button--main',
+    onClick: () => onClickPagination(id, 'next'),
   });
 
-  btnPrev.addEventListener('click', () => onClickPagination(id, 'prev'));
-  btnNext.addEventListener('click', () => onClickPagination(id, 'next'));
-
   paginationBtns.append(btnPrev, btnNext);
-
   pagination.append(paginationTitle, paginationBtns);
 
   carStore.subscribe((state) => {

@@ -1,16 +1,17 @@
-import { ICar } from '../../../types/types';
 import carStore from '../../../store/carStore';
 import actionsStore from '../../../store/actionsStore';
 import onStartOneCar from '../../../actions/onStartOneCar';
 import onStopOneCar from '../../../actions/onStopOneCar';
 import baseButton from '../../base/button/button';
 import carIconView from '../car-icon/car-icon';
+import { ICar } from '../../../types/types';
 
 const carRoadView = (car: ICar): HTMLDivElement => {
   const { id, name, color } = car;
 
   const carRoad = document.createElement('div');
   carRoad.classList.add('car__road');
+
   // create buttons for motion control
   const roadButtons = document.createElement('div');
   roadButtons.classList.add('car__road__buttons');
@@ -25,6 +26,7 @@ const carRoadView = (car: ICar): HTMLDivElement => {
     disabled: true,
   });
   roadButtons.append(btnDrive, btnStop);
+
   // create car icon
   const roadCarIcon = document.createElement('div');
   roadCarIcon.classList.add('car__icon');

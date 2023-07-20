@@ -11,15 +11,14 @@ const headerView = (): HTMLElement => {
   const btnToGarage = baseButton({
     text: 'to garage',
     customClass: 'button--main',
+    onClick: () => onClickNavigate('garage'),
   });
 
   const btnToWinners = baseButton({
     text: 'to winners',
     customClass: 'button--main',
+    onClick: () => onClickNavigate('winners'),
   });
-
-  btnToGarage.addEventListener('click', () => onClickNavigate('garage'));
-  btnToWinners.addEventListener('click', () => onClickNavigate('winners'));
 
   headerElement.append(btnToGarage, btnToWinners);
 

@@ -61,7 +61,11 @@ const reducer = (state: ICarState, action: ICarAction): ICarState => {
       return newState;
     case 'SELECT_CAR':
       newState.isUpdate = true;
-      if (action.payload) newState.selectedCar = action.payload?.[0];
+      if (action.payload) {
+        const selectedCarId = action.payload?.[0].id;
+        const foundCar = state.items.find((item) => item.id === selectedCarId);
+        if (foundCar) newState.selectedCar = foundCar;
+      }
       return newState;
     case 'RESET_UPDATE_CAR':
       newState.isUpdate = false;

@@ -1,4 +1,5 @@
 @import '../../assets/variables';
+@import '../../assets/breakpoints';
 
 .car {
   display: flex;
@@ -13,11 +14,17 @@
   &__title {
     display: flex;
     gap: 4px;
+    overflow: hidden;
 
     span:nth-child(2) {
       font-size: 10px;
       font-style: italic;
       color: $text-secondary;
+      padding-right: 5px;
+    }
+
+    @include mobile {
+      max-width: 245px;
     }
   }
 
@@ -49,9 +56,16 @@
       filter: drop-shadow(1px 1px 4px $text-main);
       text-transform: uppercase;
       animation: illumination 0.5s infinite;
+      max-width: calc(100vw - 200px);
+      text-align: center;
 
       &.display {
         display: block;
+      }
+
+      @include mobile {
+        max-width: 260px;
+        overflow: hidden;
       }
     }
 
@@ -79,11 +93,11 @@
       filter: drop-shadow(1px 1px 4px $bg-secondary);
     }
 
-    &--broken {      
+    &--broken {
       position: relative;
 
       &::after {
-        content: "Uh-oh noooo!";
+        content: 'Uh-oh noooo!';
         position: absolute;
         top: -12px;
         left: 50%;
@@ -94,13 +108,13 @@
 
       @keyframes broke {
         100% {
-          transform: translateX(-1px);
+          transform: translateX(-6px);
         }
         50% {
-          transform: translateX(1px);
+          transform: translateX(-5px);
         }
         0% {
-          transform: translateX(-1px);
+          transform: translateX(-6px);
         }
       }
 
@@ -113,7 +127,7 @@
       position: relative;
 
       &::after {
-        content: "Yay! I finished";
+        content: 'Yay! I finished';
         position: absolute;
         top: -16px;
         left: 50%;
@@ -127,7 +141,7 @@
       position: relative;
 
       &::after {
-        content: "Yes! Yes! Yes!";
+        content: 'Yes! Yes! Yes!';
         position: absolute;
         top: -16px;
         left: 50%;

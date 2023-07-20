@@ -42,6 +42,8 @@ const baseForm = ({ id, onSubmit, disabled }: IProps): HTMLFormElement => {
     btnSubmit.disabled = true;
   }
 
+  form.append(inputName, inputColor, btnSubmit);
+
   carStore.subscribe((state) => {
     if (id === 'create') {
       inputName.disabled = state.isUpdate;
@@ -60,12 +62,12 @@ const baseForm = ({ id, onSubmit, disabled }: IProps): HTMLFormElement => {
       inputName.value = state.selectedCar.name;
       inputColor.value = state.selectedCar.color;
     } else if (id === 'update' && !state.selectedCar) {
+      form.removeAttribute('data-car-id');
       inputName.value = '';
       inputColor.value = '#e2e8f0';
     }
   });
 
-  form.append(inputName, inputColor, btnSubmit);
   return form;
 };
 

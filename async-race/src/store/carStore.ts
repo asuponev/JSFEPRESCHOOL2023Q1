@@ -103,6 +103,7 @@ const reducer = (state: ICarState, action: ICarAction): ICarState => {
       return newState;
     case 'OFF_RACE_MODE':
       newState.isRace = false;
+      newState.isWalkBlocking = false;
       return newState;
     case 'ADD_CURRENT_WINNER':
       if (action.winnerId) newState.currentRaceWinner = action.winnerId;

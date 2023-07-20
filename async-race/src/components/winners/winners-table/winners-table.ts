@@ -13,20 +13,25 @@ const winnersTableView = async (): Promise<HTMLTableElement> => {
   tr.classList.add('winners__table__row');
 
   const thNumber = document.createElement('th');
+  thNumber.classList.add('winners__table__number');
   thNumber.textContent = 'Number';
 
   const thCar = document.createElement('th');
+  thCar.classList.add('winners__table__car');
   thCar.textContent = 'Car';
 
   const thName = document.createElement('th');
+  thName.classList.add('winners__table__name');
   thName.textContent = 'Name';
 
   const thWins = document.createElement('th');
-  thWins.classList.add('wins');
+  thWins.dataset.sortField = 'wins';
+  thWins.classList.add('winners__table__wins');
   thWins.textContent = 'Wins';
 
   const thBestTime = document.createElement('th');
-  thBestTime.classList.add('time');
+  thBestTime.dataset.sortField = 'time';
+  thBestTime.classList.add('winners__table__time');
   thBestTime.textContent = 'Best time (sec.)';
 
   // add listeners for table sort

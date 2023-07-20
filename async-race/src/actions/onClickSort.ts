@@ -6,7 +6,7 @@ const onClickSort = async (
   otherField: HTMLTableCellElement
 ): Promise<void> => {
   const target = event.target as HTMLTableCellElement;
-  const targetClass = target.className.split(' ')[0];
+  const targetClass = target.dataset.sortField;
   const { sort, order } = winnersStore.getState();
 
   switch (sort) {

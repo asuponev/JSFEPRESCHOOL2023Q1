@@ -6,9 +6,7 @@ import baseButton from '../../base/button/button';
 import carIconView from '../car-icon/car-icon';
 import { ICar } from '../../../types/types';
 
-const carRoadView = (car: ICar): HTMLDivElement => {
-  const { id, name, color } = car;
-
+const carRoadView = ({ id, name, color }: ICar): HTMLDivElement => {
   const carRoad = document.createElement('div');
   carRoad.classList.add('car__road');
 
@@ -32,15 +30,18 @@ const carRoadView = (car: ICar): HTMLDivElement => {
   roadCarIcon.classList.add('car__icon');
   roadCarIcon.id = `car-icon-${id}`;
   roadCarIcon.innerHTML = carIconView(color);
+
   // create finish element
   const roadFinishIcon = document.createElement('div');
   roadFinishIcon.classList.add('car__road__finish');
   roadFinishIcon.textContent = 'FINISH';
 
+  // create winner message element
   const winnerMessage = document.createElement('div');
   winnerMessage.classList.add('car__road__message');
   winnerMessage.textContent = `winner: ${name} #${id}`;
 
+  // create actions for start and stop car with the necessary arguments
   const startCar = (): Promise<{ id: number; time: number | null }> => {
     return onStartOneCar(id, roadCarIcon, roadFinishIcon, btnDrive, btnStop);
   };
@@ -57,22 +58,21 @@ const carRoadView = (car: ICar): HTMLDivElement => {
   actionsStore.actions[id] = startCar;
   actionsStore.resets[id] = stopCar;
 
-  carRoad.append(roadButtons, roadCarIcon, roadFinishIcon, winnerMessage);
-
-  // color change subscription
+  // subscription to state changes
   carStore.subscribe((state) => {
-    const foundCar = state.items.find((item) => item.id === car.id);
-    if (foundCar && foundCar.id === car.id && foundCar.color !== car.color) {
+    const foundCar = state.items.find((item) => item.id === id);
+    if (foundCar && foundCar.color !== color) {
       roadCarIcon.innerHTML = carIconView(foundCar.color);
     }
 
-    if (state.currentRaceWinner === car.id) {
+    if (state.currentRaceWinner === id) {
       winnerMessage.classList.add('display');
     } else {
       winnerMessage.classList.remove('display');
     }
   });
 
+  carRoad.append(roadButtons, roadCarIcon, roadFinishIcon, winnerMessage);
   return carRoad;
 };
 

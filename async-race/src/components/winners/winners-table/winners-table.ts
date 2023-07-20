@@ -7,6 +7,7 @@ const winnersTableView = async (): Promise<HTMLTableElement> => {
   const table = document.createElement('table');
   table.classList.add('winners__table');
 
+  // create thead
   const tHead = document.createElement('thead');
   const tr = document.createElement('tr');
   tr.classList.add('winners__table__row');
@@ -28,16 +29,15 @@ const winnersTableView = async (): Promise<HTMLTableElement> => {
   thBestTime.classList.add('time');
   thBestTime.textContent = 'Best time (sec.)';
 
+  // add listeners for table sort
   thWins.addEventListener('click', (event) => onClickSort(event, thBestTime));
   thBestTime.addEventListener('click', (event) => onClickSort(event, thWins));
 
   tr.append(thNumber, thCar, thName, thWins, thBestTime);
-
   tHead.append(tr);
 
+  // create tbody
   const tBody = document.createElement('tbody');
-
-  table.append(tHead, tBody);
 
   // subscription to update items
   winnersStore.subscribe(async (state) => {
@@ -62,6 +62,7 @@ const winnersTableView = async (): Promise<HTMLTableElement> => {
     });
   });
 
+  table.append(tHead, tBody);
   return table;
 };
 

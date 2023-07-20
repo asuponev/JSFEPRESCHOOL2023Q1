@@ -30,8 +30,7 @@ const carHeaderView = (car: ICar): HTMLDivElement => {
   carTitleNumber.textContent = `#${car.id}`;
   carTitle.append(carTitleName, carTitleNumber);
 
-  carHeader.append(btnSelect, btnDelete, carTitle);
-
+  // subscription to state changes
   carStore.subscribe((state) => {
     const foundCar = state.items.find((item) => item.id === car.id);
     if (foundCar && foundCar.id === car.id && foundCar.name !== car.name) {
@@ -45,6 +44,7 @@ const carHeaderView = (car: ICar): HTMLDivElement => {
     }
   });
 
+  carHeader.append(btnSelect, btnDelete, carTitle);
   return carHeader;
 };
 

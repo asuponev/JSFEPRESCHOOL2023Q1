@@ -15,12 +15,10 @@ const garageControlsView = (): HTMLDivElement => {
   const formCreate = baseForm({
     id: 'create',
     onSubmit: onCreateCar,
-    disabled: false,
   });
   const formUpdate = baseForm({
     id: 'update',
     onSubmit: onUpdateCar,
-    disabled: true,
   });
 
   // create buttons for race/reset and generate cars
@@ -45,14 +43,13 @@ const garageControlsView = (): HTMLDivElement => {
   });
   garageControlsBtns.append(btnRace, btnReset, btnGenerateCars);
 
-  garageControls.append(formCreate, formUpdate, garageControlsBtns);
-
   // race mode change subscription
   carStore.subscribe((state) => {
     btnRace.disabled = state.isRace;
     btnReset.disabled = !state.isRace;
   });
 
+  garageControls.append(formCreate, formUpdate, garageControlsBtns);
   return garageControls;
 };
 

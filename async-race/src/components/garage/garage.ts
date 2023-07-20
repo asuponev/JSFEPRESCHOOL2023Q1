@@ -8,6 +8,8 @@ import './garage.scss';
 const garageView = async (): Promise<HTMLElement> => {
   await fetchCars();
   const { fetchError } = carStore.getState();
+
+  // create section 'Garage'
   const garage = sectionLayout('garage');
 
   if (!fetchError) {

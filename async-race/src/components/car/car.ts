@@ -8,11 +8,11 @@ const carView = (car: ICar): HTMLDivElement => {
   const carElement = document.createElement('div');
   carElement.classList.add('car');
   carElement.dataset.carId = `${car.id}`;
+
   const carHeader = carHeaderView(car);
   const carRoad = carRoadView(car);
 
-  carElement.append(carHeader, carRoad);
-
+  // subscription to state changes
   carStore.subscribe((state) => {
     const foundCar = state.items.find((item) => item.id === car.id);
     if (!foundCar) {
@@ -20,6 +20,7 @@ const carView = (car: ICar): HTMLDivElement => {
     }
   });
 
+  carElement.append(carHeader, carRoad);
   return carElement;
 };
 

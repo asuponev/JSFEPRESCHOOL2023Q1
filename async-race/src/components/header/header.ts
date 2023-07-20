@@ -8,20 +8,19 @@ const headerView = (): HTMLElement => {
   const headerElement = document.createElement('header');
   headerElement.classList.add('header');
 
+  // create navigation buttons
   const btnToGarage = baseButton({
     text: 'to garage',
     customClass: 'button--main',
     onClick: () => onClickNavigate('garage'),
   });
-
   const btnToWinners = baseButton({
     text: 'to winners',
     customClass: 'button--main',
     onClick: () => onClickNavigate('winners'),
   });
 
-  headerElement.append(btnToGarage, btnToWinners);
-
+  // subscription to state changes
   carStore.subscribe((state) => {
     btnToWinners.disabled = state.isWalkBlocking;
   });
@@ -31,6 +30,7 @@ const headerView = (): HTMLElement => {
     btnToWinners.disabled = state.currentView === 'winners';
   });
 
+  headerElement.append(btnToGarage, btnToWinners);
   return headerElement;
 };
 

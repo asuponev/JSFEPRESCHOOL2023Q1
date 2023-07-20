@@ -7,15 +7,15 @@ type InputId = 'create' | 'update';
 interface IProps {
   id: InputId;
   onSubmit: (event: SubmitEvent) => void;
-  disabled?: boolean;
 }
 
-const baseForm = ({ id, onSubmit, disabled }: IProps): HTMLFormElement => {
+const baseForm = ({ id, onSubmit }: IProps): HTMLFormElement => {
   const form = document.createElement('form');
   form.id = `form-${id}`;
   form.classList.add('form');
   form.addEventListener('submit', (event) => onSubmit(event));
 
+  // create form elements
   const inputName = document.createElement('input');
   inputName.id = `form-${id}-name`;
   inputName.name = 'name';
@@ -36,14 +36,7 @@ const baseForm = ({ id, onSubmit, disabled }: IProps): HTMLFormElement => {
   btnSubmit.type = 'submit';
   btnSubmit.id = `form-${id}-button`;
 
-  if (disabled) {
-    inputName.disabled = true;
-    inputColor.disabled = true;
-    btnSubmit.disabled = true;
-  }
-
-  form.append(inputName, inputColor, btnSubmit);
-
+  // subscription to state changes
   carStore.subscribe((state) => {
     if (id === 'create') {
       inputName.disabled = state.isUpdate;
@@ -68,6 +61,7 @@ const baseForm = ({ id, onSubmit, disabled }: IProps): HTMLFormElement => {
     }
   });
 
+  form.append(inputName, inputColor, btnSubmit);
   return form;
 };
 

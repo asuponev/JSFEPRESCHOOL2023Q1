@@ -7,14 +7,15 @@ const sectionLayout = (id: string): HTMLElement => {
   const section = document.createElement('section');
   section.classList.add('section', id, 'hidden');
 
+  // create section title
   const sectionTitle = document.createElement('h1');
   sectionTitle.classList.add('section__title');
   const sectionName = id.charAt(0).toUpperCase() + id.slice(1);
 
+  // create pagination
   const pagination = paginationView(id);
 
-  section.append(sectionTitle, pagination);
-
+  // subscription to state changes
   carStore.subscribe((state) => {
     if (id === 'garage') {
       sectionTitle.textContent = `${sectionName} (${state.count})`;
@@ -27,6 +28,7 @@ const sectionLayout = (id: string): HTMLElement => {
     }
   });
 
+  section.append(sectionTitle, pagination);
   return section;
 };
 

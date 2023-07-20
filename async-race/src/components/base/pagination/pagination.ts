@@ -8,9 +8,11 @@ const paginationView = (id: string): HTMLDivElement => {
   const pagination = document.createElement('div');
   pagination.classList.add('pagination');
 
+  // create pagination title
   const paginationTitle = document.createElement('p');
   paginationTitle.classList.add('pagination__title');
 
+  // create pagination buttons
   const paginationBtns = document.createElement('div');
   paginationBtns.classList.add('pagination__buttons');
   const btnPrev = baseButton({
@@ -23,10 +25,9 @@ const paginationView = (id: string): HTMLDivElement => {
     customClass: 'button--main',
     onClick: () => onClickPagination(id, 'next'),
   });
-
   paginationBtns.append(btnPrev, btnNext);
-  pagination.append(paginationTitle, paginationBtns);
 
+  // subscription to state changes
   carStore.subscribe((state) => {
     if (id === 'garage') {
       const { page, count, isWalkBlocking } = state;
@@ -46,6 +47,7 @@ const paginationView = (id: string): HTMLDivElement => {
     }
   });
 
+  pagination.append(paginationTitle, paginationBtns);
   return pagination;
 };
 

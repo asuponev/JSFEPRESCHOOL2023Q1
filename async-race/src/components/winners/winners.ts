@@ -7,6 +7,8 @@ import './winners.scss';
 const winnersView = async (): Promise<HTMLElement> => {
   await fetchWinners();
   const { fetchError } = winnersStore.getState();
+
+  // create section 'Winners'
   const winners = sectionLayout('winners');
 
   if (!fetchError) {

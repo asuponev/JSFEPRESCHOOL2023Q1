@@ -5,11 +5,11 @@ import winnersView from '../winners/winners';
 const mainView = async (): Promise<HTMLElement> => {
   const main = document.createElement('main');
 
+  // create sections
   const garage = await garageView();
   const winners = await winnersView();
 
-  main.append(garage, winners);
-
+  // subscription to state changes
   navigateStore.subscribe((state) => {
     if (state.currentView === 'winners') {
       garage.classList.add('hidden');
@@ -20,6 +20,7 @@ const mainView = async (): Promise<HTMLElement> => {
     }
   });
 
+  main.append(garage, winners);
   return main;
 };
 

@@ -52,8 +52,8 @@ const reducer = (
       // newState.items = newState.items.filter(
       //   (item) => item.id !== action.winnerId
       // );
-      // newState.count -= 1;
       newState.items = [];
+      newState.count -= 1;
       return newState;
     case 'UPDATE_WINNER':
       newState.items.forEach((item, index) => {

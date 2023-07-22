@@ -10,6 +10,7 @@ const onDeleteCar = async (car: ICar): Promise<void> => {
     try {
       await deleteCar(car.id);
       carStore.dispatch({ type: 'REMOVE_ITEM', payload: [car] });
+      carStore.dispatch({ type: 'RESET_UPDATE_CAR' });
       const isWinner = await getWinner(car.id);
       if (isWinner.id) {
         await deleteWinner(car.id);

@@ -28,6 +28,12 @@
     "@typescript-eslint/return-await": "off",
     "no-param-reassign": "off",
     "no-alert": "off",
-    "default-case": "off"
+    "default-case": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }

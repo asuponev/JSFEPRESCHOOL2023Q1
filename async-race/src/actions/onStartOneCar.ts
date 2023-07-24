@@ -12,23 +12,27 @@ const onStartOneCar = async (
   btnDrive: HTMLButtonElement,
   btnStop: HTMLButtonElement
 ): Promise<{ id: number; time: number | null }> => {
-  btnDrive.disabled = true;
-  carStore.dispatch({ type: 'ON_RACE_MODE' });
-  const { velocity, distance } = await startCarEngine(id);
-  moveState.addStartedEngine(id);
+  try {
+    btnDrive.disabled = true;
+    carStore.dispatch({ type: 'ON_RACE_MODE' });
+    const { velocity, distance } = await startCarEngine(id);
+    moveState.addStartedEngine(id);
 
-  const timeMs = Math.round(distance / velocity);
-  const distancePx = getDistanceFromCarToFinish(carElement, finishElement);
+    const timeMs = Math.round(distance / velocity);
+    const distancePx = getDistanceFromCarToFinish(carElement, finishElement);
 
-  const animate = addCarAnimate(carElement, distancePx, timeMs);
-  moveState.addAnimation(animate);
+    const animate = addCarAnimate(carElement, distancePx, timeMs);
+    moveState.addAnimation(animate);
 
-  btnStop.disabled = false;
+    btnStop.disabled = false;
 
-  const { success } = await onDriveMode(id, carElement, animate);
+    const { success } = await onDriveMode(id, carElement, animate);
 
-  if (!success) return { id, time: null };
-  return { id, time: timeMs };
+    if (!success) return { id, time: null };
+    return { id, time: timeMs };
+  } catch {
+    return { id, time: null };
+  }
 };
 
 export default onStartOneCar;

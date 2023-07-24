@@ -12,6 +12,7 @@ const onDriveMode = async (
 
     if (await animate.finished) {
       car.classList.add('car__icon--finished');
+      car.classList.remove('car__icon--broken');
     }
     return data;
   } catch (error) {

@@ -4,12 +4,14 @@ import carStore from '../store/carStore';
 import winnersStore from '../store/winnersStore';
 import fetchWinners from './fetchWinners';
 import { ICar } from '../types/types';
+import fetchCars from './fetchCars';
 
 const onDeleteCar = async (car: ICar): Promise<void> => {
   if (window.confirm(`are you sure you want to remove "${car.name}"?`)) {
     try {
       await deleteCar(car.id);
-      carStore.dispatch({ type: 'REMOVE_ITEM', payload: [car] });
+      await fetchCars();
+      // carStore.dispatch({ type: 'REMOVE_ITEM', payload: [car] });
       carStore.dispatch({ type: 'RESET_UPDATE_CAR' });
       const isWinner = await getWinner(car.id);
       if (isWinner.id) {

@@ -26,15 +26,15 @@ const carRoadView = ({ id, name, color }: ICar): HTMLDivElement => {
   roadButtons.append(btnDrive, btnStop);
 
   // create car icon
-  const roadCarIcon = document.createElement('div');
-  roadCarIcon.classList.add('car__icon');
-  roadCarIcon.id = `car-icon-${id}`;
-  roadCarIcon.innerHTML = carIconView(color);
+  const carIcon = document.createElement('div');
+  carIcon.classList.add('car__icon');
+  carIcon.id = `car-icon-${id}`;
+  carIcon.innerHTML = carIconView(color);
 
   // create finish element
-  const roadFinishIcon = document.createElement('div');
-  roadFinishIcon.classList.add('car__road__finish');
-  roadFinishIcon.textContent = 'FINISH';
+  const finishIcon = document.createElement('div');
+  finishIcon.classList.add('car__road__finish');
+  finishIcon.textContent = 'FINISH';
 
   // create winner message element
   const winnerMessage = document.createElement('div');
@@ -42,16 +42,26 @@ const carRoadView = ({ id, name, color }: ICar): HTMLDivElement => {
   winnerMessage.textContent = `winner: ${name} #${id}`;
 
   // create actions for start and stop car with the necessary arguments
-  const startCar = (): Promise<{ id: number; time: number | null }> => {
-    return onStartOneCar(id, roadCarIcon, roadFinishIcon, btnDrive, btnStop);
+  const startCar = async (): Promise<{ id: number; time: number }> => {
+    try {
+      return await onStartOneCar(id, carIcon, finishIcon, btnDrive, btnStop);
+    } catch (error) {
+      throw new Error('Something went wrong');
+    }
   };
 
   const stopCar = (): Promise<void> => {
-    return onStopOneCar(id, roadCarIcon, btnDrive, btnStop);
+    return onStopOneCar(id, carIcon, btnDrive, btnStop);
   };
 
   // add listeners
-  btnDrive.addEventListener('click', startCar);
+  btnDrive.addEventListener('click', async () => {
+    try {
+      await startCar();
+    } catch {
+      //
+    }
+  });
   btnStop.addEventListener('click', stopCar);
 
   // add actions to store
@@ -62,20 +72,20 @@ const carRoadView = ({ id, name, color }: ICar): HTMLDivElement => {
   carStore.subscribe((state) => {
     const foundCar = state.items.find((item) => item.id === id);
     if (foundCar && foundCar.color !== color) {
-      roadCarIcon.innerHTML = carIconView(foundCar.color);
+      carIcon.innerHTML = carIconView(foundCar.color);
     }
 
     if (state.currentRaceWinner === id) {
       winnerMessage.classList.add('display');
-      roadCarIcon.classList.remove('car__icon--finished');
-      roadCarIcon.classList.add('car__icon--winner');
+      carIcon.classList.remove('car__icon--finished');
+      carIcon.classList.add('car__icon--winner');
     } else {
       winnerMessage.classList.remove('display');
-      roadCarIcon.classList.remove('car__icon--winner');
+      carIcon.classList.remove('car__icon--winner');
     }
   });
 
-  carRoad.append(roadButtons, roadCarIcon, roadFinishIcon, winnerMessage);
+  carRoad.append(roadButtons, carIcon, finishIcon, winnerMessage);
   return carRoad;
 };
 

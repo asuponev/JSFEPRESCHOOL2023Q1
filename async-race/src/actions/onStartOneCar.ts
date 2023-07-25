@@ -11,7 +11,7 @@ const onStartOneCar = async (
   finishElement: HTMLDivElement,
   btnDrive: HTMLButtonElement,
   btnStop: HTMLButtonElement
-): Promise<{ id: number; time: number | null }> => {
+): Promise<{ id: number; time: number }> => {
   try {
     btnDrive.disabled = true;
     carStore.dispatch({ type: 'ON_RACE_MODE' });
@@ -28,10 +28,10 @@ const onStartOneCar = async (
 
     const { success } = await onDriveMode(id, carElement, animate);
 
-    if (!success) return { id, time: null };
+    if (!success) throw new Error('Something went wrong');
     return { id, time: timeMs };
   } catch {
-    return { id, time: null };
+    throw new Error('Something went wrong');
   }
 };
 

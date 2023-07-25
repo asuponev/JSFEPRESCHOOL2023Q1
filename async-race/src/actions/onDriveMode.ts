@@ -15,7 +15,7 @@ const onDriveMode = async (
       car.classList.remove('car__icon--broken');
     }
     return data;
-  } catch (error) {
+  } catch {
     console.log(`Car #${id} is broken`);
     animate.pause();
     if (moveState.isEngineStarts(id)) {

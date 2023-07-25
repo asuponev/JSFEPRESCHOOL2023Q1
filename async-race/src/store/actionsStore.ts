@@ -1,5 +1,5 @@
 interface IActionsStore {
-  actions: Record<string, () => Promise<{ id: number; time: number | null }>>;
+  actions: Record<string, () => Promise<{ id: number; time: number }>>;
   resets: Record<string, () => Promise<void>>;
 }
 

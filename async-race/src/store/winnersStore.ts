@@ -49,9 +49,6 @@ const reducer = (
       newState.count += 1;
       return newState;
     case 'REMOVE_WINNER':
-      // newState.items = newState.items.filter(
-      //   (item) => item.id !== action.winnerId
-      // );
       newState.items = [];
       newState.count -= 1;
       return newState;

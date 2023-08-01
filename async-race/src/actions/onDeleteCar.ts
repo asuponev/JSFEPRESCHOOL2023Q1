@@ -12,7 +12,6 @@ const onDeleteCar = async (car: ICar): Promise<void> => {
     try {
       await deleteCar(car.id);
       await fetchCars();
-      // carStore.dispatch({ type: 'REMOVE_ITEM', payload: [car] });
       carStore.dispatch({ type: 'RESET_UPDATE_CAR' });
 
       moveState.removeStoppedEngine(car.id);

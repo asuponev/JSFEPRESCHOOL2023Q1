@@ -11,7 +11,6 @@ const garageControlsView = (): HTMLDivElement => {
   const garageControls = document.createElement('div');
   garageControls.classList.add('garage__controls');
 
-  // create forms for create/update car
   const formCreate = baseForm({
     id: 'create',
     onSubmit: onCreateCar,
@@ -21,7 +20,6 @@ const garageControlsView = (): HTMLDivElement => {
     onSubmit: onUpdateCar,
   });
 
-  // create buttons for race/reset and generate cars
   const garageControlsBtns = document.createElement('div');
   garageControlsBtns.classList.add('garage__buttons');
   const btnRace = baseButton({
@@ -43,7 +41,6 @@ const garageControlsView = (): HTMLDivElement => {
   });
   garageControlsBtns.append(btnRace, btnReset, btnGenerateCars);
 
-  // race mode change subscription
   carStore.subscribe((state) => {
     btnRace.disabled = state.isRace;
     btnReset.disabled = !state.isRace;

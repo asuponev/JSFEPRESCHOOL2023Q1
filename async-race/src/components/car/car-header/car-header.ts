@@ -8,7 +8,6 @@ const carHeaderView = (car: ICar): HTMLDivElement => {
   const carHeader = document.createElement('div');
   carHeader.classList.add('car__header');
 
-  // create buttons for edit and delete car
   const btnSelect = baseButton({
     text: 'select',
     customClass: 'button--minor',
@@ -21,7 +20,6 @@ const carHeaderView = (car: ICar): HTMLDivElement => {
     onClick: () => onDeleteCar(car),
   });
 
-  // create title car element
   const carTitle = document.createElement('p');
   carTitle.classList.add('car__title');
   const carTitleName = document.createElement('span');
@@ -30,7 +28,6 @@ const carHeaderView = (car: ICar): HTMLDivElement => {
   carTitleNumber.textContent = `#${car.id}`;
   carTitle.append(carTitleName, carTitleNumber);
 
-  // subscription to state changes
   carStore.subscribe((state) => {
     const foundCar = state.items.find((item) => item.id === car.id);
     if (foundCar && foundCar.id === car.id && foundCar.name !== car.name) {

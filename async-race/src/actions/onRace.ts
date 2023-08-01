@@ -10,7 +10,6 @@ const onRace = async (): Promise<void> => {
     const { actions } = actionsStore;
     const promises = items.map((item) => actions[item.id]?.());
 
-    // get race winner:
     const { id, time } = await Promise.any(promises);
     carStore.dispatch({ type: 'ADD_CURRENT_WINNER', winnerId: id });
     await onCreateWinner({ id, time: time / 1000 });

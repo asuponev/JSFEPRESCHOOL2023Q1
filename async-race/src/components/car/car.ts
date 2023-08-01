@@ -12,7 +12,6 @@ const carView = (car: ICar): HTMLDivElement => {
   const carHeader = carHeaderView(car);
   const carRoad = carRoadView(car);
 
-  // subscription to state changes
   carStore.subscribe((state) => {
     const foundCar = state.items.find((item) => item.id === car.id);
     if (!foundCar) {

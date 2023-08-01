@@ -10,7 +10,6 @@ const carRoadView = ({ id, name, color }: ICar): HTMLDivElement => {
   const carRoad = document.createElement('div');
   carRoad.classList.add('car__road');
 
-  // create buttons for motion control
   const roadButtons = document.createElement('div');
   roadButtons.classList.add('car__road__buttons');
   const btnDrive = baseButton({
@@ -25,23 +24,19 @@ const carRoadView = ({ id, name, color }: ICar): HTMLDivElement => {
   });
   roadButtons.append(btnDrive, btnStop);
 
-  // create car icon
   const carIcon = document.createElement('div');
   carIcon.classList.add('car__icon');
   carIcon.id = `car-icon-${id}`;
   carIcon.innerHTML = carIconView(color);
 
-  // create finish element
   const finishIcon = document.createElement('div');
   finishIcon.classList.add('car__road__finish');
   finishIcon.textContent = 'FINISH';
 
-  // create winner message element
   const winnerMessage = document.createElement('div');
   winnerMessage.classList.add('car__road__message');
   winnerMessage.textContent = `winner: ${name} #${id}`;
 
-  // create actions for start and stop car with the necessary arguments
   const startCar = async (): Promise<{ id: number; time: number }> => {
     try {
       return await onStartOneCar(id, carIcon, finishIcon, btnDrive, btnStop);
@@ -54,7 +49,6 @@ const carRoadView = ({ id, name, color }: ICar): HTMLDivElement => {
     return onStopOneCar(id, carIcon, btnDrive, btnStop);
   };
 
-  // add listeners
   btnDrive.addEventListener('click', async () => {
     try {
       await startCar();
@@ -64,11 +58,9 @@ const carRoadView = ({ id, name, color }: ICar): HTMLDivElement => {
   });
   btnStop.addEventListener('click', stopCar);
 
-  // add actions to store
   actionsStore.actions[id] = startCar;
   actionsStore.resets[id] = stopCar;
 
-  // subscription to state changes
   carStore.subscribe((state) => {
     const foundCar = state.items.find((item) => item.id === id);
     if (foundCar && foundCar.color !== color) {

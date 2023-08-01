@@ -15,7 +15,6 @@ const baseForm = ({ id, onSubmit }: IProps): HTMLFormElement => {
   form.classList.add('form');
   form.addEventListener('submit', (event) => onSubmit(event));
 
-  // create form elements
   const inputName = document.createElement('input');
   inputName.id = `form-${id}-name`;
   inputName.name = 'name';
@@ -36,7 +35,6 @@ const baseForm = ({ id, onSubmit }: IProps): HTMLFormElement => {
   btnSubmit.type = 'submit';
   btnSubmit.id = `form-${id}-button`;
 
-  // subscription to state changes
   carStore.subscribe((state) => {
     if (id === 'create') {
       inputName.disabled = state.isUpdate;

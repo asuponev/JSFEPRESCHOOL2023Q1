@@ -37,7 +37,6 @@ const winnersItem = async (
   const tdBestTime = document.createElement('td');
   tdBestTime.textContent = `${winner.time.toFixed(2)}`;
 
-  // subscription to state changes
   winnersStore.subscribe((state) => {
     const foundWinner = state.items.find((item) => item.id === winner.id);
     if (!foundWinner) {

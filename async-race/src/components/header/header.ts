@@ -8,7 +8,6 @@ const headerView = (): HTMLElement => {
   const headerElement = document.createElement('header');
   headerElement.classList.add('header');
 
-  // create navigation buttons
   const btnToGarage = baseButton({
     text: 'to garage',
     customClass: 'button--main',
@@ -20,7 +19,6 @@ const headerView = (): HTMLElement => {
     onClick: () => onClickNavigate('winners'),
   });
 
-  // subscription to state changes
   carStore.subscribe((state) => {
     btnToWinners.disabled = state.isWalkBlocking;
   });

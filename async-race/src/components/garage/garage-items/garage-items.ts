@@ -6,7 +6,6 @@ const garageItemsView = (): HTMLDivElement => {
   const garageItems = document.createElement('div');
   garageItems.classList.add('garage__items');
 
-  // subscription to state changes
   carStore.subscribe((state) => {
     const currentItemsId: number[] = [];
     garageItems.childNodes.forEach((element) => {

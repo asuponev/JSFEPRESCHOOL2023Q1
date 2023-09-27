@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" />
+    <title>RS-CSS-Selectors</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__content">
+        <div class="header__logo">RS-CSS-Selectors</div>
+        <button class="header__btn" id="btn-open-levels">LEVELS</button>
+      </div>
+    </header>
+    <main class="main">
+      <div class="game">
+        <h2 class="game__title" id="game-title"></h2>
+        <div class="game__table" id="game-table"></div>
+      </div>
+      <div class="editor">
+        <div class="editor__block">
+          <div class="editor__header">
+            <p class="editor__title">CSS editor</p>
+            <p class="editor__file">style.css</p>
+          </div>
+          <div class="editor__window">
+            <div class="editor__numbers">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+              <span>10</span>
+              <span>11</span>
+              <span>12</span>
+              <span>13</span>
+              <span>14</span>
+              <span>15</span>
+              <span>16</span>
+            </div>
+            <div class="editor__css">
+              <form class="editor__form" id="answer-form">
+                <input
+                  type="text"
+                  placeholder="Type in a CSS selector"
+                  class="editor__input"
+                  id="css-input"
+                />
+                <button class="editor__btn editor__btn--enter" type="submit">
+                  Enter
+                </button>
+              </form>
+              <span class="editor__comment">
+                {<br />
+                /* Styles would go here. */<br />
+                }<br />
+              </span>
+              <button class="editor__btn editor__btn--help" id="btn-help">
+                Help
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="editor__block">
+          <div class="editor__header">
+            <p class="editor__title">HTML viewer</p>
+            <p class="editor__file">table.html</p>
+          </div>
+          <div class="editor__window">
+            <div class="editor__numbers">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+              <span>10</span>
+              <span>11</span>
+              <span>12</span>
+              <span>13</span>
+              <span>14</span>
+              <span>15</span>
+              <span>16</span>
+            </div>
+            <div class="editor__html" id="html-viewer"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="sidebar">
+      <div class="sidebar__header">
+        <p class="sidebar__title">Choose a level</p>
+        <button class="sidebar__btn" id="btn-close-levels">X</button>
+      </div>
+      <ul class="sidebar__items" id="levels-list"></ul>
+      <button class="sidebar__btn" id="btn-reset">RESET PROGRESS</button>
+    </div>
+    <footer class="footer">
+      <div class="footer__content">
+        <a href="https://rs.school/js/" class="footer__course">
+          <img src="./img/rs_school_js.svg" alt="course-logo" />
+        </a>
+        <p>2023</p>
+        <p class="footer__author">
+          Developer
+          <a
+            href="https://github.com/elsuppo"
+            class="footer__link"
+            target="_blank"
+          >
+            Andrew Suponev
+          </a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

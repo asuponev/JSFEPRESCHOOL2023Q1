@@ -1,0 +1,188 @@
+.header {
+  background: $color-light-xl;
+  padding: 30px 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  &__logo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+
+    &-title {
+      font: $font-logo_title;
+      color: $color-dark-l;
+      letter-spacing: 1.92px;
+      transition: color 0.5s ease-in-out;
+    }
+
+    &-subtitle {
+      font: $font-logo_subtitle;
+      color: $color-dark-3xl;
+      letter-spacing: 1.3px;
+      transition: color 0.5s ease-in-out;
+    }
+
+    &:hover {
+
+      p {
+        color: black;
+      }
+    }
+  }
+
+  .nav {
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__link {
+      font: $font-paragraph-l;
+      color: $color-dark-l;
+
+      &_active {
+        color: $color-dark-3xl;
+        border-bottom: 3px solid $color-primary;
+      }
+
+      &:hover {
+        color: $color-dark-3xl;
+        transition: all 0.5s;
+      }
+    }
+  }
+}
+
+.friends {
+  background: $color-light-l;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 80px 40px 100px;
+    text-align: center;
+  }
+
+  .slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+
+    &__items {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      column-gap: 40px;
+      row-gap: 30px;
+    }
+
+    &__item {
+      width: 270px;
+      height: 435px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding-bottom: 30px;
+      background: $color-light-s;
+      border-radius: 9px;
+      transition: background, transform 0.5s ease-in-out;
+
+      img {
+        width: 270px;
+        height: 270px;
+      }
+
+      &-title {
+        font: $font-h4;
+        color: $color-dark-l;
+        letter-spacing: 1.2px;
+      }
+
+      &-button {
+        width: 187px;
+        height: 52px;
+        border: 2px solid $color-primary;
+        border-radius: 100px;
+        background: $color-light-s;
+        font: $font-button;
+        color: $color-dark-3xl;
+        cursor: pointer;
+        letter-spacing: 1px;
+        transition: background 0.5s ease-in-out;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: $color-light-xl;
+        transform: scale(1.05);
+
+        .slider__item-button {
+          border: 2px solid $color-primary-light;
+          background: $color-primary-light;
+        }
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    &__arrow {
+      width: 52px;
+      height: 52px;
+      border: 2px solid $color-primary;
+      border-radius: 100px;
+      background: $color-light-l;
+      font: $font-h4;
+      color: $color-dark-3xl;
+      cursor: pointer;
+      transition: background 0.5s ease-in-out;
+
+      &_active {
+        border: 2px solid $color-primary;
+        background: $color-primary;
+      }
+
+      &:hover {
+        border: 2px solid $color-primary-light;
+        background: $color-primary-light;
+      }
+
+      &_inactive {
+        border: 2px solid $color-dark-s;
+        color: $color-dark-s;
+        background: $color-light-l;
+        cursor: not-allowed;
+
+        &:hover {
+          border: 2px solid $color-dark-s;
+          background: $color-light-l;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cozy House Our Pets</title>
+  <link rel="stylesheet" href="./styles/pets-page.css">
+  <link rel="icon" href="./assets/icons/favicon/favicon.ico">
+</head>
+<body>
+  <div class="shadow for-burger"></div>
+  <div class="shadow for-popup"></div>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="./index.html" class="header__logo">
+        <p class="header__logo-title">Cozy House</p>
+        <p class="header__logo-subtitle">Shelter for pets in Boston</p>
+      </a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="./index.html" class="nav__link">About the shelter</a></li>
+          <li class="nav__item"><a href="#" class="nav__link  nav__link_active">Our pets</a></li>
+          <li class="nav__item"><a href="./index.html#help" class="nav__link">Help the shelter</a></li>
+          <li class="nav__item"><a href="#contacts" class="nav__link">Contacts</a></li>
+        </ul>
+      </nav>
+      <div class="burger">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="friends">
+      <div class="container friends__inner">
+        <div class="popup">
+          <button class="popup__close_btn"></button>
+          <div class="popup__window"></div>
+        </div>
+        <h1 class="section__title">
+          <span>Our friends who</span><br>
+          <span>are looking for a house</span>
+        </h1>
+        <div class="slider">
+          <div class="slider__items"></div> 
+          <div class="slider__buttons">
+            <button class="slider__arrow slider__arrow_inactive slider__arrow_left" disabled>&lt;&lt;</button>
+            <button class="slider__arrow slider__arrow_inactive slider__arrow_left" disabled>&lt;</button>
+            <button class="slider__arrow slider__arrow_active">1</button>
+            <button class="slider__arrow slider__arrow_right">&gt;</button>
+            <button class="slider__arrow slider__arrow_right">&gt;&gt;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer" id="contacts">
+    <div class="container footer__inner">
+      <div class="footer__item">
+        <h3 class="footer__item-title">
+          <span>For questions</span><br>
+          <span>and suggestions</span>
+        </h3>
+        <h3 class="footer__item-title-mobile">For questions and suggestions</h3>
+        <a href="mailto:email@shelter.com" class="footer__item-link">
+          <img src="./assets/icons/contacts/email.svg" alt="email-icon">
+          <span>email@shelter.com</span>
+        </a>
+        <a href="tel:+136745677554" class="footer__item-link">
+          <img src="./assets/icons/contacts/phone.svg" alt="phone-icon">
+          <span>+13 674 567 75 54</span>
+        </a>
+      </div>
+      <div class="footer__item">
+        <h3 class="footer__item-title">
+          <span>We are waiting</span><br>
+          <span>for your visit</span>
+        </h3>
+        <h3 class="footer__item-title-mobile">We are waiting for your visit</h3>
+        <a href="https://goo.gl/maps/M5tFyGT8uc55L5HcA" target="_blank" class="footer__item-link">
+          <img src="./assets/icons/contacts/marker.svg" alt="marker-icon">
+          <span>
+          1 Central Street, Boston<br>
+          (entrance from the store)
+          </span>
+        </a>
+        <a href="https://goo.gl/maps/Rj3oHHk9AUEwNtkZA" target="_blank" class="footer__item-link">
+          <img src="./assets/icons/contacts/marker.svg" alt="marker-icon">
+          <span>18 South Park, London </span>
+        </a>
+      </div>
+      <div class="footer__img"></div>
+    </div>
+  </footer>
+  <script type="module" src="./js/index.js"></script>
+</body>
+</html>

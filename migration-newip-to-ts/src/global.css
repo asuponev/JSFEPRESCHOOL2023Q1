@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  color: #fff;
+  background: #17181c;
+  font: 400 1em 'Fira Sans', sans-serif;
+  min-height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+}
+
+.header,
+.footer {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(23, 24, 28, 0.95);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.header__button {
+  display: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: #ffffff;
+  font: 600 14px 'Fira Sans', sans-serif;
+}
+
+.header__title {
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.main__content {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 1em;
+  margin: 2em 0;
+}
+
+.footer__content {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #bfbfbf;
+}
+
+.footer__course {
+  width: 100px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+}
+
+.footer__course img {
+  filter: invert(25%);
+  transition: filter 0.3s ease-in-out;
+}
+
+.footer__course:hover img {
+  filter: invert(0%);
+}
+
+.footer__copyright {
+  text-align: center;
+}
+
+.footer__link {
+  color: #bfbfbf;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer__link:hover {
+  color: #ffffff;
+}
+
+.footer__copyright:before {
+  content: '©';
+}
+
+@media (max-width: 1024px) {
+  .header__button {
+    display: block;
+  }
+
+  .main__content {
+    grid-template-columns: 100%;
+  }
+
+  .header__button.hidden {
+    display: none;
+  }
+}
+
+@media (max-width: 512px) {
+  .container {
+    padding: 0 1em;
+  }
+
+  .header__title {
+    font-size: 1em;
+  }
+
+  .footer__content {
+    min-height: 100px;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    grid-template-areas:
+      'copyright course'
+      'copyright author';
+    column-gap: 1em;
+    font-size: 14px;
+    color: #bfbfbf;
+  }
+
+  .footer__copyright {
+    grid-area: copyright;
+    text-align: left;
+  }
+
+  .footer__course {
+    grid-area: course;
+  }
+
+  .footer__course img {
+    filter: invert(0%);
+  }
+
+  .footer__author {
+    grid-area: author;
+  }
+
+  .footer__link {
+    color: #ffffff;
+  }
+}

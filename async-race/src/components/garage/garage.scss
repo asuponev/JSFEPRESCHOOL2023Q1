@@ -1,0 +1,32 @@
+@import '../../assets/variables';
+
+.garage {
+  padding: 0 24px;
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    gap: 12px;
+    margin-bottom: 32px;
+    order: 1;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 12px 0 24px;
+    order: 4;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}

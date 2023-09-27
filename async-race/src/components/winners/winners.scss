@@ -1,0 +1,86 @@
+@import '../../assets/breakpoints';
+
+.winners {
+  padding: 0 24px;
+
+  &__table {
+    width: min(500px, 100%);
+    font-size: 14px;
+    margin: 12px 0 24px;
+    order: 4;
+
+    @include mobile {
+      font-size: 12px;
+    }
+
+    &__row {
+      text-align: left;
+
+      th,
+      td {
+        padding: 8px 16px 8px 0;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+      &--name {
+        display: flex;
+        max-width: 420px;
+        overflow: hidden;
+        white-space: nowrap;
+
+        @include mobile {
+          width: 140px;
+          
+        }
+
+        span:nth-child(2) {
+          font-size: 10px;
+          font-style: italic;
+          margin-left: 4px;
+        }
+      }
+    }
+
+    &__number {
+      min-width: 70px;
+    }
+
+    &__car {
+      min-width: 50px;
+    }
+
+    &__name {
+      width: auto;
+    }
+
+    &__wins {
+      min-width: 70px;
+    }
+
+    &__time {
+      min-width: 120px;
+    }
+
+    &__wins,
+    &__time {
+      cursor: pointer;
+
+      &.sort--desc::after {
+        content: '↓';
+        margin-left: 4px;
+      }
+
+      &.sort--asc::after {
+        content: '↑';
+        margin-left: 4px;
+      }
+    }
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
